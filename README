@@ -135,7 +135,9 @@ URS002: BigBlock.removeStatic(alias): alias must be a string.
 
 WSC001: BigBlock.WordSimple.create(): BigBlock.CharPresets = BigBlock.CharPresets.install() must be run before creating Words.
 
+//
 
+Copyright (C) 2010 Foldi, LLC 
 
 
 
