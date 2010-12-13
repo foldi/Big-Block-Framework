@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2010 Foldi, LLC
+ * Licensed under the MIT license.
+ */
+
 var BigBlock = {};
 BigBlock.Sprites = [];
 
