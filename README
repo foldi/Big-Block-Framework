@@ -1,5 +1,7 @@
 Big Block Framework
-A standards-compliant JavaScript framework for rendering pixel art, pixel fonts and particles in a web browser.
+Copyright (C) 2010 Foldi, LLC
+
+Big Block Framework is a standards-compliant JavaScript framework for rendering pixel art, pixel fonts and particles in a web browser.
 
 The current release is bigblock-alpha-.5.5.js.
 
@@ -137,7 +139,7 @@ WSC001: BigBlock.WordSimple.create(): BigBlock.CharPresets = BigBlock.CharPreset
 
 //
 
-Copyright (C) 2010 Foldi, LLC 
+ 
 
 
 
