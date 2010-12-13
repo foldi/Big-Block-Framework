@@ -1,0 +1,142 @@
+Big Block Framework
+A standards-compliant JavaScript framework for rendering pixel art in a web browser.
+
+The current release is bigblock-alpha-.5.5.js.
+
+See documentation in /docs/index.html and demos in /demos
+
+////
+
+
+
+Planned updates for .6 release:
+
+1. Replace 'alias' property with 'name'.
+
+2. Change class name from 'Sprite' to 'Block'.
+
+3. Change title of get reference util functions to getObjectByName, etc...
+
+4. Make default values consistent for Sprite.afterDie, Sprite.input_action, Sprite_action.
+
+5. Change 'className' property to 'palette'.
+
+6. Change 'die' method to 'destroy'.
+
+7. Set Timer.tap_timeout default value to false.
+
+8. Change Emitter.p_angle_spread from an integer value to a boolean.
+
+9. Add water and snow emitter configurations to library_emitter.js.
+
+10. Do not require options for WordSimple.
+
+11. Change Grid.pix_dim to Grid.block_dim.
+
+12. Change Sprite.anim_loop to a boolean value.
+
+13. Change 'lastFrame' to 'previousFrame' in Sprite.goToFrame method.
+
+14. Change default CharSimple.x to 0.
+
+15. Remove 'angle' property from Char.
+
+16. InputFeedback.die() needs to check if (BigBlock.getObjIdByAlias('input_feedback') != false) before trying to remove the block from BigBlock.Sprites 
+
+17. Add 'current_frame' property to ScreenEvent.
+
+18. Rename Wii event to wii_controller_input
+
+19. Word.remove() should be changed to Word.die()
+
+20. Add life property to Word.Simple
+
+21. life and render properties are not working properly for CharSimple and WordSimple
+
+
+
+
+////
+
+Error Codes:
+
+BA001: BigBlock.Background.add(): To render a background, you must provide a valid array of json objects in the following format: [{'c':c,'i': i}, {}, {}].
+
+BSBS001: BigBlock.Background.setBodyStyle(): BigBlock.Timer.setBodyStyle(key, value) requires a style key.
+
+BSBS002: BigBlock.Background.setBodyStyle(): BigBlock.Timer.setBodyStyle(key, value) requires a style value.
+
+CB001: BigBlock.Color.build(): document.styleSheets insertion failed. Browser does not support insertRule() or addRule().
+
+CB002: BigBlock.Color.build(): document.styleSheets rule count failed. Browser does not support cssRules.length() or rules.length().
+
+CA001: BigBlock.Color.add(): params are required.
+
+FA001: BigBlock.Footer.add(): BigBlock.Footer.add(x, y) requires both an x and y coordinate.
+
+FSS001: BigBlock.Footer.setStyle(): BigBlock.Footer.setStyle(key, value) requires a style key.
+
+FSS002: BigBlock.Footer.setStyle(): BigBlock.Footer.setStyle(key, value) requires a style value.
+
+GSS001: BigBlock.Grid.setStyle(): BigBlock.Grid.setStyle(key, value) requires a style key.
+
+GSS002: BigBlock.Grid.setStyle(): BigBlock.Grid.setStyle(key, value) requires a style value.
+
+GA001: BigBlock.Grid.setStyle(): Detecting window size failed. Browser does not support window.innerWidth or document.documentElement.clientWidth. Using 800 x 600.
+
+GA002: BigBlock.Grid.add(): document.styleSheets insertion failed. Browser does not support insertRule() or addRule().
+
+GB002: BigBlock.Grid.build(): document.styleSheets rule count failed. Browser does not support cssRules.length() or rules.length().
+
+GBCS001: BigBlock.Grid.buildCharStyles(): document.styleSheets insertion failed. Browser does not support insertRule() or addRule().
+
+HA001: BigBlock.Header.add(): BigBlock.Header.add(x, y) requires both an x and y coordinate.
+
+HSS001: BigBlock.Header.setStyle(): BigBlock.Header.setStyle(key, value) requires a style key.
+
+HSS002: BigBlock.Header.setStyle(): BigBlock.Header.setStyle(key, value) requires a style value.
+
+IFD001: BigBlock.InputFeedback:display(): BigBlock.InputFeedback:display(x, y) requires both an x and y coordinate.
+
+EPGP001: BigBlock.EmitterPresets.getPreset(): BigBlock.EmitterPresets: preset does not exist.
+
+LA001: BigBlock.Loader.add(): Detecting window size failed. Browser does not support window.innerWidth or document.documentElement.clientWidth. Using 800 x 600.
+
+RMCS001 BigBlock.RenderMgr.clearScene(beforeClear, afterClear): beforeClear must be a function.
+
+RMCS002 BigBlock.RenderMgr.clearScene(beforeClear, afterClear): afterClear must be a function.
+
+SEC001: BigBlock.ScreenEvent.create(): BigBlock.ScreenEvent.create(params) requires a params passed in json format. params can be empty ie. {}
+
+SGTF001: BigBlock.Sprite.goToFrame(): goToFrame(arg, anim_frame, anim) requires a frame number, label or keyword(nextFrame, lastFrame)
+
+SGTF002: BigBlock.Sprite.goToFrame(): goToFrame(arg, anim_frame, anim) requires an anim_frame
+
+SGTF003: BigBlock.Sprite.goToFrame(): goToFrame(arg, anim_frame, anim) requires an anim
+
+SGTF004: BigBlock.Sprite.goToFrame(): Frame number does not exist.
+
+SGFIBL001: BigBlock.Sprite.getFrameIndexByLabel(): getFrameIndexByLabel(arg, anim) requires a label
+
+SGFIBL002: BigBlock.Sprite.getFrameIndexByLabel(): getFrameIndexByLabel(arg, anim) requires an anim
+
+SGFIBL003: BigBlock.Sprite.getFrameIndexByLabel(): Frame label does not exist.
+
+SAGP001: BigBlock.SpriteAdvanced.getPix(): getPix(anim) requires an anim json object.
+
+SAGTAP001: BigBlock.SpriteAdvanced.goToAndPlay(): goToAndPlay(arg) requires a frame number, label or keyword(nextFrame, lastFrame).
+
+SAGTAS001: BigBlock.SpriteAdvanced.goToAndStop(): goToAndStop(arg) requires a frame number, label or keyword(nextFrame, lastFrame).
+
+TP001: BigBlock.Timer.play(): document.styleSheets insertion failed. Browser does not support insertRule() or addRule().
+
+URS001: BigBlock.removeStatic(alias): requires an alias.
+
+URS002: BigBlock.removeStatic(alias): alias must be a string.
+
+WSC001: BigBlock.WordSimple.create(): BigBlock.CharPresets = BigBlock.CharPresets.install() must be run before creating Words.
+
+
+
+
+
