@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
+        <title>Big Block Framework - Demo</title>
+		
+		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+				
+		<script type='text/javascript'>
+
+			BigBlock.SpriteSimple.create();
+			
+			BigBlock.ready = function () {
+				BigBlock.Timer.play({
+					tap_timeout: false,
+					document_body_style : {
+						backgroundColor : '#000'
+					},
+					grid_static_styles : {
+						backgroundColor : '#333'
+					},
+					grid_active_styles : {
+						border : '1px solid #ccc'
+					},					
+					input_feedback: true,
+					input_feedback_grad: "rgb(16, 16, 16);rgb(39, 39, 39);rgb(66, 66, 66);rgb(96, 96, 96);rgb(127, 127, 127);rgb(159, 159, 159);rgb(189, 189, 189);rgb(216, 216, 216);rgb(239, 239, 239);rgb(255, 255, 255)",
+				});
+			}
+									
+		</script>
+		
+	</head>
+	<body onload="setTimeout('BigBlock.ready()', 0)">
+		
+	</body>
+	
+</html>	
+

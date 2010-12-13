@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
+        <title>Big Block Framework - Demo</title>		
+		
+		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		
+		<script type='text/javascript'>
+
+			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
+			
+			BigBlock.WordSimple.create({
+				word_id: "word1",
+				x: 104,
+				y: 0,
+				value: "big block bold",
+				className: "grey_light",
+				glass: true,
+				font: "bigblock_bold"
+			});
+			
+			BigBlock.WordSimple.create({
+				word_id: "word1",
+				x: 104,
+				y: 32,
+				value: "big block plain",
+				className: "grey_light",
+				glass: true,
+				font: "bigblock_plain"
+			});
+			
+			BigBlock.WordSimple.create({
+				word_id: "word1",
+				x: 104,
+				y: 64,
+				value: "big block link: click me!",
+				className: "grey_light",
+				glass: true,
+				font: "bigblock_bold",
+				url: "http://www.bigblockframework.com",
+				link_color: "#666"
+			});		
+			
+	
+																					
+		</script>
+		
+	</head>
+	<body onload="setTimeout('BigBlock.ready()', 0)">
+		
+	</body>
+	
+</html>	

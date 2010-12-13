@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
+        <title>Big Block Framework - Demo</title>
+		
+		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+				
+		<script type='text/javascript'>
+
+			BigBlock.SpriteSimple.create({
+				input_action: function () {
+					alert("Hello, I'm the first block!");
+				}
+			});
+			
+			BigBlock.SpriteSimple.create({
+				x: 16,
+				input_action: function () {
+					alert("Hello, I'm the second block!");
+				}
+			});
+			
+			BigBlock.SpriteSimple.create({
+				x: 32,
+				input_action: function () {
+					alert("Hello, I'm the third block!");
+				}
+			});						
+			
+			BigBlock.ready = function () {
+				BigBlock.Timer.play({
+					tap_timeout: false,
+					before_play: function () {alert("Click or tap the blocks.")}
+				});
+			}
+									
+		</script>
+		
+	</head>
+	<body onload="setTimeout('BigBlock.ready()', 0)">
+		
+	</body>
+	
+</html>	
+

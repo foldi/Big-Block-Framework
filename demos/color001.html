@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
+        <title>Big Block Framework - Demo</title>
+		
+		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		
+		<script type='text/javascript'>
+
+			var my_palette = {'classes' : [				
+				{name: 'purple1',val: ["rgb(230, 128, 255)"]},
+				{name: 'purple2',val: ["rgb(193, 107, 214)"]},
+				{name: 'purple3',val: ["rgb(150, 84, 167)"]},
+				{name: 'purple4',val: ["rgb(116, 65, 129)"]},
+				{name: 'purple5',val: ["rgb(83, 46, 92)"]}
+			]};
+			
+			BigBlock.Color.add(my_palette);
+
+			//
+
+			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
+			
+			BigBlock.WordSimple.create({
+				word_id: "word1",
+				x: 0,
+				y: 0,
+				value: "predefined colors:",
+				className: "white",
+				font: "bigblock_plain"
+			});			
+			
+			BigBlock.SpriteSimple.create({
+				x:0,
+				y:16,
+				className: "white"
+			});
+			
+			BigBlock.SpriteSimple.create({
+				x:16,
+				y:16,
+				className: "grey_dark"
+			});
+			
+			BigBlock.SpriteSimple.create({
+				x:32,
+				y:16,
+				className: "grey"
+			});
+			
+			BigBlock.SpriteSimple.create({
+				x:48,
+				y:16,
+				className: "grey_light"
+			});
+			
+			BigBlock.SpriteSimple.create({
+				x:64,
+				y:16,
+				className: "red"
+			});
+			
+			BigBlock.SpriteSimple.create({
+				x:80,
+				y:16,
+				className: "magenta"
+			});
+			
+			BigBlock.SpriteSimple.create({
+				x:96,
+				y:16,
+				className: "blue"
+			});	
+			
+			BigBlock.SpriteSimple.create({
+				x:112,
+				y:16,
+				className: "cyan"
+			});						
+			
+			BigBlock.SpriteSimple.create({
+				x:128,
+				y:16,
+				className: "green"
+			});
+			
+			BigBlock.SpriteSimple.create({
+				x:144,
+				y:16,
+				className: "yellow"
+			});	
+			
+			BigBlock.SpriteSimple.create({
+				x:160,
+				y:16,
+				className: "orange"
+			});	
+			
+			BigBlock.SpriteSimple.create({
+				x:176,
+				y:16,
+				className: "brown"
+			});	
+			
+			BigBlock.SpriteSimple.create({
+				x:192,
+				y:16,
+				className: "pink"
+			});
+			
+			//
+			
+			BigBlock.WordSimple.create({
+				word_id: "word2",
+				x: 0,
+				y: 48,
+				value: "custom colors:",
+				className: "white",
+				font: "bigblock_plain"
+			});			
+			
+			BigBlock.SpriteSimple.create({
+				x:0,
+				y:64,
+				className: "purple1"
+			});	
+			
+			BigBlock.SpriteSimple.create({
+				x:16,
+				y:64,
+				className: "purple2"
+			});	
+			
+			BigBlock.SpriteSimple.create({
+				x:32,
+				y:64,
+				className: "purple3"
+			});	
+			
+			BigBlock.SpriteSimple.create({
+				x:48,
+				y:64,
+				className: "purple4"
+			});	
+			
+			BigBlock.SpriteSimple.create({
+				x:64,
+				y:64,
+				className: "purple5"
+			});																													
+																					
+									
+		</script>
+		
+	</head>
+	<body onload="setTimeout('BigBlock.ready()', 0)">
+		
+	</body>
+	
+</html>	

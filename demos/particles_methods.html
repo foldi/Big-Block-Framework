@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
+        <title>Big Block Framework - Demo</title>
+		
+		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		
+		<script type='text/javascript'>
+
+			BigBlock.Emitter.create({
+				alias: "sprinkler",
+				p_init_pos_spread_x: 10,
+				p_life_offset_x: 1,
+				p_angle_spread: 10,
+				p_velocity: 4,
+				p_gravity: 1,
+				className: "yellow"				
+			});
+			
+			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
+
+			BigBlock.WordSimple.create({
+				word_id: "start",
+				x: 0,
+				y: 0,
+				value: "start",
+				className: "grey_light",
+				glass: true,
+				font: "bigblock_bold",
+				url: function () {
+					BigBlock.Sprites[BigBlock.getObjIdByAlias('sprinkler')].start();
+				},
+				link_color: "#666"
+			});
+				
+			BigBlock.WordSimple.create({
+				word_id: "stop",
+				x: 0,
+				y: 32,
+				value: "stop",
+				className: "grey_light",
+				glass: true,
+				font: "bigblock_bold",
+				url: function () {
+					BigBlock.Sprites[BigBlock.getObjIdByAlias('sprinkler')].stop();
+				},
+				link_color: "#666"
+			});				
+			
+									
+		</script>
+		
+	</head>
+	<body onload="setTimeout('BigBlock.ready()', 0)">
+		
+	</body>
+	
+</html>	
