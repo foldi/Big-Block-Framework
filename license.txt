@@ -1,5 +1,5 @@
 Copyright (C) 2010 Foldi, LLC 
-534 Flatbush Ave., Apt. 205, Brooklyn, NY 11225, USA
+Brooklyn, NY 11225, USA
  
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
