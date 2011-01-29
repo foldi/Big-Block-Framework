@@ -5,18 +5,18 @@
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 		
 		<script type='text/javascript'>
 
-			BigBlock.SpriteSimple.create({
-				action : function () {						
-					if (this.x + BigBlock.Grid.pix_dim < BigBlock.Grid.width) {
-						this.x += BigBlock.Grid.pix_dim;
+			BigBlock.BlockSmall.create({
+				action_render : function () {						
+					if (this.x + BigBlock.Grid.blk_dim < BigBlock.Grid.width) {
+						this.x += BigBlock.Grid.blk_dim;
 					} else {
 						this.x = 1;
-						if (this.y + BigBlock.Grid.pix_dim < BigBlock.Grid.height) {
-							this.y += BigBlock.Grid.pix_dim;
+						if (this.y + BigBlock.Grid.blk_dim < BigBlock.Grid.height) {
+							this.y += BigBlock.Grid.blk_dim;
 						} else {
 							this.y = 1;
 						}	

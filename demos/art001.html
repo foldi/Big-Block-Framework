@@ -5,7 +5,7 @@
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 		
 		<script type='text/javascript'>
 
@@ -322,22 +322,22 @@
 			
 			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
 			
-			BigBlock.SpriteAdvanced.create({
+			BigBlock.BlockAnim.create({
 				alias : 'vince',
 				x : 104,
 				y : 104,
 				life : 0,
-				className: 'anim',
+				color: 'anim',
 				anim_state: 'stop',
 				anim_loop: 1,
 				idleTimeout : 0, // custom parameter to stop alternating poses
 				poses: ['head_rt', 'head_left'],
-				action: function () {
+				action_render: function () {
 					if (this.idleTimeout == 0) {
 						this.idleTimeout = setTimeout(function(){
-							BigBlock.Sprites[BigBlock.getObjIdByAlias('vince')].goToAndStop(BigBlock.Sprites[BigBlock.getObjIdByAlias('vince')].poses[Math.getRamdomNumber(0, 1)]);
-							BigBlock.Sprites[BigBlock.getObjIdByAlias('vince')].idleTimeout = 0;
-						}, Math.getRamdomNumber(500, 1000));
+							BigBlock.Blocks.vince.goToFrame(BigBlock.Blocks.vince.poses[Math.getRandomNumber(0, 1)]);
+							BigBlock.Blocks.vince.idleTimeout = 0;
+						}, Math.getRandomNumber(500, 1000));
 					}
 				},											
 				anim : vince_anim

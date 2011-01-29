@@ -5,140 +5,133 @@
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 				
 		<script type='text/javascript'>
 
 			BigBlock.CharPresets = BigBlock.CharPresets.install();
 				
-			BigBlock.WordSimple.create({
+			BigBlock.Word.create({
 				x: 8,
 				y: 8,
-				value: "frames - click or tap to advance",
+				word: "frames - click or tap to advance",
 				font: "bigblock_plain",
-				className: "grey"
+				color: "grey"
 			});	
 			
-			BigBlock.current_frame = 1;
+			BigBlock.ScreenEvent.frameAdvance = function (event, x, y) {
+
+				if (BigBlock.inputBlock === true) { // check to block user input
+					return false;
+				}
 				
-			BigBlock.ScreenEvent.create({
-								
-				frameAdvance : function (event, x, y) {
-
-					if (BigBlock.inputBlock === true) { // check to block user input
-						return false;
-					}
-					
-					if (typeof(event.touches) != 'undefined') {
-						var touch = event.touches[0];
-					}
-											
-					var x_rel = x - BigBlock.GridActive.x;
-					var y_rel = y - BigBlock.GridActive.y;
-					
-					
-					BigBlock.RenderMgr.clearScene();
+				if (typeof(event.touches) != 'undefined') {
+					var touch = event.touches[0];
+				}
 										
-					switch (BigBlock.current_frame) {
-					
-						case 1:
-													
-							BigBlock.SpriteSimple.create({
-								x: BigBlock.Grid.width/2,
-								y: BigBlock.Grid.height/2 - 32							
-							});
-							
-						break;
-						
-						case 2:
-													
-							BigBlock.SpriteSimple.create({
-								x: BigBlock.Grid.width/2,
-								y: BigBlock.Grid.height/2 - 32,
-								className: "red"						
-							});							
-							
-						break;
-						
-						case 3:
-													
-							BigBlock.SpriteSimple.create({
-								x: BigBlock.Grid.width/2,
-								y: BigBlock.Grid.height/2 - 32,
-								className: "green"											
-							});							
-							
-						break;
-						
-						case 4:
-													
-							BigBlock.SpriteSimple.create({
-								x: BigBlock.Grid.width/2,
-								y: BigBlock.Grid.height/2 - 32,
-								className: "blue"										
-							});							
-							
-						break;
-						
-						default:
-
-							BigBlock.SpriteSimple.create({
-								x: BigBlock.Grid.width/2,
-								y: BigBlock.Grid.height/2 - 32							
-							});
-														
-							BigBlock.current_frame = 1;
-						break;																														
-						
-					}
-
-					BigBlock.GridStatic.setStyle(
-						'backgroundColor', '#333'
-					);
-
-					BigBlock.WordSimple.create({
-						x: BigBlock.Grid.width/2 - 28,
-						y: BigBlock.Grid.height/2,
-						value: "frame " + BigBlock.current_frame,
-						font: "bigblock_bold",
-						className: "grey_light",
-						glass: true
-					});	
+				var x_rel = x - BigBlock.GridActive.x;
+				var y_rel = y - BigBlock.GridActive.y;
+				
+				
+				BigBlock.RenderMgr.clearScene();
+									
+				switch (BigBlock.ScreenEvent.current_frame) {
+				
+					case 1:
 												
-					BigBlock.WordSimple.create({
-						x: BigBlock.Grid.width/2 - 28,
-						y: BigBlock.Grid.height/2 + 32,
-						value: "click x: " + x_rel,
-						font: "bigblock_plain",
-						className: "grey"
-					});
+						BigBlock.BlockSmall.create({
+							x: BigBlock.Grid.width/2,
+							y: BigBlock.Grid.height/2 - 32							
+						});
+						
+					break;
 					
-					BigBlock.WordSimple.create({
-						x: BigBlock.Grid.width/2 - 28,
-						y: BigBlock.Grid.height/2 + 48,
-						value: "click y: " + y_rel,
-						font: "bigblock_plain",
-						className: "grey"
-					});
-																
-					BigBlock.current_frame++;
+					case 2:
+												
+						BigBlock.BlockSmall.create({
+							x: BigBlock.Grid.width/2,
+							y: BigBlock.Grid.height/2 - 32,
+							color: "red"						
+						});							
+						
+					break;
+					
+					case 3:
+												
+						BigBlock.BlockSmall.create({
+							x: BigBlock.Grid.width/2,
+							y: BigBlock.Grid.height/2 - 32,
+							color: "green"											
+						});							
+						
+					break;
+					
+					case 4:
+												
+						BigBlock.BlockSmall.create({
+							x: BigBlock.Grid.width/2,
+							y: BigBlock.Grid.height/2 - 32,
+							color: "blue"										
+						});							
+						
+					break;
+					
+					default:
+
+						BigBlock.BlockSmall.create({
+							x: BigBlock.Grid.width/2,
+							y: BigBlock.Grid.height/2 - 32							
+						});
+													
+						
+					break;																														
 					
 				}
-			
-			});
+
+				BigBlock.GridStatic.setStyle(
+					'backgroundColor', '#333'
+				);
+
+				BigBlock.Word.create({
+					x: BigBlock.Grid.width/2 - 28,
+					y: BigBlock.Grid.height/2,
+					word: "frame " + BigBlock.ScreenEvent.current_frame,
+					font: "bigblock_bold",
+					color: "grey_light",
+					glass: true
+				});	
+											
+				BigBlock.Word.create({
+					x: BigBlock.Grid.width/2 - 28,
+					y: BigBlock.Grid.height/2 + 32,
+					word: "click x: " + x_rel,
+					font: "bigblock_plain",
+					color: "grey"
+				});
+				
+				BigBlock.Word.create({
+					x: BigBlock.Grid.width/2 - 28,
+					y: BigBlock.Grid.height/2 + 48,
+					word: "click y: " + y_rel,
+					font: "bigblock_plain",
+					color: "grey"
+				});
+							
+			}
 			
 			BigBlock.ready = function () {
 				BigBlock.Timer.play({
-					tap_timeout: false,
 					document_body_style : {
 						backgroundColor : '#000'
 					},
 					grid_static_styles : {
 						backgroundColor : '#333'
-					}				});
+					}
+				});
 			}			
 												
 		</script>
+		
 		
 	</head>
 	<body onload="setTimeout('BigBlock.ready()', 0)">

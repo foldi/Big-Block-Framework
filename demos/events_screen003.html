@@ -5,34 +5,29 @@
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 				
 		<script type='text/javascript'>
 
 			BigBlock.CharPresets = BigBlock.CharPresets.install();
 				
-			BigBlock.WordSimple.create({
+			BigBlock.Word.create({
 				x: 8,
 				y: 8,
-				value: "mousemove - move mouse inside viewport",
+				word: "mousemove - move mouse inside viewport",
 				font: "bigblock_plain",
-				className: "grey"
+				color: "grey"
 			});	
-				
-			BigBlock.ScreenEvent.create({
-			
-				mousemove : function () {
-					BigBlock.SpriteSimple.create({
-						x: Math.getRamdomNumber(0, BigBlock.Grid.width),
-						y: Math.getRamdomNumber(0, BigBlock.Grid.height)
-					});
-				}
-			
-			});
+
+			BigBlock.ScreenEvent.screen_mousemove = function (evt_x, evt_y, event) {
+				BigBlock.BlockSmall.create({
+					x: Math.getRandomNumber(0, BigBlock.Grid.width),
+					y: Math.getRandomNumber(0, BigBlock.Grid.height)
+				});
+			};
 			
 			BigBlock.ready = function () {
 				BigBlock.Timer.play({
-					tap_timeout: false,
 					document_body_style : {
 						backgroundColor : '#000'
 					},

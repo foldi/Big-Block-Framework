@@ -4,34 +4,33 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
-		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 				
 		<script type='text/javascript'>
 
-			BigBlock.SpriteSimple.create({
-				input_action: function () {
+			BigBlock.BlockSmall.create({
+				action_input: function () {
 					alert("Hello, I'm the first block!");
 				}
 			});
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x: 16,
-				input_action: function () {
+				action_input: function () {
 					alert("Hello, I'm the second block!");
 				}
 			});
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x: 32,
-				input_action: function () {
+				action_input: function () {
 					alert("Hello, I'm the third block!");
 				}
 			});						
 			
 			BigBlock.ready = function () {
 				BigBlock.Timer.play({
-					tap_timeout: false,
 					before_play: function () {alert("Click or tap the blocks.")}
 				});
 			}

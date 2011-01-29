@@ -5,7 +5,7 @@
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 		
 		<script type='text/javascript'>
 
@@ -16,38 +16,56 @@
 				p_angle_spread: 10,
 				p_velocity: 4,
 				p_gravity: 1,
-				className: "yellow"				
+				color: "yellow",
+				state: "stop"			
 			});
 			
 			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
 
-			BigBlock.WordSimple.create({
+			BigBlock.Word.create({
 				word_id: "start",
-				x: 0,
-				y: 0,
-				value: "start",
-				className: "grey_light",
+				x: 16,
+				y: 16,
+				word: "start",
+				color: "black",
 				glass: true,
-				font: "bigblock_bold",
-				url: function () {
-					BigBlock.Sprites[BigBlock.getObjIdByAlias('sprinkler')].start();
-				},
-				link_color: "#666"
+				font: "bigblock_bold"
 			});
-				
-			BigBlock.WordSimple.create({
-				word_id: "stop",
-				x: 0,
-				y: 32,
-				value: "stop",
-				className: "grey_light",
-				glass: true,
-				font: "bigblock_bold",
-				url: function () {
-					BigBlock.Sprites[BigBlock.getObjIdByAlias('sprinkler')].stop();
-				},
-				link_color: "#666"
+		
+			
+			BigBlock.Button.create({
+				alias : "button_start",
+				x: 8,
+				y: 8,
+				width: 56,
+				height: 24,
+				color: "white",
+				action_input: function () {
+					BigBlock.Blocks.sprinkler.start();
+				}
 			});				
+				
+			BigBlock.Word.create({
+				word_id: "stop",
+				x: 16,
+				y: 56,
+				word: "stop!",
+				color: "black",
+				glass: true,
+				font: "bigblock_bold"
+			});				
+			
+			BigBlock.Button.create({
+				alias : "button_stop",
+				x: 8,
+				y: 48,
+				width: 56,
+				height: 24,
+				color: "white",
+				action_input: function () {
+					BigBlock.Blocks.sprinkler.stop();
+				}
+			});			
 			
 									
 		</script>

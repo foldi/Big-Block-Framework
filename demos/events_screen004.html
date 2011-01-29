@@ -5,31 +5,27 @@
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 				
 		<script type='text/javascript'>
 
 			BigBlock.CharPresets = BigBlock.CharPresets.install();
 				
-			BigBlock.WordSimple.create({
+			BigBlock.Word.create({
 				x: 8,
 				y: 8,
-				value: "touchstart - touch inside the viewport",
+				word: "touchstart - touch inside the viewport",
 				font: "bigblock_plain",
-				className: "grey"
+				color: "grey"
 			});	
-				
-			BigBlock.ScreenEvent.create({
-			
-				touchstart : function () {
-					alert("You touched me!");
-				}
-			
-			});
+
+			BigBlock.ScreenEvent.screen_touchstart = function (evt_x, evt_y, event) {
+				alert("You touched me!");
+			};
+
 			
 			BigBlock.ready = function () {
 				BigBlock.Timer.play({
-					tap_timeout: false,
 					document_body_style : {
 						backgroundColor : '#000'
 					},
