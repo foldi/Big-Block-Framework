@@ -10,51 +10,98 @@ See documentation in /docs/index.html and demos in /demos
 ////
 
 
+Planned updates for 5.6 release:
+
+2. Change object collection array from 'Sprites' to 'Blocks'. //
+
+3. Change title of get reference util functions to getBlkIndexByAlias, getBlkIndexByWordId, etc... //
+
+4. Make default values consistent for Sprite.afterDie, Sprite.input_action, Sprite_action. //
+
+5. Change 'className' property to 'color'. //
+
+6. Change 'die' method to 'destroy'. //
+
+7. Set Timer.tap_timeout default value to false. //
+
+10. Do not require options for WordSimple. //
+
+11. Change Grid.pix_dim to Grid.blk_dim. //
+
+12. Change Sprite.anim_loop to a boolean value. //
+
+13. Change 'lastFrame' to 'previousFrame' in Sprite.goToFrame method. //
+
+14. Change default CharSimple.x to 0. //
+
+15. Remove 'angle' property from Char. //
+
+16. InputFeedback.die() needs to check if (BigBlock.getObjIdByAlias('input_feedback') != false) before trying to remove the block from BigBlock.Sprites //
+
+19. Word.remove() should be changed to Word.destroy() //
+
+20. Add life property to Word.Simple //
+
+21. Remove life and render properties from CharSimple and WordSimple //
+
+22. Add BigBlock.getColIndex() to utility.js //
+
+23. Add BigBlock.getFullGridIndex() to utility.js //
+
+24. Fix BigBlock.inArray() in utility.js //
+
+26. Use "action_render" instead of "action" for rendering actions. //
+
+27. Use "action_input" instead of "input_action" for click/touch actions. //
+
+28. Add Button class. //
+
+29. Add BigBlock.windowOpen() to utility.js //
+
+30. Add 'is_pause' property to Timer. Check 'is_pause' in run method. //
+
+31. Create a LocalStorage Class with exception_handling. Should supply setItem, removeItem, and clear methods. //
+
+32. Create a Database Class //
+
+33. Add a getMySqlDateTime to utility.js //
+
+34. Correct GetRamdomNumber to GetRandomNumber //
+
+35. Change SpriteSimple class name to BlockSmall //
+
+36. Change SpriteAdvanced class name to BlockAnim //
+
+37. Create BlockBig that accepts x, y, width, height, className params and creates a SpriteAdvanced.
+
 Planned updates for .6 release:
 
-1. Replace 'alias' property with 'name'.
+1. Add water and snow emitter configurations to library_emitter.js.
 
-2. Change class name from 'Sprite' to 'Block'.
+2. Refactor ScreenEvent to handle custom events more efficiently.
 
-3. Change title of get reference util functions to getObjectByName, etc...
+3. Organize the anim property like below to remove the 'c' key. Just use the name of the color palette:
 
-4. Make default values consistent for Sprite.afterDie, Sprite.input_action, Sprite_action.
+anim = [
 
-5. Change 'className' property to 'palette'.
+	{
+		frm: {
+			duration: 1,
+			blk: {
+				'white': 0,
+				'i': 40*1
+			},
+			label: 'first frame'
+		}		
+	}
 
-6. Change 'die' method to 'destroy'.
+];
 
-7. Set Timer.tap_timeout default value to false.
+4. Add Intferace to test for required properties.
 
-8. Change Emitter.p_angle_spread from an integer value to a boolean.
+To try:
 
-9. Add water and snow emitter configurations to library_emitter.js.
-
-10. Do not require options for WordSimple.
-
-11. Change Grid.pix_dim to Grid.block_dim.
-
-12. Change Sprite.anim_loop to a boolean value.
-
-13. Change 'lastFrame' to 'previousFrame' in Sprite.goToFrame method.
-
-14. Change default CharSimple.x to 0.
-
-15. Remove 'angle' property from Char.
-
-16. InputFeedback.die() needs to check if (BigBlock.getObjIdByAlias('input_feedback') != false) before trying to remove the block from BigBlock.Sprites 
-
-17. Add 'current_frame' property to ScreenEvent.
-
-18. Rename Wii event to wii_controller_input
-
-19. Word.remove() should be changed to Word.die()
-
-20. Add life property to Word.Simple
-
-21. life and render properties are not working properly for CharSimple and WordSimple
-
-
+1. Each Sprite has a sound_effect property that holds an HTML5 audio element
 
 
 ////
