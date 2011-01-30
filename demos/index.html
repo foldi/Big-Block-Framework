@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Docs</title>
+        <title>Examples</title>
 		<style type="text/css">
 			body { background-color: #fff; }
 					
@@ -53,8 +53,8 @@
 <li><a href="http://www.bigblockframework.com/apps/reggiewatts002_min.html" target="top">Reggie Watts</a><br />An animation I created after seeing my favorite comedian in Gowanus, Brooklyn.</li>
 </ul>
 
-<h3>Learning</h3>
-<p><a name="learning">Use</a> the following examples to learn how to use the Big Block classes and develop your own Big Block creations. If you want to quickly view some pixel animations, jump to the <a href="#Particles_basic">particle examples</a>.</p>
+<h3><a name="learning">Learning</a></h3>
+<p>Use the following examples to learn how to use the Big Block classes and develop your own Big Block creations. If you want to quickly view some pixel animations, jump to the <a href="#Particles_basic">particle examples</a>.</p>
 
 <p>All blocks (ie: big pixels) are rendered inside a top-level &#60;div&#62; that acts as a viewport. The default settings are meant for rendering on iOS devices but can be adapted to other mobile devices or desktop browsers. Without changing anything, your viewport will be 320x368 pixels with each block at 8x8 pixels (40 rows, 46 cols, 1840 total blocks).</p>
 
@@ -62,6 +62,8 @@
 	<li><a href="#Basic">Bare bones</a></li>
 	<li><a href="#Defaults">Defaults</a></li>
 	<li><a href="#Motion">Motion</a></li>
+	<li><a href="#BlockBig">BlockBig</a></li>
+	<li><a href="#Buttons">Buttons</a></li>
 	<li><a href="#Events_blocks">Events_blocks</a></li>
 	<li><a href="#Events_screen">Events_screen</a></li>
 	<li><a href="#Events_frames">Events_frames</a></li>
@@ -74,6 +76,8 @@
 	<li><a href="#Color">Color</a></li>
 	<li><a href="#Grid">Grid</a></li>
 	<li><a href="#Art_basic">Art_basic</a></li>
+	<li><a href="#Audio">Audio</a></li>
+	<li><a href="#Audio_controls">Audio controls</a></li>
 </ul>
 
 <div class="example">
@@ -81,7 +85,7 @@
 
 <p>The easiest way to get up and running with Big Block is to point to the latest release in a &#60;script&#62; tag in the head of your html file. Next, in another &#60;script&#62; block, use the following line to create a block.</p>
 
-<pre>BigBlock.SpriteSimple.create();</pre>
+<pre>BigBlock.BlockSmall.create();</pre>
 
 <p>Finally, in your &#60;body&#62; tag, add the following onLoad event:</p>
 
@@ -92,12 +96,12 @@
 <form>
 	<textarea cols="100" rows="10">
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
-				
+
 		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 		
 		<script type='text/javascript'>
@@ -111,14 +115,14 @@
 		
 	</body>
 	
-</html>			
+</html>				
 	</textarea>
-	<p><a href="../demos/basic001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
+	<p><a href="../demos/barebones001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
 </form>
 
 <p>You may also notice a &#60;meta&#62; tag with the name "viewport" and a few other parameters. This tag sets up an iOS device's viewport. In this case, the page is not scalable and rendered edge-to-edge with the device. If you are targeting a mobile device with your Big Block page, you will want to inlcude this tag.</p>
 
-<p>If you view the example in a browser, you will see a white, 8x8 pixel. You will also see "tap" appear and will see a pixel appear and quickly fade out wherever you click. The "tap" timeout and click feedback are convenience functions for iOS devices and are enabled by default. In the next demo we will turn these off.</p>
+<p>If you view the example in a browser, you will see a white, 8x8 pixel. You will also see a pixel appear and quickly fade out wherever you click. The click feedback is a convenience function for iOS devices and is enabled by default. In the next demo we will turn it off.</p>
 
 </div>
 
@@ -138,23 +142,21 @@
 
 <form>
 	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 				
 		<script type='text/javascript'>
 
-			BigBlock.SpriteSimple.create();
+			BigBlock.BlockSmall.create();
 			
-			BigBlock.ready = function () { // called from <body> onload()
+			BigBlock.ready = function () {
 				BigBlock.Timer.play({
-					tap_timeout: false,
 					document_body_style : {
 						backgroundColor : '#000'
 					},
@@ -164,9 +166,8 @@
 					grid_active_styles : {
 						border : '1px solid #ccc'
 					},					
-					input_feedback: true,
+					input_feedback: false,
 					input_feedback_grad: "rgb(16, 16, 16);rgb(39, 39, 39);rgb(66, 66, 66);rgb(96, 96, 96);rgb(127, 127, 127);rgb(159, 159, 159);rgb(189, 189, 189);rgb(216, 216, 216);rgb(239, 239, 239);rgb(255, 255, 255)",
-					report_fr : true
 				});
 			}
 									
@@ -178,43 +179,44 @@
 	</body>
 	
 </html>	
+
+	
 	</textarea>
 	<p><a href="../demos/defaults001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
 </form>
 
-<p>The Grid class sets up three divs in the viewport called active, static and text. These divs hold four child divs. The borders you see in the example are the active div. The static div is under the active div and has a grey background color. The document's background color has been set to black.</p>
+<p>The Grid class sets up three divs in the viewport called active, static and text. These divs hold four child divs. The borders you see in the example are the active div. The static div is under the active div and has a grey background color. The document's background color has been set to black. The input feedback has been turned off.</p>
 
 </div>
 
 
 <div class="example">
 <a name="Motion"><h3 class="example">Motion</h3></a>
-<p>Each SpriteSimple looks for an "action" to run at each screen render. By passing a function, you can animate your blocks.</p>
+<p>Each BlockSmall looks for an "action_render" to execute at each screen render. By passing a function, you can animate your blocks.</p>
 
-<p>This example references the pix_dim parameter of the Grid class which sets the width and height of your blocks.</p>
+<p>This example references the blk_dim parameter of the Grid class which sets the width and height of your blocks.</p>
 
 <form>
 	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 		
 		<script type='text/javascript'>
 
-			BigBlock.SpriteSimple.create({
-				action : function () {						
-					if (this.x + BigBlock.Grid.pix_dim < BigBlock.Grid.width) {
-						this.x += BigBlock.Grid.pix_dim;
+			BigBlock.BlockSmall.create({
+				action_render : function () {						
+					if (this.x + BigBlock.Grid.blk_dim < BigBlock.Grid.width) {
+						this.x += BigBlock.Grid.blk_dim;
 					} else {
 						this.x = 1;
-						if (this.y + BigBlock.Grid.pix_dim < BigBlock.Grid.height) {
-							this.y += BigBlock.Grid.pix_dim;
+						if (this.y + BigBlock.Grid.blk_dim < BigBlock.Grid.height) {
+							this.y += BigBlock.Grid.blk_dim;
 						} else {
 							this.y = 1;
 						}	
@@ -229,7 +231,9 @@
 		
 	</body>
 	
-</html>		
+</html>	
+
+		
 		</textarea>
 		<p><a href="../demos/motion001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
 </form>
@@ -238,48 +242,177 @@
 
 
 <div class="example">
+<a name="BlockBig"><h3 class="example">BlockBig</h3></a>
+<p>Up to this point the examples have used the BlockSmall class to create single block objects with a width and height equal to the block dimensions set by Grid.blk_dim. To create bigger blocks, use the BlockBig class and pass a width and height. Because this block does not move, the "render_static" property is set to "false" to render the block only once. If your blocks do not move, setting "render_state = false" will prevent unnecessary processing from the RenderManager.</p>
 
-<a name="Events_blocks"><h3 class="example">Events: blocks</h3></a>
-
-<p>Each SpriteSimple can accept an input_action that is run on a click or touch event.</p>
 
 <form>
 	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
-		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 				
 		<script type='text/javascript'>
 
-			BigBlock.SpriteSimple.create({
-				input_action: function () {
+			BigBlock.BlockBig.create({
+				x: 8,
+				y: 8,
+				width: 64,
+				height: 64,
+				render_static: false			
+			});	
+									
+		</script>
+		
+	</head>
+	<body onload="setTimeout('BigBlock.ready()', 0)">
+		
+	</body>
+	
+</html>
+
+		
+		</textarea>
+		<p><a href="../demos/blockbig001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
+</form>
+
+</div>
+
+
+<div class="example">
+<a name="Buttons"><h3 class="example">Buttons</h3></a>
+<p>The Buttons class creates button objects in two ways. First, you can simply pass in a "width" and "height" and supply and "action_input" to execute on mouse up. Second, you can pass an array of json objects as the "anim" property to create custom buttons. The "anim" property is used to create more complex pixel art objects described below in the <a href="#Art_basic">Art basic</a> example.</p>
+
+<form>
+	<textarea cols="100" rows="10">
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
+        <title>Big Block Framework - Demo</title>
+
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
+				
+		<script type='text/javascript'>
+
+			BigBlock.my_colors = {
+				btn : "rgb(204, 204, 204);rgb(255, 255, 255);rgb(153, 153, 153)"
+			}
+			
+			BigBlock.my_colors.my_palette = {'classes' : [
+				{name: 'btn', val: BigBlock.my_colors.btn.split(";")}
+			]};
+
+			var btn_play = [
+				{'frm':
+					{
+						'duration' : 1,
+						'pix' : [
+							{'c':'btn0','i':(40*0)+0},{'c':'btn0','i':(40*0)+1},{'c':'btn0','i':(40*0)+2},{'c':'btn0','i':(40*0)+3},{'c':'btn0','i':(40*0)+4},{'c':'btn0','i':(40*0)+5},{'c':'btn0','i':(40*0)+6},{'c':'btn0','i':(40*0)+7},{'c':'btn0','i':(40*0)+8},{'c':'btn0','i':(40*0)+9},{'c':'btn0','i':(40*0)+10},{'c':'btn0','i':(40*0)+11},{'c':'btn0','i':(40*0)+12},{'c':'btn0','i':(40*0)+13},{'c':'btn0','i':(40*0)+14},{'c':'btn0','i':(40*0)+15},{'c':'btn0','i':(40*0)+16},{'c':'btn0','i':(40*0)+17},{'c':'btn0','i':(40*0)+18},{'c':'btn0','i':(40*0)+19},{'c':'btn0','i':(40*0)+20},{'c':'btn0','i':(40*0)+21},{'c':'btn0','i':(40*0)+22},{'c':'btn0','i':(40*0)+23},{'c':'btn0','i':(40*0)+24},{'c':'btn0','i':(40*0)+25},{'c':'btn0','i':(40*0)+26},{'c':'btn0','i':(40*0)+27},{'c':'btn0','i':(40*0)+28},{'c':'btn0','i':(40*0)+29},{'c':'btn0','i':(40*0)+30},{'c':'btn0','i':(40*1)+0},{'c':'btn1','i':(40*1)+1},{'c':'btn1','i':(40*1)+2},{'c':'btn1','i':(40*1)+3},{'c':'btn0','i':(40*1)+4},{'c':'btn1','i':(40*1)+5},{'c':'btn0','i':(40*1)+6},{'c':'btn0','i':(40*1)+7},{'c':'btn0','i':(40*1)+8},{'c':'btn1','i':(40*1)+9},{'c':'btn0','i':(40*1)+10},{'c':'btn1','i':(40*1)+11},{'c':'btn1','i':(40*1)+12},{'c':'btn1','i':(40*1)+13},{'c':'btn0','i':(40*1)+14},{'c':'btn1','i':(40*1)+15},{'c':'btn0','i':(40*1)+16},{'c':'btn1','i':(40*1)+17},{'c':'btn0','i':(40*1)+18},{'c':'btn0','i':(40*1)+19},{'c':'btn0','i':(40*1)+20},{'c':'btn1','i':(40*1)+21},{'c':'btn0','i':(40*1)+22},{'c':'btn1','i':(40*1)+23},{'c':'btn0','i':(40*1)+24},{'c':'btn1','i':(40*1)+25},{'c':'btn1','i':(40*1)+26},{'c':'btn1','i':(40*1)+27},{'c':'btn0','i':(40*1)+28},{'c':'btn1','i':(40*1)+29},{'c':'btn0','i':(40*1)+30},{'c':'btn0','i':(40*2)+0},{'c':'btn1','i':(40*2)+1},{'c':'btn0','i':(40*2)+2},{'c':'btn0','i':(40*2)+3},{'c':'btn0','i':(40*2)+4},{'c':'btn1','i':(40*2)+5},{'c':'btn0','i':(40*2)+6},{'c':'btn0','i':(40*2)+7},{'c':'btn0','i':(40*2)+8},{'c':'btn1','i':(40*2)+9},{'c':'btn0','i':(40*2)+10},{'c':'btn1','i':(40*2)+11},{'c':'btn0','i':(40*2)+12},{'c':'btn0','i':(40*2)+13},{'c':'btn0','i':(40*2)+14},{'c':'btn1','i':(40*2)+15},{'c':'btn0','i':(40*2)+16},{'c':'btn1','i':(40*2)+17},{'c':'btn0','i':(40*2)+18},{'c':'btn0','i':(40*2)+19},{'c':'btn0','i':(40*2)+20},{'c':'btn1','i':(40*2)+21},{'c':'btn1','i':(40*2)+22},{'c':'btn1','i':(40*2)+23},{'c':'btn0','i':(40*2)+24},{'c':'btn1','i':(40*2)+25},{'c':'btn0','i':(40*2)+26},{'c':'btn0','i':(40*2)+27},{'c':'btn0','i':(40*2)+28},{'c':'btn1','i':(40*2)+29},{'c':'btn0','i':(40*2)+30},{'c':'btn2','i':(40*3)+0},{'c':'btn0','i':(40*3)+1},{'c':'btn2','i':(40*3)+2},{'c':'btn2','i':(40*3)+3},{'c':'btn2','i':(40*3)+4},{'c':'btn0','i':(40*3)+5},{'c':'btn2','i':(40*3)+6},{'c':'btn2','i':(40*3)+7},{'c':'btn2','i':(40*3)+8},{'c':'btn0','i':(40*3)+9},{'c':'btn2','i':(40*3)+10},{'c':'btn0','i':(40*3)+11},{'c':'btn2','i':(40*3)+12},{'c':'btn2','i':(40*3)+13},{'c':'btn2','i':(40*3)+14},{'c':'btn0','i':(40*3)+15},{'c':'btn0','i':(40*3)+16},{'c':'btn2','i':(40*3)+17},{'c':'btn2','i':(40*3)+18},{'c':'btn2','i':(40*3)+19},{'c':'btn2','i':(40*3)+20},{'c':'btn0','i':(40*3)+21},{'c':'btn0','i':(40*3)+22},{'c':'btn0','i':(40*3)+23},{'c':'btn2','i':(40*3)+24},{'c':'btn0','i':(40*3)+25},{'c':'btn0','i':(40*3)+26},{'c':'btn2','i':(40*3)+27},{'c':'btn2','i':(40*3)+28},{'c':'btn2','i':(40*3)+29},{'c':'btn2','i':(40*3)+30},{'c':'btn2','i':(40*4)+0},{'c':'btn0','i':(40*4)+1},{'c':'btn0','i':(40*4)+2},{'c':'btn0','i':(40*4)+3},{'c':'btn2','i':(40*4)+4},{'c':'btn0','i':(40*4)+5},{'c':'btn0','i':(40*4)+6},{'c':'btn0','i':(40*4)+7},{'c':'btn2','i':(40*4)+8},{'c':'btn0','i':(40*4)+9},{'c':'btn2','i':(40*4)+10},{'c':'btn0','i':(40*4)+11},{'c':'btn0','i':(40*4)+12},{'c':'btn0','i':(40*4)+13},{'c':'btn2','i':(40*4)+14},{'c':'btn0','i':(40*4)+15},{'c':'btn2','i':(40*4)+16},{'c':'btn0','i':(40*4)+17},{'c':'btn2','i':(40*4)+18},{'c':'btn2','i':(40*4)+19},{'c':'btn2','i':(40*4)+20},{'c':'btn0','i':(40*4)+21},{'c':'btn2','i':(40*4)+22},{'c':'btn0','i':(40*4)+23},{'c':'btn2','i':(40*4)+24},{'c':'btn0','i':(40*4)+25},{'c':'btn0','i':(40*4)+26},{'c':'btn0','i':(40*4)+27},{'c':'btn2','i':(40*4)+28},{'c':'btn0','i':(40*4)+29},{'c':'btn2','i':(40*4)+30},{'c':'btn2','i':(40*5)+0},{'c':'btn2','i':(40*5)+1},{'c':'btn2','i':(40*5)+2},{'c':'btn2','i':(40*5)+3},{'c':'btn2','i':(40*5)+4},{'c':'btn2','i':(40*5)+5},{'c':'btn2','i':(40*5)+6},{'c':'btn2','i':(40*5)+7},{'c':'btn2','i':(40*5)+8},{'c':'btn2','i':(40*5)+9},{'c':'btn2','i':(40*5)+10},{'c':'btn2','i':(40*5)+11},{'c':'btn2','i':(40*5)+12},{'c':'btn2','i':(40*5)+13},{'c':'btn2','i':(40*5)+14},{'c':'btn2','i':(40*5)+15},{'c':'btn2','i':(40*5)+16},{'c':'btn2','i':(40*5)+17},{'c':'btn2','i':(40*5)+18},{'c':'btn2','i':(40*5)+19},{'c':'btn2','i':(40*5)+20},{'c':'btn2','i':(40*5)+21},{'c':'btn2','i':(40*5)+22},{'c':'btn2','i':(40*5)+23},{'c':'btn2','i':(40*5)+24},{'c':'btn2','i':(40*5)+25},{'c':'btn2','i':(40*5)+26},{'c':'btn2','i':(40*5)+27},{'c':'btn2','i':(40*5)+28},{'c':'btn2','i':(40*5)+29},{'c':'btn2','i':(40*5)+30}
+						],
+						'label' : '1'
+					}								
+				}		
+				
+			];
+
+			BigBlock.Color.add(BigBlock.my_colors.my_palette);
+			
+			delete BigBlock.my_colors;
+								
+			BigBlock.CharPresets = BigBlock.CharPresets.install();
+			
+			BigBlock.Button.create({
+				x: 8,
+				y: 8,
+				width: 248,
+				height: 48,
+				action_input: function () {
+					alert('Thank you from the big button!');
+				},
+				anim : btn_play
+			});
+
+			BigBlock.Word.create({
+				x: 16,
+				y: 72,
+				word: "click me!",
+				color: "black"
+			});
+						
+			BigBlock.Button.create({
+				x: 8,
+				y: 64,
+				width: 88,
+				height: 24,
+				action_input: function () {
+					alert('Thank you from the small button!');
+				}
+			});	
+									
+		</script>
+		
+	</head>
+	<body onload="setTimeout('BigBlock.ready()', 0)">
+		
+	</body>
+	
+</html>
+		</textarea>
+		<p><a href="../demos/buttons001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
+</form>
+
+</div>
+
+
+
+<div class="example">
+
+<a name="Events_blocks"><h3 class="example">Events: blocks</h3></a>
+
+<p>Any block object (BlockSmall, BlockBig, BlockAnim) can accept an "action_input" that is executed on a click or touch event.</p>
+
+<form>
+	<textarea cols="100" rows="10">
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
+        <title>Big Block Framework - Demo</title>
+
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
+				
+		<script type='text/javascript'>
+
+			BigBlock.BlockSmall.create({
+				action_input: function () {
 					alert("Hello, I'm the first block!");
 				}
 			});
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x: 16,
-				input_action: function () {
+				action_input: function () {
 					alert("Hello, I'm the second block!");
 				}
 			});
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x: 32,
-				input_action: function () {
+				action_input: function () {
 					alert("Hello, I'm the third block!");
 				}
 			});						
 			
 			BigBlock.ready = function () {
 				BigBlock.Timer.play({
-					tap_timeout: false,
 					before_play: function () {alert("Click or tap the blocks.")}
 				});
 			}
@@ -291,7 +424,7 @@
 		
 	</body>
 	
-</html>	
+</html>		
 
 	</textarea>
 	<p><a href="../demos/events_blocks001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
@@ -306,56 +439,45 @@
 
 <p>The framework can add events to the viewport itself making it easy to trigger functions as the user clicks or taps the screen. Supported events include clicks, touches and controller input from the Wii. See the <a href="/?page_id=52#ScreenEvent">ScreenEvent</a> class for a full list of supported events.</p>
 
-<p>Screen events are added using the following line:</p>
-
-BigBlock.ScreenEvent.create(options);
-
-<p>Supply a list of key/value pairs to configure specific events. See the examples below:</p>
-
 <p><span class="title_demo">mouseup</span> - click inside the viewport</p>
 
 <form>
 	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 				
 		<script type='text/javascript'>
 
 			BigBlock.CharPresets = BigBlock.CharPresets.install();
 				
-			BigBlock.WordSimple.create({
+			BigBlock.Word.create({
 				x: 8,
 				y: 8,
-				value: "mouseup - click inside the viewport",
+				word: "mouseup - click inside the viewport",
 				font: "bigblock_plain",
-				className: "grey"
+				color: "grey"
 			});	
-				
-			BigBlock.ScreenEvent.create({
-			
-				mouseup : function () {
-					alert('mouse up!');
-				}
-			
-			});
+
+			BigBlock.ScreenEvent.screen_mouseup = function (evt_x, evt_y, event) {
+				alert('mouse up!');
+			};
 			
 			BigBlock.ready = function () {
 				BigBlock.Timer.play({
-					tap_timeout: false,
 					document_body_style : {
 						backgroundColor : '#000'
 					},
 					grid_static_styles : {
 						backgroundColor : '#333'
-					}				});
-			}			
+					}
+				});
+			}				
 												
 		</script>
 		
@@ -364,7 +486,7 @@ BigBlock.ScreenEvent.create(options);
 		
 	</body>
 	
-</html>	
+</html>
 	
 	</textarea>
 	<p><a href="../demos/events_screen001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
@@ -374,46 +496,41 @@ BigBlock.ScreenEvent.create(options);
 
 <form>
 	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 				
 		<script type='text/javascript'>
 
 			BigBlock.CharPresets = BigBlock.CharPresets.install();
 				
-			BigBlock.WordSimple.create({
+			BigBlock.Word.create({
 				x: 8,
 				y: 8,
-				value: "mousedown - click inside the viewport",
+				word: "mousedown - click inside the viewport",
 				font: "bigblock_plain",
-				className: "grey"
+				color: "grey"
 			});	
-				
-			BigBlock.ScreenEvent.create({
-			
-				mouseup : function () {
-					alert('mouse down!');
-				}
-			
-			});
+
+			BigBlock.ScreenEvent.screen_mousedown = function (evt_x, evt_y, event) {
+				alert('mouse down!');
+			};
 			
 			BigBlock.ready = function () {
 				BigBlock.Timer.play({
-					tap_timeout: false,
 					document_body_style : {
 						backgroundColor : '#000'
 					},
 					grid_static_styles : {
 						backgroundColor : '#333'
-					}				});
-			}			
+					}
+				});
+			}				
 												
 		</script>
 		
@@ -422,7 +539,7 @@ BigBlock.ScreenEvent.create(options);
 		
 	</body>
 	
-</html>	
+</html>
 	
 	</textarea>
 	<p><a href="../demos/events_screen002.html">View in a browser</a> | <a href="#top">Back to top</a></p>
@@ -432,42 +549,36 @@ BigBlock.ScreenEvent.create(options);
 
 <form>
 	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 				
 		<script type='text/javascript'>
 
 			BigBlock.CharPresets = BigBlock.CharPresets.install();
 				
-			BigBlock.WordSimple.create({
+			BigBlock.Word.create({
 				x: 8,
 				y: 8,
-				value: "mousemove - move mouse inside viewport",
+				word: "mousemove - move mouse inside viewport",
 				font: "bigblock_plain",
-				className: "grey"
+				color: "grey"
 			});	
-				
-			BigBlock.ScreenEvent.create({
-			
-				mousemove : function () {
-					BigBlock.SpriteSimple.create({
-						x: Math.getRamdomNumber(0, BigBlock.Grid.width),
-						y: Math.getRamdomNumber(0, BigBlock.Grid.height)
-					});
-				}
-			
-			});
+
+			BigBlock.ScreenEvent.screen_mousemove = function (evt_x, evt_y, event) {
+				BigBlock.BlockSmall.create({
+					x: Math.getRandomNumber(0, BigBlock.Grid.width),
+					y: Math.getRandomNumber(0, BigBlock.Grid.height)
+				});
+			};
 			
 			BigBlock.ready = function () {
 				BigBlock.Timer.play({
-					tap_timeout: false,
 					document_body_style : {
 						backgroundColor : '#000'
 					},
@@ -494,39 +605,34 @@ BigBlock.ScreenEvent.create(options);
 
 <form>
 	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 				
 		<script type='text/javascript'>
 
 			BigBlock.CharPresets = BigBlock.CharPresets.install();
 				
-			BigBlock.WordSimple.create({
+			BigBlock.Word.create({
 				x: 8,
 				y: 8,
-				value: "touchstart - touch inside the viewport",
+				word: "touchstart - touch inside the viewport",
 				font: "bigblock_plain",
-				className: "grey"
+				color: "grey"
 			});	
-				
-			BigBlock.ScreenEvent.create({
-			
-				touchstart : function () {
-					alert("You touched me!");
-				}
-			
-			});
+
+			BigBlock.ScreenEvent.screen_touchstart = function (evt_x, evt_y, event) {
+				alert("You touched me!");
+			};
+
 			
 			BigBlock.ready = function () {
 				BigBlock.Timer.play({
-					tap_timeout: false,
 					document_body_style : {
 						backgroundColor : '#000'
 					},
@@ -556,162 +662,143 @@ BigBlock.ScreenEvent.create(options);
 
 <a name="Events_frames"><h3 class="example">Events: frames</h3></a>
 
-<p>By default, the following events call a frameAdvance method and pass the event plus the x, y coordinate of the event:
+<p>By default, the following events call a frameAdvance method and pass the event object plus the x, y coordinate of the event:
 <ul>
-	<li>mouseup</li>
-	<li>touchstart</li>
-	<li>click (for Wii)</li>
+	<li>screen_mouseup</li>
+	<li>screen_touchstart</li>
+	<li>screen_click (for Wii)</li>
 </ul>
 </p>
 
-<p>The default frameAdvance method simply increments a BigBlock.currentFrame property. However, if you pass your own frameAdvance function, you can organize your Big Block objects into frames.</p>
+<p>These events increment the BigBlock.ScreenEvent.current_frame property. If you pass your own frameAdvance function, you can organize your Big Block objects into frames via BigBlock.ScreenEvent.current_frame.</p>
 
-<p>See below for an example. NOTE: The example will work for desktop, mobile and the Opera browser on the Wii.</p>
+<p>See below for an example.</p>
 
 <form>
 	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 				
 		<script type='text/javascript'>
 
 			BigBlock.CharPresets = BigBlock.CharPresets.install();
 				
-			BigBlock.WordSimple.create({
+			BigBlock.Word.create({
 				x: 8,
 				y: 8,
-				value: "frames - click or tap to advance",
+				word: "frames - click or tap to advance",
 				font: "bigblock_plain",
-				className: "grey"
+				color: "grey"
 			});	
 			
-			BigBlock.current_frame = 1;
+			BigBlock.ScreenEvent.frameAdvance = function (event, x, y) {
+
+				if (BigBlock.inputBlock === true) { // check to block user input
+					return false;
+				}
 				
-			BigBlock.ScreenEvent.create({
-								
-				frameAdvance : function (event, x, y) {
-
-					if (BigBlock.inputBlock === true) { // check to block user input
-						return false;
-					}
-					
-					if (typeof(event.touches) != 'undefined') {
-						var touch = event.touches[0];
-					}
-											
-					var x_rel = x - BigBlock.GridActive.x;
-					var y_rel = y - BigBlock.GridActive.y;
-					
-					
-					BigBlock.RenderMgr.clearScene();
+				if (typeof(event.touches) != 'undefined') {
+					var touch = event.touches[0];
+				}
 										
-					switch (BigBlock.current_frame) {
-					
-						case 1:
-													
-							BigBlock.SpriteSimple.create({
-								x: BigBlock.Grid.width/2,
-								y: BigBlock.Grid.height/2 - 32							
-							});
-							
-						break;
-						
-						case 2:
-													
-							BigBlock.SpriteSimple.create({
-								x: BigBlock.Grid.width/2,
-								y: BigBlock.Grid.height/2 - 32,
-								className: "red"						
-							});							
-							
-						break;
-						
-						case 3:
-													
-							BigBlock.SpriteSimple.create({
-								x: BigBlock.Grid.width/2,
-								y: BigBlock.Grid.height/2 - 32,
-								className: "green"											
-							});							
-							
-						break;
-						
-						case 4:
-													
-							BigBlock.SpriteSimple.create({
-								x: BigBlock.Grid.width/2,
-								y: BigBlock.Grid.height/2 - 32,
-								className: "blue"										
-							});							
-							
-						break;
-						
-						default:
-
-							BigBlock.SpriteSimple.create({
-								x: BigBlock.Grid.width/2,
-								y: BigBlock.Grid.height/2 - 32							
-							});
-														
-							BigBlock.current_frame = 1;
-						break;																														
-						
-					}
-
-					BigBlock.GridStatic.setStyle(
-						'backgroundColor', '#333'
-					);
-
-					BigBlock.WordSimple.create({
-						x: BigBlock.Grid.width/2 - 28,
-						y: BigBlock.Grid.height/2,
-						value: "frame " + BigBlock.current_frame,
-						font: "bigblock_bold",
-						className: "grey_light",
-						glass: true
-					});	
+				var x_rel = x - BigBlock.GridActive.x;
+				var y_rel = y - BigBlock.GridActive.y;
+				
+				
+				BigBlock.RenderMgr.clearScene();
+									
+				switch (BigBlock.ScreenEvent.current_frame) {
+				
+					case 1:
 												
-					BigBlock.WordSimple.create({
-						x: BigBlock.Grid.width/2 - 28,
-						y: BigBlock.Grid.height/2 + 32,
-						value: "click x: " + x_rel,
-						font: "bigblock_plain",
-						className: "grey"
-					});
+						BigBlock.BlockSmall.create({
+							x: BigBlock.Grid.width/2,
+							y: BigBlock.Grid.height/2 - 32							
+						});
+						
+					break;
 					
-					BigBlock.WordSimple.create({
-						x: BigBlock.Grid.width/2 - 28,
-						y: BigBlock.Grid.height/2 + 48,
-						value: "click y: " + y_rel,
-						font: "bigblock_plain",
-						className: "grey"
-					});
-																
-					BigBlock.current_frame++;
+					case 2:
+												
+						BigBlock.BlockSmall.create({
+							x: BigBlock.Grid.width/2,
+							y: BigBlock.Grid.height/2 - 32,
+							color: "red"						
+						});							
+						
+					break;
+					
+					case 3:
+												
+						BigBlock.BlockSmall.create({
+							x: BigBlock.Grid.width/2,
+							y: BigBlock.Grid.height/2 - 32,
+							color: "green"											
+						});							
+						
+					break;
+					
+					case 4:
+												
+						BigBlock.BlockSmall.create({
+							x: BigBlock.Grid.width/2,
+							y: BigBlock.Grid.height/2 - 32,
+							color: "blue"										
+						});							
+						
+					break;
+					
+					default:
+
+						BigBlock.BlockSmall.create({
+							x: BigBlock.Grid.width/2,
+							y: BigBlock.Grid.height/2 - 32							
+						});
+													
+						
+					break;																														
 					
 				}
-			
-			});
-			
-			BigBlock.ready = function () {
-				BigBlock.Timer.play({
-					tap_timeout: false,
-					document_body_style : {
-						backgroundColor : '#000'
-					},
-					grid_static_styles : {
-						backgroundColor : '#333'
-					}				});
-			}			
+
+				BigBlock.GridStatic.setStyle(
+					'backgroundColor', '#333'
+				);
+
+				BigBlock.Word.create({
+					x: BigBlock.Grid.width/2 - 28,
+					y: BigBlock.Grid.height/2,
+					word: "frame " + BigBlock.ScreenEvent.current_frame,
+					font: "bigblock_bold",
+					color: "grey_light",
+					glass: true
+				});	
+											
+				BigBlock.Word.create({
+					x: BigBlock.Grid.width/2 - 28,
+					y: BigBlock.Grid.height/2 + 32,
+					word: "click x: " + x_rel,
+					font: "bigblock_plain",
+					color: "grey"
+				});
+				
+				BigBlock.Word.create({
+					x: BigBlock.Grid.width/2 - 28,
+					y: BigBlock.Grid.height/2 + 48,
+					word: "click y: " + y_rel,
+					font: "bigblock_plain",
+					color: "grey"
+				});
+							
+			}		
 												
 		</script>
+		
 		
 	</head>
 	<body onload="setTimeout('BigBlock.ready()', 0)">
@@ -722,7 +809,7 @@ BigBlock.ScreenEvent.create(options);
 
 	</textarea>	
 	<p><a href="../demos/events_frames001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-	<p>You notice BigBlock.RenderMgr.clearScene() is called each time the user clicks inside the viewport. This RenderMgr method clears all blocks from the viewport and destroys all the objects in BigBlock.Sprites.</p>
+	<p>You notice BigBlock.RenderMgr.clearScene() is called each time the user clicks inside the viewport. This RenderMgr method clears all blocks from the viewport and destroys all the objects in BigBlock.Blocks.</p>
 </form>
 
 </div>
@@ -732,75 +819,76 @@ BigBlock.ScreenEvent.create(options);
 
 <a name="Fonts_characters"><h3 class="example">Fonts: characters</h3></a>
 
-<p>The Big Block framework includes three text rendering classes called Char, CharPresets and Word. Char is used to render single characters defined in CharPresets. CharPresets is not automatically instantiated when Big Block loads because not all Big Block pages include text. When you want to render text, you must include the following line:</p>
+<p>The Big Block framework includes three text rendering classes called Character, CharPresets and Word. Character is used to render single characters defined in CharPresets. CharPresets is not automatically instantiated when Big Block loads because not all Big Block pages include text. When you want to render text, you must include the following line:</p>
 
 <pre>BigBlock.CharPresets = BigBlock.CharPresets.install();</pre>
 
 <form>
 	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
+        <title>Big Block Framework - Demo</title>	
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 		
 		<script type='text/javascript'>
 
 			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
 			
-			BigBlock.CharSimple.create({
+			BigBlock.Character.create({
 				x: 0,
-				value: "a",
-				className: "grey_light",
+				character: "a",
+				color: "grey_light",
 				glass: true
 			});
 			
-			BigBlock.CharSimple.create({
+			BigBlock.Character.create({
 				x: 8,
-				value: "b",
-				className: "grey_light",
+				character: "b",
+				color: "grey_light",
 				glass: true
 			});	
 			
-			BigBlock.CharSimple.create({
+			BigBlock.Character.create({
 				x: 16,
-				value: "c",
-				className: "grey_light",
+				character: "c",
+				color: "grey_light",
 				glass: true
 			});						
 
-			BigBlock.CharSimple.create({
+			BigBlock.Character.create({
 				x: 24,
-				value: "d",
-				className: "grey_light",
+				character: "d",
+				color: "grey_light",
 				glass: true
 			});
 
-			BigBlock.CharSimple.create({
+			BigBlock.Character.create({
 				x: 32,
-				value: "e",
-				className: "grey_light",
+				character: "e",
+				color: "grey_light",
 				glass: false
 			});
 
-			BigBlock.CharSimple.create({
+			BigBlock.Character.create({
 				x: 40,
-				value: "f",
-				className: "grey_light",
+				character: "f",
+				color: "grey_light",
 				glass: false
 			});
 
-			BigBlock.CharSimple.create({
+			BigBlock.Character.create({
 				x: 48,
-				value: "g",
-				className: "grey_light",
+				character: "g",
+				color: "grey_light",
 				glass: false
 			});
-																					
+
+
+																				
 		</script>
 		
 	</head>
@@ -812,7 +900,7 @@ BigBlock.ScreenEvent.create(options);
 			
 	</textarea>			
 	<p><a href="../demos/fonts_characters001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-	<p>The "value" parameter is the character you want to render. The "className" defines the color. "Glass" toggles a glass effect. The letters "a b c d" in the example above use the glass effect.</p>
+	<p>The "character" parameter is the character you want to render. The "color" defines the color. "glass" toggles a glass effect. The letters "a b c d" in the example above use the glass effect.</p>
 </form>
 
 </div>
@@ -823,60 +911,69 @@ BigBlock.ScreenEvent.create(options);
 
 <a name="Fonts_words"><h3 class="example">Fonts: words</h3></a>
 
-<p>Use the Word class to render words. Just pass the word as the "value" parameter.</p>
+<p>Use the Word class to render words. Just pass the word as the "word" parameter.</p>
 
 <p>Two fonts are provided in the CharPresets class, bigblock_bold and bigblock_plain. You can provide your own fonts by overwriting the CharPresets class.</p>
 
-<p>You can create hyperlinks by passing in a "url" parameter. See the example below:</p>
+<p>You can create hyperlinks by creating a Button at the same location as your text. Words are always rendered above Buttons. See the example below:</p>
 
 <form>
 	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
+        <title>Big Block Framework - Demo</title>		
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 		
 		<script type='text/javascript'>
 
 			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
 			
-			BigBlock.WordSimple.create({
-				word_id: "word1",
+			BigBlock.Word.create({
+				alias: "word1",
 				x: 104,
-				y: 0,
-				value: "big block bold",
-				className: "grey_light",
+				y: 8,
+				word: "big block bold",
+				color: "grey_light",
 				glass: true,
 				font: "bigblock_bold"
 			});
 			
-			BigBlock.WordSimple.create({
-				word_id: "word1",
+			BigBlock.Word.create({
+				alias: "word2",
 				x: 104,
-				y: 32,
-				value: "big block plain",
-				className: "grey_light",
+				y: 40,
+				word: "big block plain",
+				color: "grey_light",
 				glass: true,
 				font: "bigblock_plain"
 			});
-			
-			BigBlock.WordSimple.create({
-				word_id: "word1",
+
+			BigBlock.Button.create({
 				x: 104,
-				y: 64,
-				value: "big block link: click me!",
-				className: "grey_light",
+				y: 72,
+				width: 200,
+				height: 8,
+				color: "red",
+				render_static: true,
+				action_input : function () {
+					alert('hey');
+				}
+			});	
+						
+			BigBlock.Word.create({
+				alias: "word3",
+				x: 104,
+				y: 72,
+				word: "big block link: click me!",
+				color: "grey_light",
 				glass: true,
-				font: "bigblock_bold",
-				url: "http://www.ittybitty8bit.com",
-				link_color: "#666"
+				font: "bigblock_bold"
 			});			
-																					
+																						
 		</script>
 		
 	</head>
@@ -884,7 +981,7 @@ BigBlock.ScreenEvent.create(options);
 		
 	</body>
 	
-</html>	
+</html>		
 
 	</textarea>
 	<p><a href="../demos/fonts_words001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
@@ -898,32 +995,24 @@ BigBlock.ScreenEvent.create(options);
 
 <a name="Particles_basic"><h3 class="example">Particles: basic</h3></a>
 
-<p>Big Block has two particle generator classes called Particle and Emitter. The easiest way to create particles is to use the following line:</p>
+<p>Big Block has a particle generator class called Emitter. The easiest way to create particles is to use the following line:</p>
 
 <pre>BigBlock.Emitter.create();</pre>
 
 <form>
 	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 		
 		<script type='text/javascript'>
 
-			BigBlock.Emitter.create();
-			
-			BigBlock.ready = function () {
-				BigBlock.Timer.play({
-					tap_timeout: false
-				});
-				
-			}
+			BigBlock.Emitter.create();						
 									
 		</script>
 		
@@ -932,7 +1021,7 @@ BigBlock.ScreenEvent.create(options);
 		
 	</body>
 	
-</html>	
+</html>		
 
 	</textarea>
 	<p><a href="../demos/particles_basic.html">View in a browser</a> | <a href="#top">Back to top</a></p>
@@ -946,21 +1035,20 @@ BigBlock.ScreenEvent.create(options);
 	
 <a name="Particles_options"><h3 class="example">Particles: options</h3></a>
 
-<p>Particle emitters are highly configurable. You can find a full list of <a href="/?page_id=52#Emitter">options</a> on the documentation page.</p>
+<p>Particle emitters are highly configurable. You can find a full list of <a href="/?page_id=52#Emitter">options</a> on the docs page.</p>
 
 <p>The following example combines options to create a water sprinkler effect. Play with the various options to create your own effects.</p>
 
 <form>
 	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 		
 		<script type='text/javascript'>
 
@@ -970,15 +1058,9 @@ BigBlock.ScreenEvent.create(options);
 				p_angle_spread: 10,
 				p_velocity: 4,
 				p_gravity: 1,
-				className: "yellow"				
+				color: "yellow"				
 			});
-						
-			BigBlock.ready = function () {
-				BigBlock.Timer.play({
-					tap_timeout: false
-				});
-			}
-									
+							
 		</script>
 		
 	</head>
@@ -986,7 +1068,7 @@ BigBlock.ScreenEvent.create(options);
 		
 	</body>
 	
-</html>		
+</html>			
 
 	</textarea>	
 	<p><a href="../demos/particles_params.html">View in a browser</a> | <a href="#top">Back to top</a></p>
@@ -1003,15 +1085,14 @@ BigBlock.ScreenEvent.create(options);
 
 <form>
 	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 		
 		<script type='text/javascript'>
 
@@ -1022,38 +1103,56 @@ BigBlock.ScreenEvent.create(options);
 				p_angle_spread: 10,
 				p_velocity: 4,
 				p_gravity: 1,
-				className: "yellow"				
+				color: "yellow",
+				state: "stop"			
 			});
 			
 			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
 
-			BigBlock.WordSimple.create({
+			BigBlock.Word.create({
 				word_id: "start",
-				x: 0,
-				y: 0,
-				value: "start",
-				className: "grey_light",
+				x: 16,
+				y: 16,
+				word: "start",
+				color: "black",
 				glass: true,
-				font: "bigblock_bold",
-				url: function () {
-					BigBlock.Sprites[BigBlock.getObjIdByAlias('sprinkler')].start();
-				},
-				link_color: "#666"
+				font: "bigblock_bold"
 			});
-				
-			BigBlock.WordSimple.create({
-				word_id: "stop",
-				x: 0,
-				y: 32,
-				value: "stop",
-				className: "grey_light",
-				glass: true,
-				font: "bigblock_bold",
-				url: function () {
-					BigBlock.Sprites[BigBlock.getObjIdByAlias('sprinkler')].stop();
-				},
-				link_color: "#666"
+		
+			
+			BigBlock.Button.create({
+				alias : "button_start",
+				x: 8,
+				y: 8,
+				width: 56,
+				height: 24,
+				color: "white",
+				action_input: function () {
+					BigBlock.Blocks.sprinkler.start();
+				}
 			});				
+				
+			BigBlock.Word.create({
+				word_id: "stop",
+				x: 16,
+				y: 56,
+				word: "stop!",
+				color: "black",
+				glass: true,
+				font: "bigblock_bold"
+			});				
+			
+			BigBlock.Button.create({
+				alias : "button_stop",
+				x: 8,
+				y: 48,
+				width: 56,
+				height: 24,
+				color: "white",
+				action_input: function () {
+					BigBlock.Blocks.sprinkler.stop();
+				}
+			});			
 			
 									
 		</script>
@@ -1063,7 +1162,7 @@ BigBlock.ScreenEvent.create(options);
 		
 	</body>
 	
-</html>		
+</html>			
 
 	</textarea>
 	<p><a href="../demos/particles_methods.html">View in a browser</a> | <a href="#top">Back to top</a></p>
@@ -1080,19 +1179,18 @@ BigBlock.ScreenEvent.create(options);
 
 <pre>BigBlock.EmitterPresets.install();</pre>
 
-The following exmaple uses the 'fire' preset. You'll notice the color palette must be passed to the Color class. There's more on the <a href="/?page_id=52#Color">Color class</a> on the documentation page.
+The following exmaple uses the 'fire' preset. You'll notice the color palette must be passed to the Color class. There's more on the <a href="/?page_id=52#Color">Color class</a> on the docs page.
 
 <form>
 	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 		
 		<script type='text/javascript'>
 			
@@ -1135,7 +1233,7 @@ The following exmaple uses the 'fire' preset. You'll notice the color palette mu
 
 <a name="Color"><h3 class="example">Color</h3></a>
 
-<p>The Color class loads up predefined colors during Timer.play() and can accept custom palettes via the Color.add() method. There are several predefined colors as well as predefined gradients. View the <a href="/?page_id=52#Color">Color</a> class on the documentation page for a full list.</p>
+<p>The Color class loads up predefined colors during Timer.play() and can accept custom palettes via the Color.add() method. There are several predefined colors as well as predefined gradients. View the <a href="/?page_id=52#Color">Color</a> class on the docs page for a full list.</p>
 
 <p>All color values are converted to CSS rules and should be organized by class name. To add custom color palettes, the parameter passed to the Color.add() method should be a JSON object containing all the palettes needed for the page:</p>
 
@@ -1159,21 +1257,20 @@ var my_palette = {'classes' : [
 BigBlock.Color.add(my_palette);
 </pre>
 
-<p>From the example above, if a SpriteSimple needed to use the custom purple color, its className property would be set to "grape".
+<p>From the example above, if a BlockSmall needed to use the custom purple color, its "color" property would be set to "grape".
 
-<p>The following example creates several SpriteSimples and uses all the predefined colors plus some custom colors:</p>
+<p>The following example creates several BlockSmalls and uses all the predefined colors plus some custom colors:</p>
 
 <form>
 	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 		
 		<script type='text/javascript'>
 
@@ -1191,134 +1288,134 @@ BigBlock.Color.add(my_palette);
 
 			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
 			
-			BigBlock.WordSimple.create({
-				word_id: "word1",
+			BigBlock.Word.create({
+				alias: "word1",
 				x: 0,
 				y: 0,
-				value: "predefined colors:",
-				className: "white",
+				word: "predefined colors:",
+				color: "white",
 				font: "bigblock_plain"
 			});			
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:0,
 				y:16,
-				className: "white"
+				color: "white"
 			});
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:16,
 				y:16,
-				className: "grey_dark"
+				color: "grey_dark"
 			});
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:32,
 				y:16,
-				className: "grey"
+				color: "grey"
 			});
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:48,
 				y:16,
-				className: "grey_light"
+				color: "grey_light"
 			});
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:64,
 				y:16,
-				className: "red"
+				color: "red"
 			});
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:80,
 				y:16,
-				className: "magenta"
+				color: "magenta"
 			});
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:96,
 				y:16,
-				className: "blue"
+				color: "blue"
 			});	
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:112,
 				y:16,
-				className: "cyan"
+				color: "cyan"
 			});						
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:128,
 				y:16,
-				className: "green"
+				color: "green"
 			});
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:144,
 				y:16,
-				className: "yellow"
+				color: "yellow"
 			});	
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:160,
 				y:16,
-				className: "orange"
+				color: "orange"
 			});	
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:176,
 				y:16,
-				className: "brown"
+				color: "brown"
 			});	
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:192,
 				y:16,
-				className: "pink"
+				color: "pink"
 			});
 			
 			//
 			
-			BigBlock.WordSimple.create({
-				word_id: "word2",
+			BigBlock.Word.create({
+				alias: "word2",
 				x: 0,
 				y: 48,
-				value: "custom colors:",
-				className: "white",
+				word: "custom colors:",
+				color: "white",
 				font: "bigblock_plain"
 			});			
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:0,
 				y:64,
-				className: "purple1"
+				color: "purple1"
 			});	
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:16,
 				y:64,
-				className: "purple2"
+				color: "purple2"
 			});	
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:32,
 				y:64,
-				className: "purple3"
+				color: "purple3"
 			});	
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:48,
 				y:64,
-				className: "purple4"
+				color: "purple4"
 			});	
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x:64,
 				y:64,
-				className: "purple5"
-			});																													
-																					
+				color: "purple5"
+			});
+																
 									
 		</script>
 		
@@ -1327,7 +1424,7 @@ BigBlock.Color.add(my_palette);
 		
 	</body>
 	
-</html>		
+</html>			
 
 	</textarea>
 	<p><a href="../demos/color001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
@@ -1359,35 +1456,34 @@ BigBlock.Color.add(my_palette);
 
 <form>
 	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 		
 		<script type='text/javascript'>
 
 			BigBlock.Grid.setProps({
-				pix_dim : 4,
+				blk_dim : 4,
 				width : 480,
 				height : 640
 			});
 	
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x: 32,
 				y: 32
 			});	
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x: 64,
 				y: 64
 			});	
 			
-			BigBlock.SpriteSimple.create({
+			BigBlock.BlockSmall.create({
 				x: 96,
 				y: 96
 			});						
@@ -1427,9 +1523,9 @@ BigBlock.Color.add(my_palette);
 
 <a name="Art_basic"><h3 class="example">Art: basic</h3></a>
 
-<p>Rendering pixel art makes use of the SpriteAdvanced class. Objects created from the SpriteSimple class have one block. SpriteAdvance objects have multiple blocks organized in sets of "frames" that can be cycled to create an animation.</p>
+<p>Rendering pixel art makes use of the BlockAnim class. Objects created from the BlockSmall class have one block. BlockAnim objects have multiple blocks organized in sets of "frames" that can be cycled to create an animation.</p>
 
-<p>The "anim" property of a SpriteAdvanced object should be formatted as an array of JSON objects like:</p>
+<p>The "anim" property of a BlockAnim object should be formatted as an array of JSON objects like:</p>
 
 <pre>
 my_anim = [
@@ -1444,23 +1540,22 @@ my_anim = [
 ];				
 </pre>
 
-<p>Each 'frm' entry represents a frame in the animation. The 'frm.duration' describes how many screen renders the frame should persist. 'frm.pix' is an array of blocks. The objects that make up the 'frm.pix' array describe block's color, 'c', and its position relative to the x and y property of the SpriteAdvanced object.</p> 
+<p>Each 'frm' entry represents a frame in the animation. The 'frm.duration' describes how many screen renders the frame should persist. 'frm.pix' is an array of blocks. The objects that make up the 'frm.pix' array describe block's color, 'c', and its position relative to the x and y property of the BlockAnim object.</p> 
 
 <p>Pixel art is typically created in a graphics program then run through a script to autogenerate the 'anim' array. The script I've used is not public but will soon be released.</p>
 
-<p>The example below creates one SpriteAdvanced object and uses the 'action' property to randomly switch between frames of the objects 'anim' property.</p>
+<p>The example below creates one BlockAnim object and uses the 'action_render' property to randomly switch between frames of the objects 'anim' property.</p>
 
 <form>
 	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
 		
 		<script type='text/javascript'>
 
@@ -1777,22 +1872,22 @@ my_anim = [
 			
 			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
 			
-			BigBlock.SpriteAdvanced.create({
+			BigBlock.BlockAnim.create({
 				alias : 'vince',
 				x : 104,
 				y : 104,
 				life : 0,
-				className: 'anim',
+				color: 'anim',
 				anim_state: 'stop',
 				anim_loop: 1,
 				idleTimeout : 0, // custom parameter to stop alternating poses
 				poses: ['head_rt', 'head_left'],
-				action: function () {
+				action_render: function () {
 					if (this.idleTimeout == 0) {
 						this.idleTimeout = setTimeout(function(){
-							BigBlock.Sprites[BigBlock.getObjIdByAlias('vince')].goToAndStop(BigBlock.Sprites[BigBlock.getObjIdByAlias('vince')].poses[Math.getRamdomNumber(0, 1)]);
-							BigBlock.Sprites[BigBlock.getObjIdByAlias('vince')].idleTimeout = 0;
-						}, Math.getRamdomNumber(500, 1000));
+							BigBlock.Blocks.vince.goToFrame(BigBlock.Blocks.vince.poses[Math.getRandomNumber(0, 1)]);
+							BigBlock.Blocks.vince.idleTimeout = 0;
+						}, Math.getRandomNumber(500, 1000));
 					}
 				},											
 				anim : vince_anim
@@ -1813,7 +1908,524 @@ my_anim = [
 
 	</textarea>
 	<p><a href="../demos/art001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-	<p>View more info for the <a href="/?page_id=52#SpriteAdvanced">SpriteAdvanced</a> class on the documentation page.</p>
+	<p>View more info for the <a href="../docs/index.html#BlockAnim">BlockAnim</a> class on the documentation page.</p>
+</form>
+
+</div>
+
+
+
+<div class="example">
+
+<a name="Audio"><h3 class="example">Audio</h3></a>
+
+<p>The Audio class adds the ability to play, pause and loop audio files in a browser. Each file must have a unique name and each must be loaded via the BigBlock.Audio.add() method before the framework will try to play it. You can also pass functions to execute before and after the file is played.</p>
+
+<p>Note: While most browsers are supporting more and more HTML5 components, HTML5 audio is only supported in the latest versions of Safari, Chrome, Firefox, Opera and IE 9 beta. Browsers are also divided on which <a href="http://html5doctor.com/native-audio-in-the-browser/">audio format</a> to support. To be safe, it's advisable to create your audio files in .wav, .ogg and .mp3 formats and pass an array to BigBlock.Audio.format of these formats (ie. BigBlock.Audio.format = ["wav", "mp3", "ogg"];). The Audio class will check if the browser supports a format before trying to play it.</p>
+
+<p>Another note: While mobile browsers (ie. Mobile Safari for iPhone and iPad, Chrome for Android) have limited support for HTML5 audio, playback is problematic. Until support becomes more stable, the framework only supports playback in desktop browsers.</p>
+
+<p>In the example below, each effect has been created as .wav, .ogg and .mp3 and saved in a folder called "audio". The formats passed to BigBlock.Audio.format are listed by priority. In this example, if the browser supports both .wav and .mp3, .wav will be used because it appears ahead of .mp3 in the array. To see the status of your audio files, set BigBlock.Audio.debug = true.</p>
+
+<p>You may also notice the functions passed to the play(id, before_play, after_play) method. Before a file is played, the file's ready state is checked. If the file is ready, play() will execute these functions. If the file has a problem, play() will not execute these functions.</p>
+	
+<form>
+	<textarea cols="100" rows="10">
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
+        <title>Big Block Framework - Demo</title>
+		
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
+		
+		<script type='text/javascript'>
+
+			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
+			
+			var play_message = function (x, y) {
+				BigBlock.Word.create({
+					alias: "playing",
+					x: x,
+					y: y,
+					word: "playing...",
+					color: "white"
+				});				
+			};
+			
+			// BING
+			
+			BigBlock.Word.create({
+				x: 16,
+				y: 16,
+				word: "bing",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 8,
+				y: 8,
+				width: 48,
+				height: 24,
+				color: "magenta",
+				action_input: function () {
+					BigBlock.Audio.play("bing", function () {
+						play_message(64, 16);
+					},
+					function () {
+						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+							BigBlock.Blocks.playing.destroy();
+						}
+					}); // sound
+				}
+			});	
+						
+			// BONK
+			
+			BigBlock.Word.create({
+				x: 16,
+				y: 48,
+				word: "bonk",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 8,
+				y: 40,
+				width: 48,
+				height: 24,
+				color: "red",
+				action_input: function () {
+					BigBlock.Audio.play("bonk", function () {
+						play_message(64, 48);
+					},
+					function () {
+						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+							BigBlock.Blocks.playing.destroy();
+						}
+					}); // sound
+				}
+			});	
+			
+			// BLIP
+			
+			BigBlock.Word.create({
+				x: 16,
+				y: 80,
+				word: "blip",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 8,
+				y: 72,
+				width: 48,
+				height: 24,
+				color: "blue",
+				action_input: function () {
+					BigBlock.Audio.play("blip", function () {
+						play_message(64, 80);
+					},
+					function () {
+						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+							BigBlock.Blocks.playing.destroy();
+						}
+					}); // sound
+				}
+			});				
+
+			// EEOO
+			
+			BigBlock.Word.create({
+				x: 16,
+				y: 112,
+				word: "eeoo",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 8,
+				y: 104,
+				width: 48,
+				height: 24,
+				color: "cyan",
+				action_input: function () {
+					BigBlock.Audio.play("eeoo", function () {
+						play_message(64, 112);
+					},
+					function () {
+						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+							BigBlock.Blocks.playing.destroy();
+						}
+					}); // sound
+				}
+			});
+			
+			// BOOM
+			
+			BigBlock.Word.create({
+				x: 16,
+				y: 144,
+				word: "boom",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 8,
+				y: 136,
+				width: 48,
+				height: 24,
+				color: "green",
+				action_input: function () {
+					BigBlock.Audio.play("boom", function () {
+						play_message(64, 144);
+					},
+					function () {
+						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+							BigBlock.Blocks.playing.destroy();
+						}
+					}); // sound
+				}
+			});
+
+			// COIN
+			
+			BigBlock.Word.create({
+				x: 16,
+				y: 176,
+				word: "coin",
+				color: "grey"
+			});
+						
+			BigBlock.Button.create({
+				x: 8,
+				y: 168,
+				width: 48,
+				height: 24,
+				color: "yellow",
+				action_input: function () {
+					BigBlock.Audio.play("coin", function () {
+						play_message(64, 176);
+					},
+					function () {
+						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+							BigBlock.Blocks.playing.destroy();
+						}
+					}); // sound
+				}
+			});
+			
+			// JUMP
+			
+			BigBlock.Word.create({
+				x: 16,
+				y: 208,
+				word: "jump",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 8,
+				y: 200,
+				width: 48,
+				height: 24,
+				color: "orange",
+				action_input: function () {
+					BigBlock.Audio.play("jump", function () {
+						play_message(64, 208);
+					},
+					function () {
+						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+							BigBlock.Blocks.playing.destroy();
+						}
+					}); // sound
+				}
+			});			
+						
+			// AUDIO
+			
+			BigBlock.Audio.debug = true;
+			BigBlock.Audio.format = ["wav", "mp3", "ogg"]; // pass the supplied media formats
+			var path = "audio/";
+			
+			BigBlock.Audio.add("bing", path, false);
+			BigBlock.Audio.add("bonk", path, false);
+			BigBlock.Audio.add("blip", path, false);
+			BigBlock.Audio.add("eeoo", path, false);
+			BigBlock.Audio.add("boom", path, false);
+			BigBlock.Audio.add("coin", path, false);
+			BigBlock.Audio.add("jump", path, false);
+																					
+		</script>
+		
+	</head>
+	<body onload="setTimeout('BigBlock.ready()', 0)">
+		
+	</body>
+	
+</html>	
+
+	</textarea>
+	<p><a href="../demos/audio001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
+	<p>View more info for the <a href="../docs/index.html#Audio">Audio</a> class on the documentation page.</p>
+</form>
+
+</div>
+
+
+<div class="example">
+
+<a name="Audio_controls"><h3 class="example">Audio controls</h3></a>
+
+<p>The Audio class suports typical audio controls like play, pause, loop and mute. Check out these in the example below.</p>
+
+
+<form>
+	<textarea cols="100" rows="10">
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
+        <title>Big Block Framework - Demo</title>
+		
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
+		
+		<script type='text/javascript'>
+
+			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
+			
+			var play_message = function (x, y) {
+				BigBlock.Word.create({
+					alias: "playing",
+					x: x,
+					y: y,
+					word: "playing...",
+					color: "white"
+				});				
+			};
+			
+			var pause_message = function (x, y) {
+				BigBlock.Word.create({
+					alias: "paused",
+					x: x,
+					y: y,
+					word: "paused...",
+					color: "white"
+				});				
+			};
+			
+			var mute_message = function (x, y) {
+				BigBlock.Word.create({
+					alias: "muted",
+					x: x,
+					y: y,
+					word: "muted...",
+					color: "white"
+				});				
+			};
+			
+			var unmute_message = function (x, y) {
+				BigBlock.Word.create({
+					alias: "unmuted",
+					x: x,
+					y: y,
+					word: "unmuted...",
+					color: "white"
+				});				
+			};										
+
+			BigBlock.Word.create({
+				alias: "click_to",
+				x: 88,
+				y: 160,
+				word: "click play to begin",
+				color: "white"
+			});
+						
+			// back button
+			
+			BigBlock.Word.create({
+				x: 48,
+				y: 208,
+				word: "back",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 40,
+				y: 200,
+				width: 48,
+				height: 24,
+				color: "red",
+				action_input: function () {
+					BigBlock.Audio.setCurrentTime("song", 0);
+				}
+			});
+			
+			//
+			
+			// play button
+			BigBlock.Word.create({
+				alias: "play",
+				x: 112,
+				y: 208,
+				word: "play",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				alias: "btn_play",
+				x: 104,
+				y: 200,
+				width: 48,
+				height: 24,
+				color: "grey",
+				action_input: function () {
+					BigBlock.Audio.play("song");
+					if (typeof(BigBlock.Blocks.click_to) !== "undefined") {
+						BigBlock.Blocks.click_to.destroy();
+					}
+					if (typeof(BigBlock.Blocks.paused) !== "undefined") {
+						BigBlock.Blocks.paused.destroy();
+					}
+					if (typeof(BigBlock.Blocks.muted) !== "undefined") {
+						BigBlock.Blocks.muted.destroy();
+					}	
+					if (typeof(BigBlock.Blocks.unmuted) !== "undefined") {
+						BigBlock.Blocks.unmuted.destroy();
+					}					
+					play_message(88, 160);
+				}
+			});			
+			
+			// pause button
+			
+			BigBlock.Word.create({
+				x: 176,
+				y: 208,
+				word: "pause",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 168,
+				y: 200,
+				width: 56,
+				height: 24,
+				color: "red",
+				action_input: function () {
+					BigBlock.Audio.pause("song", true);
+					if (typeof(BigBlock.Blocks.click_to) !== "undefined") {
+						BigBlock.Blocks.click_to.destroy();
+					}					
+					if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+						BigBlock.Blocks.playing.destroy();
+					}
+					if (typeof(BigBlock.Blocks.muted) !== "undefined") {
+						BigBlock.Blocks.muted.destroy();
+					}	
+					if (typeof(BigBlock.Blocks.unmuted) !== "undefined") {
+						BigBlock.Blocks.unmuted.destroy();
+					}											
+					pause_message(88, 160);
+				}
+			});
+			
+			//			
+						
+			// mute button
+			
+			BigBlock.Word.create({
+				x: 248,
+				y: 208,
+				word: "mute",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				alias: "btn_mute",
+				x: 240,
+				y: 200,
+				width: 48,
+				height: 24,
+				color: "red",
+				action_input: function () {
+					if (BigBlock.Audio.muted) {
+						BigBlock.Audio.unmute("song", true);						
+						if (typeof(BigBlock.Blocks.muted) !== "undefined") {
+							BigBlock.Blocks.muted.destroy();
+						}						
+						unmute_message(88, 160);	
+					} else {
+						BigBlock.Audio.mute("song", true);
+						if (typeof(BigBlock.Blocks.unmuted) !== "undefined") {
+							BigBlock.Blocks.unmuted.destroy();
+						}																	
+						mute_message(88, 160);						
+					}
+					if (typeof(BigBlock.Blocks.click_to) !== "undefined") {
+						BigBlock.Blocks.click_to.destroy();
+					}					
+					if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+						BigBlock.Blocks.playing.destroy();
+					}
+					if (typeof(BigBlock.Blocks.paused) !== "undefined") {
+						BigBlock.Blocks.paused.destroy();
+					}					
+				}
+			});
+						
+
+			
+			BigBlock.ready = function () { // called from <body> onload()
+				BigBlock.Timer.play({
+					before_play : function () {
+						
+						// AUDIO
+						
+						BigBlock.Audio.debug = true;
+						BigBlock.Audio.format = ["wav", "mp3", "ogg"]; // pass the supplied media formats
+						var path = "audio/";
+						
+						BigBlock.Audio.add("song", path, true, function () {
+							BigBlock.Blocks.play.destroy();
+							BigBlock.Word.create({
+								alias: "play",
+								x: 112,
+								y: 208,
+								word: "play",
+								color: "white"
+							});
+										
+							BigBlock.Button.create({
+								x: 104,
+								y: 200,
+								width: 48,
+								height: 24,
+								color: "red",
+								action_input: function () {
+									BigBlock.Audio.play("song");
+								}
+							});
+						});
+					}
+				});
+			};
+																					
+		</script>
+		
+	</head>
+	<body onload="setTimeout('BigBlock.ready()', 0)">
+		
+	</body>
+	
+</html>	
+
+	</textarea>
+	<p><a href="../demos/audio_controls001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
+	<p>View more info for the <a href="../docs/index.html#Audio">Audio</a> class on the documentation page.</p>
 </form>
 
 </div>
