@@ -245,7 +245,7 @@
 
 <div class="example">
 <a name="BlockBig"><h3 class="example">BlockBig</h3></a>
-<p>Up to this point the examples have used the BlockSmall class to create single block objects with a width and height equal to the block dimensions set by Grid.blk_dim. To create bigger blocks, use the BlockBig class and pass a width and height. Because this block does not move, the "render_static" property is set to "false" to render the block only once. If your blocks do not move, setting "render_state = false" will prevent unnecessary processing from the RenderManager.</p>
+<p>Up to this point the examples have used the BlockSmall class to create single block objects with a width and height equal to the block dimensions set by Grid.blk_dim. To create bigger blocks, use the BlockBig class and pass a width and height. Because this block does not move, the "render_static" property is set to "true" to render the block only once. If your blocks do not move or change color, setting "render_state = true" will prevent unnecessary processing from the RenderManager.</p>
 
 
 <form>
@@ -266,7 +266,7 @@
 				y: 8,
 				width: 64,
 				height: 64,
-				render_static: false			
+				render_static: true			
 			});	
 									
 		</script>
