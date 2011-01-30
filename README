@@ -1,86 +1,21 @@
 Big Block Framework
-Copyright (C) 2010 Foldi, LLC
+Copyright (C) 2011 Foldi, LLC
 
 Big Block Framework is a standards-compliant JavaScript framework for rendering pixel art, pixel fonts and particles in a web browser.
 
-The current release is bigblock-alpha-.5.5.js.
+The current release is bigblock-alpha-.6.js.
 
-See documentation in /docs/index.html and demos in /demos
+See documentation in /docs/index.html and demos in /demos/index.html
 
 ////
 
 
-Planned updates for 5.6 release:
 
-2. Change object collection array from 'Sprites' to 'Blocks'. //
-
-3. Change title of get reference util functions to getBlkIndexByAlias, getBlkIndexByWordId, etc... //
-
-4. Make default values consistent for Sprite.afterDie, Sprite.input_action, Sprite_action. //
-
-5. Change 'className' property to 'color'. //
-
-6. Change 'die' method to 'destroy'. //
-
-7. Set Timer.tap_timeout default value to false. //
-
-10. Do not require options for WordSimple. //
-
-11. Change Grid.pix_dim to Grid.blk_dim. //
-
-12. Change Sprite.anim_loop to a boolean value. //
-
-13. Change 'lastFrame' to 'previousFrame' in Sprite.goToFrame method. //
-
-14. Change default CharSimple.x to 0. //
-
-15. Remove 'angle' property from Char. //
-
-16. InputFeedback.die() needs to check if (BigBlock.getObjIdByAlias('input_feedback') != false) before trying to remove the block from BigBlock.Sprites //
-
-19. Word.remove() should be changed to Word.destroy() //
-
-20. Add life property to Word.Simple //
-
-21. Remove life and render properties from CharSimple and WordSimple //
-
-22. Add BigBlock.getColIndex() to utility.js //
-
-23. Add BigBlock.getFullGridIndex() to utility.js //
-
-24. Fix BigBlock.inArray() in utility.js //
-
-26. Use "action_render" instead of "action" for rendering actions. //
-
-27. Use "action_input" instead of "input_action" for click/touch actions. //
-
-28. Add Button class. //
-
-29. Add BigBlock.windowOpen() to utility.js //
-
-30. Add 'is_pause' property to Timer. Check 'is_pause' in run method. //
-
-31. Create a LocalStorage Class with exception_handling. Should supply setItem, removeItem, and clear methods. //
-
-32. Create a Database Class //
-
-33. Add a getMySqlDateTime to utility.js //
-
-34. Correct GetRamdomNumber to GetRandomNumber //
-
-35. Change SpriteSimple class name to BlockSmall //
-
-36. Change SpriteAdvanced class name to BlockAnim //
-
-37. Create BlockBig that accepts x, y, width, height, className params and creates a SpriteAdvanced.
-
-Planned updates for .6 release:
+Planned updates for .7 release:
 
 1. Add water and snow emitter configurations to library_emitter.js.
 
-2. Refactor ScreenEvent to handle custom events more efficiently.
-
-3. Organize the anim property like below to remove the 'c' key. Just use the name of the color palette:
+2. Organize the anim property like below to remove the 'c' key. Just use the name of the color palette:
 
 anim = [
 
@@ -97,96 +32,4 @@ anim = [
 
 ];
 
-4. Add Intferace to test for required properties.
-
-To try:
-
-1. Each Sprite has a sound_effect property that holds an HTML5 audio element
-
-
-////
-
-Error Codes:
-
-BA001: BigBlock.Background.add(): To render a background, you must provide a valid array of json objects in the following format: [{'c':c,'i': i}, {}, {}].
-
-BSBS001: BigBlock.Background.setBodyStyle(): BigBlock.Timer.setBodyStyle(key, value) requires a style key.
-
-BSBS002: BigBlock.Background.setBodyStyle(): BigBlock.Timer.setBodyStyle(key, value) requires a style value.
-
-CB001: BigBlock.Color.build(): document.styleSheets insertion failed. Browser does not support insertRule() or addRule().
-
-CB002: BigBlock.Color.build(): document.styleSheets rule count failed. Browser does not support cssRules.length() or rules.length().
-
-CA001: BigBlock.Color.add(): params are required.
-
-FA001: BigBlock.Footer.add(): BigBlock.Footer.add(x, y) requires both an x and y coordinate.
-
-FSS001: BigBlock.Footer.setStyle(): BigBlock.Footer.setStyle(key, value) requires a style key.
-
-FSS002: BigBlock.Footer.setStyle(): BigBlock.Footer.setStyle(key, value) requires a style value.
-
-GSS001: BigBlock.Grid.setStyle(): BigBlock.Grid.setStyle(key, value) requires a style key.
-
-GSS002: BigBlock.Grid.setStyle(): BigBlock.Grid.setStyle(key, value) requires a style value.
-
-GA001: BigBlock.Grid.setStyle(): Detecting window size failed. Browser does not support window.innerWidth or document.documentElement.clientWidth. Using 800 x 600.
-
-GA002: BigBlock.Grid.add(): document.styleSheets insertion failed. Browser does not support insertRule() or addRule().
-
-GB002: BigBlock.Grid.build(): document.styleSheets rule count failed. Browser does not support cssRules.length() or rules.length().
-
-GBCS001: BigBlock.Grid.buildCharStyles(): document.styleSheets insertion failed. Browser does not support insertRule() or addRule().
-
-HA001: BigBlock.Header.add(): BigBlock.Header.add(x, y) requires both an x and y coordinate.
-
-HSS001: BigBlock.Header.setStyle(): BigBlock.Header.setStyle(key, value) requires a style key.
-
-HSS002: BigBlock.Header.setStyle(): BigBlock.Header.setStyle(key, value) requires a style value.
-
-IFD001: BigBlock.InputFeedback:display(): BigBlock.InputFeedback:display(x, y) requires both an x and y coordinate.
-
-EPGP001: BigBlock.EmitterPresets.getPreset(): BigBlock.EmitterPresets: preset does not exist.
-
-LA001: BigBlock.Loader.add(): Detecting window size failed. Browser does not support window.innerWidth or document.documentElement.clientWidth. Using 800 x 600.
-
-RMCS001 BigBlock.RenderMgr.clearScene(beforeClear, afterClear): beforeClear must be a function.
-
-RMCS002 BigBlock.RenderMgr.clearScene(beforeClear, afterClear): afterClear must be a function.
-
-SEC001: BigBlock.ScreenEvent.create(): BigBlock.ScreenEvent.create(params) requires a params passed in json format. params can be empty ie. {}
-
-SGTF001: BigBlock.Sprite.goToFrame(): goToFrame(arg, anim_frame, anim) requires a frame number, label or keyword(nextFrame, lastFrame)
-
-SGTF002: BigBlock.Sprite.goToFrame(): goToFrame(arg, anim_frame, anim) requires an anim_frame
-
-SGTF003: BigBlock.Sprite.goToFrame(): goToFrame(arg, anim_frame, anim) requires an anim
-
-SGTF004: BigBlock.Sprite.goToFrame(): Frame number does not exist.
-
-SGFIBL001: BigBlock.Sprite.getFrameIndexByLabel(): getFrameIndexByLabel(arg, anim) requires a label
-
-SGFIBL002: BigBlock.Sprite.getFrameIndexByLabel(): getFrameIndexByLabel(arg, anim) requires an anim
-
-SGFIBL003: BigBlock.Sprite.getFrameIndexByLabel(): Frame label does not exist.
-
-SAGP001: BigBlock.SpriteAdvanced.getPix(): getPix(anim) requires an anim json object.
-
-SAGTAP001: BigBlock.SpriteAdvanced.goToAndPlay(): goToAndPlay(arg) requires a frame number, label or keyword(nextFrame, lastFrame).
-
-SAGTAS001: BigBlock.SpriteAdvanced.goToAndStop(): goToAndStop(arg) requires a frame number, label or keyword(nextFrame, lastFrame).
-
-TP001: BigBlock.Timer.play(): document.styleSheets insertion failed. Browser does not support insertRule() or addRule().
-
-URS001: BigBlock.removeStatic(alias): requires an alias.
-
-URS002: BigBlock.removeStatic(alias): alias must be a string.
-
-WSC001: BigBlock.WordSimple.create(): BigBlock.CharPresets = BigBlock.CharPresets.install() must be run before creating Words.
-
-//
-
- 
-
-
-
+3. Add Interface to test for required properties.

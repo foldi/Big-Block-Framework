@@ -1,4 +1,4 @@
-Copyright (C) 2010 Foldi, LLC 
+Copyright (C) 2011 Foldi, LLC 
 Brooklyn, NY 11225, USA
  
 Permission is hereby granted, free of charge, to any person obtaining a copy
