@@ -40,6 +40,7 @@
     <body>
  
 <h1><a name="top">Examples</a></h1>
+<p><em>version alpha-.6</em></p>
     	
 <p>The example apps demonstrate the core features of the Big Block Framework. Check out the <a href="../docs/index.html">docs</a> for details on what going on under the hood.</p>
 
@@ -76,6 +77,7 @@
 	<li><a href="#Color">Color</a></li>
 	<li><a href="#Grid">Grid</a></li>
 	<li><a href="#Art_basic">Art_basic</a></li>
+	<li><a href="#Animation">Animation</a></li>
 	<li><a href="#Audio">Audio</a></li>
 	<li><a href="#Audio_controls">Audio controls</a></li>
 </ul>
@@ -135,7 +137,7 @@
 
 <pre>BigBlock.Timer.play()</pre>
 
-<p>Before play() actualy does anything, it loops thru and sets any passed parameters. You can find the <a href="/?page_id=52#Timer">Timer class</a> and a list of available parameters on the documentation page.</p>
+<p>Before play() actualy does anything, it loops thru and sets any passed parameters. You can find the <a href="../docs/index.html#Timer">Timer class</a> and a list of available parameters on the documentation page.</p>
 
 
 <p>Here's a full example of setting different defaults by overwriting the default BigBlock.ready function and calling BigBlock.Timer.play() directly with passed parameters:</p>
@@ -437,9 +439,9 @@
 
 <a name="Events_screen"><h3 class="example">Events: screen</h3></a>
 
-<p>The framework can add events to the viewport itself making it easy to trigger functions as the user clicks or taps the screen. Supported events include clicks, touches and controller input from the Wii. See the <a href="/?page_id=52#ScreenEvent">ScreenEvent</a> class for a full list of supported events.</p>
+<p>The framework can add events to the viewport itself making it easy to trigger functions as the user clicks or taps the screen. Supported events include clicks, touches and controller input from the Wii. See the <a href="../docs/index.html#ScreenEvent">ScreenEvent</a> class for a full list of supported events.</p>
 
-<p><span class="title_demo">mouseup</span> - click inside the viewport</p>
+<p><span class="title_demo"><strong>mouseup</strong></span> - click inside the viewport</p>
 
 <form>
 	<textarea cols="100" rows="10">
@@ -492,7 +494,7 @@
 	<p><a href="../demos/events_screen001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
 </form>
 
-<p><span class="title_demo">mousedown</span> - click inside the viewport</p>
+<p><span class="title_demo"><strong>mousedown</strong></span> - click inside the viewport</p>
 
 <form>
 	<textarea cols="100" rows="10">
@@ -545,7 +547,7 @@
 	<p><a href="../demos/events_screen002.html">View in a browser</a> | <a href="#top">Back to top</a></p>
 </form>
 
-<p><span class="title_demo">mousemove</span> - move mouse inside the viewport; as the event is triggered, blocks are created in random locations.</p>
+<p><span class="title_demo"><strong>mousemove</strong></span> - move mouse inside the viewport; as the event is triggered, blocks are created in random locations.</p>
 
 <form>
 	<textarea cols="100" rows="10">
@@ -601,7 +603,7 @@
 	<p><a href="../demos/events_screen003.html">View in a browser</a> | <a href="#top">Back to top</a></p>
 </form>
 
-<p><span class="title_demo">touchstart</span> - touch inside the viewport; NOTE: this demo will only trigger the event on a device with a touchscreen like an iPhone or iPad.</p>
+<p><span class="title_demo"><strong>touchstart</strong></span> - touch inside the viewport; NOTE: this demo will only trigger the event on a device with a touchscreen like an iPhone or iPad.</p>
 
 <form>
 	<textarea cols="100" rows="10">
@@ -1035,7 +1037,7 @@
 	
 <a name="Particles_options"><h3 class="example">Particles: options</h3></a>
 
-<p>Particle emitters are highly configurable. You can find a full list of <a href="/?page_id=52#Emitter">options</a> on the docs page.</p>
+<p>Particle emitters are highly configurable. You can find a full list of <a href="../docs/index.html#Emitter">options</a> on the docs page.</p>
 
 <p>The following example combines options to create a water sprinkler effect. Play with the various options to create your own effects.</p>
 
@@ -1179,7 +1181,7 @@
 
 <pre>BigBlock.EmitterPresets.install();</pre>
 
-The following exmaple uses the 'fire' preset. You'll notice the color palette must be passed to the Color class. There's more on the <a href="/?page_id=52#Color">Color class</a> on the docs page.
+<p>The following exmaple uses the 'fire' preset. You'll notice the color palette must be passed to the Color class. There's more on the <a href="../docs/index.html#Color">Color class</a> on the docs page.</p>
 
 <form>
 	<textarea cols="100" rows="10">
@@ -1233,7 +1235,7 @@ The following exmaple uses the 'fire' preset. You'll notice the color palette mu
 
 <a name="Color"><h3 class="example">Color</h3></a>
 
-<p>The Color class loads up predefined colors during Timer.play() and can accept custom palettes via the Color.add() method. There are several predefined colors as well as predefined gradients. View the <a href="/?page_id=52#Color">Color</a> class on the docs page for a full list.</p>
+<p>The Color class loads up predefined colors during Timer.play() and can accept custom palettes via the Color.add() method. There are several predefined colors as well as predefined gradients. View the <a href="../docs/index.html#Color">Color</a> class on the docs page for a full list.</p>
 
 <p>All color values are converted to CSS rules and should be organized by class name. To add custom color palettes, the parameter passed to the Color.add() method should be a JSON object containing all the palettes needed for the page:</p>
 
@@ -1513,7 +1515,7 @@ BigBlock.Color.add(my_palette);
 
 	</textarea>
 	<p><a href="../demos/grid001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-	<p>View more info for the <a href="/?page_id=52#Grid">Grid</a> class on the documentation page.</p>
+	<p>View more info for the <a href="../docs/index.html#Grid">Grid</a> class on the documentation page.</p>
 </form>
 
 </div>
@@ -1912,6 +1914,299 @@ my_anim = [
 </form>
 
 </div>
+
+
+<div class="example">
+
+<a name="Animation"><h3 class="example">Animation</h3></a>
+
+<p>This example uses more frames and demonstrates some of the BlockAnim methods like goToFrame() and play().</p>
+
+<form>
+	<textarea cols="100" rows="10">
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
+        <title>Big Block Framework - Demo</title>
+		
+		<script src="../rel/bigblock-alpha-.6.min.js"></script>
+		
+		<script type='text/javascript'>
+
+			BigBlock.Grid.setProps({
+				blk_dim : 8,
+				width : 320,
+				height : 480
+			});
+			
+			BigBlock.my_colors = {
+				wait : "rgb(180, 0, 0);rgb(246, 217, 162);rgb(163, 246, 255);rgb(202, 250, 255);rgb(0, 0, 0);rgb(255, 255, 255)",
+				flr : "rgb(64, 0, 0);",
+			}
+			
+			BigBlock.my_colors.my_palette = {'classes' : [
+				{name: 'wait', val: BigBlock.my_colors.wait.split(";")},
+				{name: 'flr', val: BigBlock.my_colors.flr.split(";")}
+			]};
+
+			var waitress = [
+				{'frm':
+					{
+						'duration' : 1,
+						'pix' : [
+							{'c':'wait0','i':(40*3)+10},{'c':'wait0','i':(40*3)+11},{'c':'wait0','i':(40*4)+6},{'c':'wait0','i':(40*4)+7},{'c':'wait0','i':(40*4)+8},{'c':'wait0','i':(40*4)+9},{'c':'wait0','i':(40*4)+10},{'c':'wait0','i':(40*4)+11},{'c':'wait0','i':(40*5)+6},{'c':'wait0','i':(40*5)+8},{'c':'wait1','i':(40*5)+9},{'c':'wait1','i':(40*5)+10},{'c':'wait1','i':(40*5)+11},{'c':'wait1','i':(40*6)+8},{'c':'wait1','i':(40*6)+9},{'c':'wait1','i':(40*6)+10},{'c':'wait1','i':(40*6)+11},{'c':'wait1','i':(40*7)+8},{'c':'wait1','i':(40*7)+9},{'c':'wait1','i':(40*7)+10},{'c':'wait1','i':(40*7)+11},{'c':'wait1','i':(40*8)+8},{'c':'wait1','i':(40*8)+9},{'c':'wait1','i':(40*8)+10},{'c':'wait2','i':(40*9)+1},{'c':'wait3','i':(40*9)+3},{'c':'wait4','i':(40*9)+6},{'c':'wait5','i':(40*9)+7},{'c':'wait1','i':(40*9)+8},{'c':'wait1','i':(40*9)+9},{'c':'wait1','i':(40*9)+10},{'c':'wait5','i':(40*9)+11},{'c':'wait4','i':(40*9)+12},{'c':'wait2','i':(40*10)+1},{'c':'wait3','i':(40*10)+3},{'c':'wait4','i':(40*10)+6},{'c':'wait4','i':(40*10)+7},{'c':'wait5','i':(40*10)+8},{'c':'wait1','i':(40*10)+9},{'c':'wait5','i':(40*10)+10},{'c':'wait4','i':(40*10)+11},{'c':'wait4','i':(40*10)+12},{'c':'wait4','i':(40*11)+0},{'c':'wait4','i':(40*11)+1},{'c':'wait4','i':(40*11)+2},{'c':'wait4','i':(40*11)+3},{'c':'wait4','i':(40*11)+4},{'c':'wait4','i':(40*11)+6},{'c':'wait4','i':(40*11)+7},{'c':'wait5','i':(40*11)+8},{'c':'wait1','i':(40*11)+9},{'c':'wait5','i':(40*11)+10},{'c':'wait4','i':(40*11)+11},{'c':'wait4','i':(40*11)+12},{'c':'wait1','i':(40*12)+2},{'c':'wait4','i':(40*12)+5},{'c':'wait4','i':(40*12)+7},{'c':'wait4','i':(40*12)+8},{'c':'wait5','i':(40*12)+9},{'c':'wait4','i':(40*12)+10},{'c':'wait4','i':(40*12)+11},{'c':'wait4','i':(40*12)+12},{'c':'wait4','i':(40*13)+3},{'c':'wait4','i':(40*13)+5},{'c':'wait4','i':(40*13)+7},{'c':'wait4','i':(40*13)+8},{'c':'wait4','i':(40*13)+9},{'c':'wait4','i':(40*13)+10},{'c':'wait4','i':(40*13)+11},{'c':'wait4','i':(40*13)+12},{'c':'wait4','i':(40*13)+13},{'c':'wait4','i':(40*13)+14},{'c':'wait5','i':(40*13)+15},{'c':'wait1','i':(40*13)+16},{'c':'wait4','i':(40*14)+4},{'c':'wait4','i':(40*14)+8},{'c':'wait4','i':(40*14)+9},{'c':'wait4','i':(40*14)+10},{'c':'wait4','i':(40*15)+8},{'c':'wait4','i':(40*15)+9},{'c':'wait4','i':(40*15)+10},{'c':'wait5','i':(40*16)+8},{'c':'wait5','i':(40*16)+9},{'c':'wait5','i':(40*16)+10},{'c':'wait5','i':(40*17)+7},{'c':'wait5','i':(40*17)+8},{'c':'wait5','i':(40*17)+9},{'c':'wait5','i':(40*17)+10},{'c':'wait5','i':(40*17)+11},{'c':'wait4','i':(40*18)+7},{'c':'wait4','i':(40*18)+8},{'c':'wait4','i':(40*18)+9},{'c':'wait4','i':(40*18)+10},{'c':'wait4','i':(40*18)+11},{'c':'wait4','i':(40*19)+7},{'c':'wait4','i':(40*19)+8},{'c':'wait4','i':(40*19)+9},{'c':'wait4','i':(40*19)+10},{'c':'wait4','i':(40*19)+11},{'c':'wait5','i':(40*19)+12},{'c':'wait4','i':(40*20)+7},{'c':'wait4','i':(40*20)+8},{'c':'wait4','i':(40*20)+9},{'c':'wait4','i':(40*20)+10},{'c':'wait4','i':(40*20)+11},{'c':'wait5','i':(40*20)+12},{'c':'wait5','i':(40*21)+6},{'c':'wait5','i':(40*21)+7},{'c':'wait5','i':(40*21)+8},{'c':'wait5','i':(40*21)+9},{'c':'wait5','i':(40*21)+10},{'c':'wait5','i':(40*21)+11},{'c':'wait5','i':(40*21)+12},{'c':'wait1','i':(40*21)+13},{'c':'wait1','i':(40*21)+14},{'c':'wait1','i':(40*21)+15},{'c':'wait1','i':(40*21)+16},{'c':'wait1','i':(40*22)+8},{'c':'wait1','i':(40*22)+16},{'c':'wait1','i':(40*23)+8},{'c':'wait1','i':(40*23)+16},{'c':'wait1','i':(40*24)+8},{'c':'wait1','i':(40*24)+16},{'c':'wait1','i':(40*25)+8},{'c':'wait4','i':(40*25)+16},{'c':'wait4','i':(40*25)+17},{'c':'wait4','i':(40*26)+4},{'c':'wait1','i':(40*26)+5},{'c':'wait1','i':(40*26)+6},{'c':'wait1','i':(40*26)+7},{'c':'wait1','i':(40*26)+8},{'c':'wait4','i':(40*27)+4}
+						],
+						'label' : 'step1'
+					}								
+				},
+				{'frm':
+					{
+						'duration' : 1,
+						'pix' : [
+							{'c':'wait0','i':(40*4)+10},{'c':'wait0','i':(40*4)+11},{'c':'wait0','i':(40*5)+8},{'c':'wait0','i':(40*5)+9},{'c':'wait0','i':(40*5)+10},{'c':'wait0','i':(40*5)+11},{'c':'wait0','i':(40*6)+6},{'c':'wait0','i':(40*6)+7},{'c':'wait0','i':(40*6)+8},{'c':'wait1','i':(40*6)+9},{'c':'wait1','i':(40*6)+10},{'c':'wait1','i':(40*6)+11},{'c':'wait0','i':(40*7)+6},{'c':'wait1','i':(40*7)+8},{'c':'wait1','i':(40*7)+9},{'c':'wait1','i':(40*7)+10},{'c':'wait1','i':(40*7)+11},{'c':'wait1','i':(40*8)+8},{'c':'wait1','i':(40*8)+9},{'c':'wait1','i':(40*8)+10},{'c':'wait1','i':(40*8)+11},{'c':'wait1','i':(40*9)+8},{'c':'wait1','i':(40*9)+9},{'c':'wait1','i':(40*9)+10},{'c':'wait2','i':(40*10)+1},{'c':'wait3','i':(40*10)+3},{'c':'wait4','i':(40*10)+6},{'c':'wait5','i':(40*10)+7},{'c':'wait1','i':(40*10)+8},{'c':'wait1','i':(40*10)+9},{'c':'wait1','i':(40*10)+10},{'c':'wait5','i':(40*10)+11},{'c':'wait4','i':(40*10)+12},{'c':'wait2','i':(40*11)+1},{'c':'wait3','i':(40*11)+3},{'c':'wait4','i':(40*11)+6},{'c':'wait4','i':(40*11)+7},{'c':'wait5','i':(40*11)+8},{'c':'wait1','i':(40*11)+9},{'c':'wait5','i':(40*11)+10},{'c':'wait4','i':(40*11)+11},{'c':'wait4','i':(40*11)+12},{'c':'wait4','i':(40*12)+0},{'c':'wait4','i':(40*12)+1},{'c':'wait4','i':(40*12)+2},{'c':'wait4','i':(40*12)+3},{'c':'wait4','i':(40*12)+4},{'c':'wait4','i':(40*12)+6},{'c':'wait4','i':(40*12)+7},{'c':'wait5','i':(40*12)+8},{'c':'wait1','i':(40*12)+9},{'c':'wait5','i':(40*12)+10},{'c':'wait4','i':(40*12)+11},{'c':'wait4','i':(40*12)+12},{'c':'wait1','i':(40*13)+2},{'c':'wait4','i':(40*13)+5},{'c':'wait4','i':(40*13)+7},{'c':'wait4','i':(40*13)+8},{'c':'wait5','i':(40*13)+9},{'c':'wait4','i':(40*13)+10},{'c':'wait4','i':(40*13)+11},{'c':'wait4','i':(40*13)+12},{'c':'wait4','i':(40*14)+3},{'c':'wait4','i':(40*14)+5},{'c':'wait4','i':(40*14)+7},{'c':'wait4','i':(40*14)+8},{'c':'wait4','i':(40*14)+9},{'c':'wait4','i':(40*14)+10},{'c':'wait4','i':(40*14)+11},{'c':'wait4','i':(40*14)+12},{'c':'wait4','i':(40*14)+13},{'c':'wait4','i':(40*14)+14},{'c':'wait5','i':(40*14)+15},{'c':'wait1','i':(40*14)+16},{'c':'wait4','i':(40*15)+4},{'c':'wait4','i':(40*15)+8},{'c':'wait4','i':(40*15)+9},{'c':'wait4','i':(40*15)+10},{'c':'wait4','i':(40*16)+8},{'c':'wait4','i':(40*16)+9},{'c':'wait4','i':(40*16)+10},{'c':'wait5','i':(40*17)+8},{'c':'wait5','i':(40*17)+9},{'c':'wait5','i':(40*17)+10},{'c':'wait4','i':(40*18)+1},{'c':'wait4','i':(40*18)+2},{'c':'wait5','i':(40*18)+7},{'c':'wait5','i':(40*18)+8},{'c':'wait5','i':(40*18)+9},{'c':'wait5','i':(40*18)+10},{'c':'wait5','i':(40*18)+11},{'c':'wait1','i':(40*19)+2},{'c':'wait4','i':(40*19)+7},{'c':'wait4','i':(40*19)+8},{'c':'wait4','i':(40*19)+9},{'c':'wait4','i':(40*19)+10},{'c':'wait4','i':(40*19)+11},{'c':'wait1','i':(40*20)+2},{'c':'wait5','i':(40*20)+6},{'c':'wait4','i':(40*20)+7},{'c':'wait4','i':(40*20)+8},{'c':'wait4','i':(40*20)+9},{'c':'wait4','i':(40*20)+10},{'c':'wait4','i':(40*20)+11},{'c':'wait1','i':(40*21)+2},{'c':'wait5','i':(40*21)+6},{'c':'wait4','i':(40*21)+7},{'c':'wait4','i':(40*21)+8},{'c':'wait4','i':(40*21)+9},{'c':'wait4','i':(40*21)+10},{'c':'wait4','i':(40*21)+11},{'c':'wait1','i':(40*22)+2},{'c':'wait1','i':(40*22)+3},{'c':'wait1','i':(40*22)+4},{'c':'wait1','i':(40*22)+5},{'c':'wait5','i':(40*22)+6},{'c':'wait5','i':(40*22)+7},{'c':'wait5','i':(40*22)+8},{'c':'wait5','i':(40*22)+9},{'c':'wait5','i':(40*22)+10},{'c':'wait5','i':(40*22)+11},{'c':'wait5','i':(40*22)+12},{'c':'wait1','i':(40*23)+10},{'c':'wait1','i':(40*24)+10},{'c':'wait1','i':(40*25)+10},{'c':'wait1','i':(40*26)+10},{'c':'wait1','i':(40*27)+10},{'c':'wait1','i':(40*28)+10},{'c':'wait1','i':(40*29)+10},{'c':'wait4','i':(40*30)+10},{'c':'wait4','i':(40*30)+11}
+						],
+						'label' : 'step2'
+					}								
+				},
+				{'frm':
+					{
+						'duration' : 1,
+						'pix' : [
+							{'c':'wait0','i':(40*4)+10},{'c':'wait0','i':(40*4)+11},{'c':'wait0','i':(40*5)+8},{'c':'wait0','i':(40*5)+9},{'c':'wait0','i':(40*5)+10},{'c':'wait0','i':(40*5)+11},{'c':'wait0','i':(40*6)+6},{'c':'wait0','i':(40*6)+7},{'c':'wait0','i':(40*6)+8},{'c':'wait1','i':(40*6)+9},{'c':'wait1','i':(40*6)+10},{'c':'wait1','i':(40*6)+11},{'c':'wait0','i':(40*7)+6},{'c':'wait1','i':(40*7)+8},{'c':'wait1','i':(40*7)+9},{'c':'wait1','i':(40*7)+10},{'c':'wait1','i':(40*7)+11},{'c':'wait1','i':(40*8)+8},{'c':'wait1','i':(40*8)+9},{'c':'wait1','i':(40*8)+10},{'c':'wait1','i':(40*8)+11},{'c':'wait1','i':(40*9)+8},{'c':'wait1','i':(40*9)+9},{'c':'wait1','i':(40*9)+10},{'c':'wait2','i':(40*10)+1},{'c':'wait3','i':(40*10)+3},{'c':'wait4','i':(40*10)+6},{'c':'wait5','i':(40*10)+7},{'c':'wait1','i':(40*10)+8},{'c':'wait1','i':(40*10)+9},{'c':'wait1','i':(40*10)+10},{'c':'wait5','i':(40*10)+11},{'c':'wait4','i':(40*10)+12},{'c':'wait2','i':(40*11)+1},{'c':'wait3','i':(40*11)+3},{'c':'wait4','i':(40*11)+6},{'c':'wait4','i':(40*11)+7},{'c':'wait5','i':(40*11)+8},{'c':'wait1','i':(40*11)+9},{'c':'wait5','i':(40*11)+10},{'c':'wait4','i':(40*11)+11},{'c':'wait4','i':(40*11)+12},{'c':'wait4','i':(40*12)+0},{'c':'wait4','i':(40*12)+1},{'c':'wait4','i':(40*12)+2},{'c':'wait4','i':(40*12)+3},{'c':'wait4','i':(40*12)+4},{'c':'wait4','i':(40*12)+6},{'c':'wait4','i':(40*12)+7},{'c':'wait5','i':(40*12)+8},{'c':'wait1','i':(40*12)+9},{'c':'wait5','i':(40*12)+10},{'c':'wait4','i':(40*12)+11},{'c':'wait4','i':(40*12)+12},{'c':'wait1','i':(40*13)+2},{'c':'wait4','i':(40*13)+5},{'c':'wait4','i':(40*13)+7},{'c':'wait4','i':(40*13)+8},{'c':'wait5','i':(40*13)+9},{'c':'wait4','i':(40*13)+10},{'c':'wait4','i':(40*13)+11},{'c':'wait4','i':(40*13)+12},{'c':'wait4','i':(40*14)+3},{'c':'wait4','i':(40*14)+5},{'c':'wait4','i':(40*14)+7},{'c':'wait4','i':(40*14)+8},{'c':'wait4','i':(40*14)+9},{'c':'wait4','i':(40*14)+10},{'c':'wait4','i':(40*14)+11},{'c':'wait4','i':(40*14)+12},{'c':'wait4','i':(40*14)+13},{'c':'wait4','i':(40*14)+14},{'c':'wait5','i':(40*14)+15},{'c':'wait1','i':(40*14)+16},{'c':'wait4','i':(40*15)+4},{'c':'wait4','i':(40*15)+8},{'c':'wait4','i':(40*15)+9},{'c':'wait4','i':(40*15)+10},{'c':'wait4','i':(40*16)+8},{'c':'wait4','i':(40*16)+9},{'c':'wait4','i':(40*16)+10},{'c':'wait5','i':(40*17)+8},{'c':'wait5','i':(40*17)+9},{'c':'wait5','i':(40*17)+10},{'c':'wait5','i':(40*18)+7},{'c':'wait5','i':(40*18)+8},{'c':'wait5','i':(40*18)+9},{'c':'wait5','i':(40*18)+10},{'c':'wait5','i':(40*18)+11},{'c':'wait4','i':(40*19)+7},{'c':'wait4','i':(40*19)+8},{'c':'wait4','i':(40*19)+9},{'c':'wait4','i':(40*19)+10},{'c':'wait4','i':(40*19)+11},{'c':'wait4','i':(40*20)+7},{'c':'wait4','i':(40*20)+8},{'c':'wait4','i':(40*20)+9},{'c':'wait4','i':(40*20)+10},{'c':'wait4','i':(40*20)+11},{'c':'wait4','i':(40*21)+7},{'c':'wait4','i':(40*21)+8},{'c':'wait4','i':(40*21)+9},{'c':'wait4','i':(40*21)+10},{'c':'wait4','i':(40*21)+11},{'c':'wait5','i':(40*22)+6},{'c':'wait5','i':(40*22)+7},{'c':'wait5','i':(40*22)+8},{'c':'wait5','i':(40*22)+9},{'c':'wait5','i':(40*22)+10},{'c':'wait5','i':(40*22)+11},{'c':'wait5','i':(40*22)+12},{'c':'wait1','i':(40*23)+8},{'c':'wait1','i':(40*23)+10},{'c':'wait1','i':(40*24)+8},{'c':'wait1','i':(40*24)+10},{'c':'wait1','i':(40*25)+8},{'c':'wait1','i':(40*25)+10},{'c':'wait4','i':(40*26)+4},{'c':'wait1','i':(40*26)+5},{'c':'wait1','i':(40*26)+6},{'c':'wait1','i':(40*26)+7},{'c':'wait1','i':(40*26)+8},{'c':'wait1','i':(40*26)+10},{'c':'wait4','i':(40*27)+4},{'c':'wait1','i':(40*27)+10},{'c':'wait1','i':(40*28)+10},{'c':'wait1','i':(40*29)+10},{'c':'wait4','i':(40*30)+10},{'c':'wait4','i':(40*30)+11}
+						],
+						'label' : 'step3'
+					}								
+				},
+				{'frm':
+					{
+						'duration' : 1,
+						'pix' : [
+							{'c':'wait0','i':(40*3)+10},{'c':'wait0','i':(40*3)+11},{'c':'wait0','i':(40*4)+6},{'c':'wait0','i':(40*4)+7},{'c':'wait0','i':(40*4)+8},{'c':'wait0','i':(40*4)+9},{'c':'wait0','i':(40*4)+10},{'c':'wait0','i':(40*4)+11},{'c':'wait0','i':(40*5)+6},{'c':'wait0','i':(40*5)+8},{'c':'wait1','i':(40*5)+9},{'c':'wait1','i':(40*5)+10},{'c':'wait1','i':(40*5)+11},{'c':'wait1','i':(40*6)+8},{'c':'wait1','i':(40*6)+9},{'c':'wait1','i':(40*6)+10},{'c':'wait1','i':(40*6)+11},{'c':'wait1','i':(40*7)+8},{'c':'wait1','i':(40*7)+9},{'c':'wait1','i':(40*7)+10},{'c':'wait1','i':(40*7)+11},{'c':'wait1','i':(40*8)+8},{'c':'wait1','i':(40*8)+9},{'c':'wait1','i':(40*8)+10},{'c':'wait2','i':(40*9)+1},{'c':'wait3','i':(40*9)+3},{'c':'wait4','i':(40*9)+6},{'c':'wait5','i':(40*9)+7},{'c':'wait1','i':(40*9)+8},{'c':'wait1','i':(40*9)+9},{'c':'wait1','i':(40*9)+10},{'c':'wait5','i':(40*9)+11},{'c':'wait4','i':(40*9)+12},{'c':'wait2','i':(40*10)+1},{'c':'wait3','i':(40*10)+3},{'c':'wait4','i':(40*10)+6},{'c':'wait4','i':(40*10)+7},{'c':'wait5','i':(40*10)+8},{'c':'wait1','i':(40*10)+9},{'c':'wait5','i':(40*10)+10},{'c':'wait4','i':(40*10)+11},{'c':'wait4','i':(40*10)+12},{'c':'wait4','i':(40*11)+0},{'c':'wait4','i':(40*11)+1},{'c':'wait4','i':(40*11)+2},{'c':'wait4','i':(40*11)+3},{'c':'wait4','i':(40*11)+4},{'c':'wait4','i':(40*11)+6},{'c':'wait4','i':(40*11)+7},{'c':'wait5','i':(40*11)+8},{'c':'wait1','i':(40*11)+9},{'c':'wait5','i':(40*11)+10},{'c':'wait4','i':(40*11)+11},{'c':'wait4','i':(40*11)+12},{'c':'wait1','i':(40*12)+2},{'c':'wait4','i':(40*12)+5},{'c':'wait4','i':(40*12)+7},{'c':'wait4','i':(40*12)+8},{'c':'wait5','i':(40*12)+9},{'c':'wait4','i':(40*12)+10},{'c':'wait4','i':(40*12)+11},{'c':'wait4','i':(40*13)+3},{'c':'wait4','i':(40*13)+5},{'c':'wait4','i':(40*13)+7},{'c':'wait4','i':(40*13)+8},{'c':'wait4','i':(40*13)+9},{'c':'wait4','i':(40*13)+10},{'c':'wait4','i':(40*13)+11},{'c':'wait4','i':(40*14)+4},{'c':'wait4','i':(40*14)+8},{'c':'wait4','i':(40*14)+9},{'c':'wait4','i':(40*14)+10},{'c':'wait4','i':(40*15)+8},{'c':'wait4','i':(40*15)+9},{'c':'wait4','i':(40*15)+10},{'c':'wait5','i':(40*16)+8},{'c':'wait5','i':(40*16)+9},{'c':'wait5','i':(40*16)+10},{'c':'wait5','i':(40*17)+7},{'c':'wait5','i':(40*17)+8},{'c':'wait5','i':(40*17)+9},{'c':'wait5','i':(40*17)+10},{'c':'wait5','i':(40*17)+11},{'c':'wait4','i':(40*18)+7},{'c':'wait4','i':(40*18)+8},{'c':'wait4','i':(40*18)+9},{'c':'wait4','i':(40*18)+10},{'c':'wait4','i':(40*18)+11},{'c':'wait4','i':(40*19)+7},{'c':'wait4','i':(40*19)+8},{'c':'wait4','i':(40*19)+9},{'c':'wait4','i':(40*19)+10},{'c':'wait4','i':(40*19)+11},{'c':'wait4','i':(40*20)+7},{'c':'wait4','i':(40*20)+8},{'c':'wait4','i':(40*20)+9},{'c':'wait4','i':(40*20)+10},{'c':'wait4','i':(40*20)+11},{'c':'wait4','i':(40*21)+2},{'c':'wait1','i':(40*21)+3},{'c':'wait1','i':(40*21)+4},{'c':'wait1','i':(40*21)+5},{'c':'wait1','i':(40*21)+6},{'c':'wait4','i':(40*21)+7},{'c':'wait5','i':(40*21)+8},{'c':'wait1','i':(40*21)+9},{'c':'wait1','i':(40*21)+10},{'c':'wait1','i':(40*21)+11},{'c':'wait1','i':(40*21)+12},{'c':'wait1','i':(40*21)+13},{'c':'wait4','i':(40*22)+2},{'c':'wait5','i':(40*22)+6},{'c':'wait5','i':(40*22)+7},{'c':'wait5','i':(40*22)+8},{'c':'wait5','i':(40*22)+10},{'c':'wait5','i':(40*22)+11},{'c':'wait1','i':(40*22)+13},{'c':'wait1','i':(40*23)+13},{'c':'wait1','i':(40*24)+13},{'c':'wait4','i':(40*25)+13},{'c':'wait4','i':(40*25)+14}
+						],
+						'label' : 'step4'
+					}								
+				},
+				{'frm':
+					{
+						'duration' : 1,
+						'pix' : [
+							{'c':'wait0','i':(40*4)+10},{'c':'wait0','i':(40*4)+11},{'c':'wait0','i':(40*5)+8},{'c':'wait0','i':(40*5)+9},{'c':'wait0','i':(40*5)+10},{'c':'wait0','i':(40*5)+11},{'c':'wait0','i':(40*6)+6},{'c':'wait0','i':(40*6)+7},{'c':'wait0','i':(40*6)+8},{'c':'wait1','i':(40*6)+9},{'c':'wait1','i':(40*6)+10},{'c':'wait1','i':(40*6)+11},{'c':'wait0','i':(40*7)+6},{'c':'wait1','i':(40*7)+8},{'c':'wait1','i':(40*7)+9},{'c':'wait1','i':(40*7)+10},{'c':'wait1','i':(40*7)+11},{'c':'wait1','i':(40*8)+8},{'c':'wait1','i':(40*8)+9},{'c':'wait1','i':(40*8)+10},{'c':'wait1','i':(40*8)+11},{'c':'wait1','i':(40*9)+8},{'c':'wait1','i':(40*9)+9},{'c':'wait1','i':(40*9)+10},{'c':'wait2','i':(40*10)+1},{'c':'wait3','i':(40*10)+3},{'c':'wait4','i':(40*10)+6},{'c':'wait5','i':(40*10)+7},{'c':'wait1','i':(40*10)+8},{'c':'wait1','i':(40*10)+9},{'c':'wait1','i':(40*10)+10},{'c':'wait5','i':(40*10)+11},{'c':'wait4','i':(40*10)+12},{'c':'wait2','i':(40*11)+1},{'c':'wait3','i':(40*11)+3},{'c':'wait4','i':(40*11)+6},{'c':'wait4','i':(40*11)+7},{'c':'wait5','i':(40*11)+8},{'c':'wait1','i':(40*11)+9},{'c':'wait5','i':(40*11)+10},{'c':'wait4','i':(40*11)+11},{'c':'wait4','i':(40*11)+12},{'c':'wait4','i':(40*12)+0},{'c':'wait4','i':(40*12)+1},{'c':'wait4','i':(40*12)+2},{'c':'wait4','i':(40*12)+3},{'c':'wait4','i':(40*12)+4},{'c':'wait4','i':(40*12)+6},{'c':'wait4','i':(40*12)+7},{'c':'wait5','i':(40*12)+8},{'c':'wait1','i':(40*12)+9},{'c':'wait5','i':(40*12)+10},{'c':'wait4','i':(40*12)+11},{'c':'wait4','i':(40*12)+12},{'c':'wait1','i':(40*13)+2},{'c':'wait4','i':(40*13)+5},{'c':'wait4','i':(40*13)+7},{'c':'wait4','i':(40*13)+8},{'c':'wait5','i':(40*13)+9},{'c':'wait4','i':(40*13)+10},{'c':'wait4','i':(40*13)+11},{'c':'wait4','i':(40*13)+12},{'c':'wait4','i':(40*14)+3},{'c':'wait4','i':(40*14)+5},{'c':'wait4','i':(40*14)+7},{'c':'wait4','i':(40*14)+8},{'c':'wait4','i':(40*14)+9},{'c':'wait4','i':(40*14)+10},{'c':'wait4','i':(40*14)+11},{'c':'wait4','i':(40*14)+12},{'c':'wait4','i':(40*14)+13},{'c':'wait4','i':(40*14)+14},{'c':'wait5','i':(40*14)+15},{'c':'wait1','i':(40*14)+16},{'c':'wait4','i':(40*15)+4},{'c':'wait4','i':(40*15)+8},{'c':'wait4','i':(40*15)+9},{'c':'wait4','i':(40*15)+10},{'c':'wait4','i':(40*16)+8},{'c':'wait4','i':(40*16)+9},{'c':'wait4','i':(40*16)+10},{'c':'wait5','i':(40*17)+8},{'c':'wait5','i':(40*17)+9},{'c':'wait5','i':(40*17)+10},{'c':'wait4','i':(40*18)+5},{'c':'wait4','i':(40*18)+6},{'c':'wait5','i':(40*18)+7},{'c':'wait5','i':(40*18)+8},{'c':'wait5','i':(40*18)+9},{'c':'wait5','i':(40*18)+10},{'c':'wait5','i':(40*18)+11},{'c':'wait1','i':(40*19)+6},{'c':'wait4','i':(40*19)+7},{'c':'wait4','i':(40*19)+8},{'c':'wait4','i':(40*19)+9},{'c':'wait4','i':(40*19)+10},{'c':'wait4','i':(40*19)+11},{'c':'wait1','i':(40*20)+6},{'c':'wait4','i':(40*20)+7},{'c':'wait4','i':(40*20)+8},{'c':'wait4','i':(40*20)+9},{'c':'wait4','i':(40*20)+10},{'c':'wait4','i':(40*20)+11},{'c':'wait1','i':(40*21)+6},{'c':'wait4','i':(40*21)+7},{'c':'wait4','i':(40*21)+8},{'c':'wait4','i':(40*21)+9},{'c':'wait4','i':(40*21)+10},{'c':'wait4','i':(40*21)+11},{'c':'wait5','i':(40*22)+6},{'c':'wait5','i':(40*22)+7},{'c':'wait5','i':(40*22)+8},{'c':'wait5','i':(40*22)+9},{'c':'wait5','i':(40*22)+10},{'c':'wait4','i':(40*22)+11},{'c':'wait1','i':(40*23)+8},{'c':'wait5','i':(40*23)+10},{'c':'wait4','i':(40*23)+11},{'c':'wait1','i':(40*24)+8},{'c':'wait5','i':(40*24)+11},{'c':'wait1','i':(40*25)+8},{'c':'wait1','i':(40*26)+8},{'c':'wait1','i':(40*27)+8},{'c':'wait1','i':(40*28)+8},{'c':'wait1','i':(40*29)+8},{'c':'wait4','i':(40*30)+8},{'c':'wait4','i':(40*30)+9}
+						],
+						'label' : 'step5'
+					}								
+				},
+				{'frm':
+					{
+						'duration' : 1,
+						'pix' : [
+							{'c':'wait0','i':(40*4)+10},{'c':'wait0','i':(40*4)+11},{'c':'wait0','i':(40*5)+8},{'c':'wait0','i':(40*5)+9},{'c':'wait0','i':(40*5)+10},{'c':'wait0','i':(40*5)+11},{'c':'wait0','i':(40*6)+6},{'c':'wait0','i':(40*6)+7},{'c':'wait0','i':(40*6)+8},{'c':'wait1','i':(40*6)+9},{'c':'wait1','i':(40*6)+10},{'c':'wait1','i':(40*6)+11},{'c':'wait0','i':(40*7)+6},{'c':'wait1','i':(40*7)+8},{'c':'wait1','i':(40*7)+9},{'c':'wait1','i':(40*7)+10},{'c':'wait1','i':(40*7)+11},{'c':'wait1','i':(40*8)+8},{'c':'wait1','i':(40*8)+9},{'c':'wait1','i':(40*8)+10},{'c':'wait1','i':(40*8)+11},{'c':'wait1','i':(40*9)+8},{'c':'wait1','i':(40*9)+9},{'c':'wait1','i':(40*9)+10},{'c':'wait2','i':(40*10)+1},{'c':'wait3','i':(40*10)+3},{'c':'wait4','i':(40*10)+6},{'c':'wait5','i':(40*10)+7},{'c':'wait1','i':(40*10)+8},{'c':'wait1','i':(40*10)+9},{'c':'wait1','i':(40*10)+10},{'c':'wait5','i':(40*10)+11},{'c':'wait4','i':(40*10)+12},{'c':'wait2','i':(40*11)+1},{'c':'wait3','i':(40*11)+3},{'c':'wait4','i':(40*11)+6},{'c':'wait4','i':(40*11)+7},{'c':'wait5','i':(40*11)+8},{'c':'wait1','i':(40*11)+9},{'c':'wait5','i':(40*11)+10},{'c':'wait4','i':(40*11)+11},{'c':'wait4','i':(40*11)+12},{'c':'wait4','i':(40*12)+0},{'c':'wait4','i':(40*12)+1},{'c':'wait4','i':(40*12)+2},{'c':'wait4','i':(40*12)+3},{'c':'wait4','i':(40*12)+4},{'c':'wait4','i':(40*12)+6},{'c':'wait4','i':(40*12)+7},{'c':'wait5','i':(40*12)+8},{'c':'wait1','i':(40*12)+9},{'c':'wait5','i':(40*12)+10},{'c':'wait4','i':(40*12)+11},{'c':'wait4','i':(40*12)+12},{'c':'wait1','i':(40*13)+2},{'c':'wait4','i':(40*13)+5},{'c':'wait4','i':(40*13)+7},{'c':'wait4','i':(40*13)+8},{'c':'wait5','i':(40*13)+9},{'c':'wait4','i':(40*13)+10},{'c':'wait4','i':(40*13)+11},{'c':'wait4','i':(40*13)+12},{'c':'wait4','i':(40*14)+3},{'c':'wait4','i':(40*14)+5},{'c':'wait4','i':(40*14)+7},{'c':'wait4','i':(40*14)+8},{'c':'wait4','i':(40*14)+9},{'c':'wait4','i':(40*14)+10},{'c':'wait4','i':(40*14)+11},{'c':'wait4','i':(40*14)+12},{'c':'wait4','i':(40*15)+4},{'c':'wait4','i':(40*15)+8},{'c':'wait4','i':(40*15)+9},{'c':'wait4','i':(40*15)+10},{'c':'wait4','i':(40*15)+12},{'c':'wait4','i':(40*16)+8},{'c':'wait4','i':(40*16)+9},{'c':'wait4','i':(40*16)+10},{'c':'wait4','i':(40*16)+12},{'c':'wait5','i':(40*17)+8},{'c':'wait5','i':(40*17)+9},{'c':'wait5','i':(40*17)+10},{'c':'wait5','i':(40*17)+12},{'c':'wait5','i':(40*18)+7},{'c':'wait5','i':(40*18)+8},{'c':'wait5','i':(40*18)+9},{'c':'wait5','i':(40*18)+10},{'c':'wait5','i':(40*18)+11},{'c':'wait1','i':(40*18)+12},{'c':'wait4','i':(40*19)+7},{'c':'wait4','i':(40*19)+8},{'c':'wait4','i':(40*19)+9},{'c':'wait4','i':(40*19)+10},{'c':'wait4','i':(40*19)+11},{'c':'wait4','i':(40*20)+7},{'c':'wait4','i':(40*20)+8},{'c':'wait4','i':(40*20)+9},{'c':'wait4','i':(40*20)+10},{'c':'wait4','i':(40*20)+11},{'c':'wait4','i':(40*21)+7},{'c':'wait4','i':(40*21)+8},{'c':'wait4','i':(40*21)+9},{'c':'wait4','i':(40*21)+10},{'c':'wait4','i':(40*21)+11},{'c':'wait5','i':(40*22)+6},{'c':'wait5','i':(40*22)+7},{'c':'wait5','i':(40*22)+8},{'c':'wait5','i':(40*22)+9},{'c':'wait5','i':(40*22)+10},{'c':'wait5','i':(40*22)+11},{'c':'wait5','i':(40*22)+12},{'c':'wait1','i':(40*23)+8},{'c':'wait1','i':(40*23)+10},{'c':'wait1','i':(40*24)+8},{'c':'wait1','i':(40*24)+10},{'c':'wait1','i':(40*25)+8},{'c':'wait1','i':(40*25)+10},{'c':'wait4','i':(40*26)+6},{'c':'wait1','i':(40*26)+7},{'c':'wait1','i':(40*26)+8},{'c':'wait1','i':(40*26)+9},{'c':'wait1','i':(40*26)+10},{'c':'wait4','i':(40*27)+6},{'c':'wait1','i':(40*27)+8},{'c':'wait1','i':(40*28)+8},{'c':'wait1','i':(40*29)+8},{'c':'wait4','i':(40*30)+8},{'c':'wait4','i':(40*30)+9}
+						],
+						'label' : 'step6'
+					}								
+				}
+										
+				
+			];
+
+			BigBlock.Color.add(BigBlock.my_colors.my_palette);
+								
+			BigBlock.CharPresets = BigBlock.CharPresets.install();
+			
+			//
+			
+			BigBlock.BlockBig.create({
+				alias : "floor",
+				x: 0,
+				y: 344,
+				width: 320,
+				height: 136,
+				color: "flr"
+			});
+			
+			//
+			
+			BigBlock.BlockAnim.create({
+				alias: "waitress",
+				x: 88,
+				y: 96,
+				width: 144,
+				height: 248,
+				anim_loop: true,
+				anim_state: "stop",
+				action_input: function () {
+					alert('May I take your order?');
+				},
+				anim : waitress
+			});
+
+			// back button
+			
+			BigBlock.Word.create({
+				x: 48,
+				y: 376,
+				word: "back",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 40,
+				y: 368,
+				width: 48,
+				height: 24,
+				color: "red",
+				action_input: function () {
+					BigBlock.Blocks.waitress.goToFrame("previous_frame");
+				}
+			});
+			
+			//
+			
+			// play button
+			
+			BigBlock.Word.create({
+				alias: "play",
+				x: 112,
+				y: 376,
+				word: "play",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 104,
+				y: 368,
+				width: 48,
+				height: 24,
+				color: "red",
+				action_input: function () {
+					if (BigBlock.Blocks.waitress.anim_state == "stop") {
+						BigBlock.Blocks.waitress.anim_state = "play";
+						if (typeof(BigBlock.Blocks.play) != "undefined") {
+							BigBlock.Blocks.play.destroy();
+						}
+						BigBlock.Word.create({
+							alias: "stop",
+							x: 112,
+							y: 376,
+							word: "stop",
+							color: "white"
+						});
+												
+					} else {
+						BigBlock.Blocks.waitress.anim_state = "stop";
+						if (typeof(BigBlock.Blocks.stop) != "undefined") {
+							BigBlock.Blocks.stop.destroy();
+						}
+						BigBlock.Word.create({
+							alias: "play",
+							x: 112,
+							y: 376,
+							word: "play",
+							color: "white"
+						});						
+					}
+					
+				}
+			});
+			
+			//
+			
+			// loop button
+			
+			BigBlock.Word.create({
+				alias: "nolp",
+				x: 176,
+				y: 376,
+				word: "nolp",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 168,
+				y: 368,
+				width: 48,
+				height: 24,
+				color: "red",
+				action_input: function () {
+					if (BigBlock.Blocks.waitress.anim_loop) {
+						BigBlock.Blocks.waitress.anim_loop = false;
+						if (typeof(BigBlock.Blocks.nolp) != "undefined") {
+							BigBlock.Blocks.nolp.destroy();
+						}
+						BigBlock.Word.create({
+							alias: "loop",
+							x: 176,
+							y: 376,
+							word: "loop",
+							color: "white"
+						});
+												
+					} else {
+						BigBlock.Blocks.waitress.anim_loop = true;
+						if (typeof(BigBlock.Blocks.loop) != "undefined") {
+							BigBlock.Blocks.loop.destroy();
+						}
+						BigBlock.Word.create({
+							alias: "nolp",
+							x: 176,
+							y: 376,
+							word: "nolp",
+							color: "white"
+						});					
+					}
+					
+				}
+			});
+			
+			//			
+						
+			// next button
+			
+			BigBlock.Word.create({
+				x: 240,
+				y: 376,
+				word: "next",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 232,
+				y: 368,
+				width: 48,
+				height: 24,
+				color: "red",
+				action_input: function () {
+					BigBlock.Blocks.waitress.goToFrame("next_frame");
+				}
+			});
+			
+			//
+											
+			BigBlock.ready = function () { // called from <body> onload()
+				BigBlock.Timer.play({
+					grid_static_styles : {
+						backgroundColor : '#740000'
+					}
+				});
+			}
+																					
+		</script>
+		
+	</head>
+	<body onload="setTimeout('BigBlock.ready()', 0)">
+		
+	</body>
+	
+</html>	
+
+	</textarea>
+	<p><a href="../demos/animation001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
+	<p>View more info for the <a href="../docs/index.html#BlockAnim">BlockAnim</a> class on the documentation page.</p>
+</form>
+
+</div>
+
 
 
 

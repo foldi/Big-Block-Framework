@@ -1,1248 +1,555 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Docs</title>
-		
 		<style type="text/css">
-			body {
-				background-color: #fff;
-			}
+			body { background-color: #fff; }
+					
+			dt { color: #996633;padding: 0 0 10px 0; }
+			
+			dd { padding: 0 0 10px 0; }
+			
+			div.class { background-color: #eee;}
+			
+			h3.class { background-color: #aaa; padding: 10px; }
+			
+			ul.class { list-style-type: none; list-style-position: inside; margin: 0; padding: 0; }
+			
+			li.method { background-color: #ccc; padding: 10px; margin: 10px 0 10px 0; font-weight: bold; }
+			
+			li.description { padding: 10px; margin: 0px 0 0px 0; }
+			
+			li.prop { background-color: #ddd; padding: 10px; margin: 0px 0 0px 20px; }
 
-			div.example {
-				margin: 0 0 50px 0;
-			}
-											
-			div.class {
-				background-color: #eee;
-			}
-		
-			
-			h3.example {
-				background-color: #336699;
-				color: #fff;
-				padding: 10px;
-			}
+			li.default { margin: 0px 0 0px 20px; }	
 						
-			h3.class {
-				background-color: #996600;
-				color: #fff;
-				padding: 10px;
-			}
+			li.description { margin: 0px 0 10px 20px; }
 			
-			
-			
-			ul.class {
-				list-style-type: none;
-				list-style-position: inside;
-				margin: 0;
-				padding: 0;
-			}
-			
-			li.method {
-				background-color: #ccc;
-				padding: 10px;
-				margin: 10px 0 10px 0;
-				font-weight: bold;
-			}
-			
-			li.description {
-				padding: 10px;
-				margin: 0px 0 0px 0;				
-			}
-			
-			li.prop {
-				background-color: #ddd;
-				padding: 10px;
-				margin: 0px 0 0px 20px;
-			}
+			p { font-size: medium; }
 
-			li.default {
-				margin: 0px 0 0px 20px;
-			}	
-						
-			li.description {
-				margin: 0px 0 10px 20px;
-			}
+			.code_ex { color: #666; }
 			
-			p {
-				font-size: medium;
-			}
+			.code_param { color: #000099; font-weight: bold; }	
 			
-			.title_demo {
-				font-weight: bold;	
-			}
-						
-			.code_ex {
-				color: #666;
-			}
-			.code_param {
-				color: #000099;
-				font-weight: bold;
-			}				
+			.code_data_type {  }				
 			
 		</style>
     </head>
     <body>
 		
-<h1><a name="top">How</a> to use Big Block Framework</h1>
-<p>Big Block is library of JavaScript classes that work together to render pixel art and fonts in a web browser. The framework uses CSS2 and JavaScript 1.5 and is compatible with a wide range of browsers including Firefox, Safari, Chrome, Opera and IE from IE 6 on up.</p>
+<h1><a name="top">Docs</a></h1>
+<p><em>version alpha-.6</em></p>
 
-<p>All blocks (ie: big pixels) are rendered inside a top-level &#60;div&#62; that acts as a viewport. The default settings are meant for rendering on iOS devices but can be adapted to other mobile devices or desktop browsers. Without changing anything, your viewport will be 320x368 pixels with each block at 8x8 pixels (40 rows, 46 cols, 1840 total blocks).</p>
-
-<p>The framework has been tested and is stable on iPhone, iPod Touch and iPad. Performance is very consistent from 3G models on up. The framework has also been tested on three types of Android phones and is stable. However, performance can vary greatly depending on the phone's processor.</p>
-
-<p>Using the examples and docs below, you can render, animate and add events including touch events. The framework is still in an alpha phase and not "feature complete". However, it is stable and in use on the following sites:</p>
+<p>Use the following to reference Big Block classes and their associated methods. Please also view the <a href='../demos/index.html'>examples</a> to see completed apps and learn how to implement the following.</p>
+			
+<h2>Classes</h2>
 
 <ul>
-	<li><a href="http://www.thisisnotflash.com">thisisnotflash.com</a> (for iPhone)</li>
-	<li><a href="http://www.ipadpixels.com">ipadpixels.com</a> (for iPad)</li>
-	<li><a href="http://www.ittybitty8bit.com">ittybitty8bit.com</a></li>
-</ul>
-
-<p>Please check these out for more elaborate uses of the framework.</p>
-
-<h2>Examples:</h2>
-
-<p>Use the following examples to learn how to use the Big Block classes and develop your own Big Block apps. Descriptions of the framework's <a href="#Classes">classes</a> are below.</p>
-
-<ul>
-	<li><a href="#Basic">Basic</a></li>
-	<li><a href="#Defaults">Defaults</a></li>
-	<li><a href="#Motion">Motion</a></li>
-	<li><a href="#Events_blocks">Events_blocks</a></li>
-	<li><a href="#Events_screen">Events_screen</a></li>
-	<li><a href="#Events_frames">Events_frames</a></li>
-	<li><a href="#Fonts_characters">Fonts_characters</a></li>
-	<li><a href="#Fonts_words">Fonts_words</a></li>
-	<li><a href="#Particles_basic">Particles_basic</a></li>
-	<li><a href="#Particles_options">Particles_options</a></li>
-	<li><a href="#Particles_methods">Particles_methods</a></li>
-	<li><a href="#Particles_library">Particles_library</a></li>
+	<li><a href="#Audio">Audio</a></li>
+	<li><a href="#BlockSmall">BlockSmall</a></li>
+	<li><a href="#BlockBig">BlockBig</a></li>
+	<li><a href="#BlockAnim">BlockAnim</a></li>	
+	<li><a href="#Button">Button</a></li>
 	<li><a href="#Color">Color</a></li>
+	<li><a href="#Database">Database</a></li>
+	<li><a href="#Emitter">Emitter</a></li>
 	<li><a href="#Grid">Grid</a></li>
-	<li><a href="#Art_basic">Art_basic</a></li>
+	<li><a href="#LocalStorage">LocalStorage</a></li>
+	<li><a href="#RenderManager">RenderManager</a></li>
+	<li><a href="#ScreenEvent">ScreenEvent</a></li>
+	<li><a href="#Timer">Timer</a></li>
 </ul>
 
-<div class="example">
-<a name="Basic"><h3 class="example">Basic</h3></a>
 
-<p>The easiest way to get up and running with Big Block is to point to the latest release in a &#60;script&#62; tag in the head of your html file. Next, in another &#60;script&#62; block, use the following line to create a block.</p>
+<div class="class">
+	<h3 class="class"><a name="Audio">Audio</a></h3>
+	<ul class="class">
+	<li class="description">Most methods and descriptions are taken from the <a href="http://dev.w3.org/html5/spec/Overview.html">W3C HTML5 spec</a>.</li>
+	</ul>
+	<ul class="class">
+		<li class="method">add(params)</li>
+		<li class="description">description: Adds an audio element to the DOM. Also runs load() to set up the audio file for playback.</li>
+		<li class="description">params: A set of key/value pairs. "id" and "path" are required.</li>	
 
-<p class="code_ex">BigBlock.SpriteSimple.create();</p>
+		<li class="prop"><span class="code_param">id</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A unique identifier... typically the name of the audio file.</li>
 
-<p>Finally, in your &#60;body&#62; tag, add the following onLoad event:</p>
-
-<p class="code_ex">onload="setTimeout('BigBlock.ready()', 0)"</p>
-
-<p>Here's a full example:</p>
-
-<form>
-	<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
+		<li class="prop"><span class="code_param">path</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: The path to the audio file.</li>		
+			
+		<li class="prop"><span class="code_param">loop</span> <span class="code_data_type">[ boolean ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Set to "true" to loop the audio.</li>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<li class="prop"><span class="code_param">after_load</span> <span class="code_data_type">[ boolean ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Pass a function to execute after the file is loaded and ready to play. If the file has any problems loading, this function will not execute.</li>		
 		
-		<script type='text/javascript'>
+		<li class="method">load(params)</li>	
+		<li class="description">description: Causes the element to reset and start selecting and loading a new media resource from scratch.</li>
+		<li class="description">params: A set of key/value pairs. "id" is required.</li>		
 
-			BigBlock.SpriteSimple.create();
-									
-		</script>
+		<li class="prop"><span class="code_param">id</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A unique identifier... typically the name of the audio file.</li>
 		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
+		<li class="method">play(params)</li>	
+		<li class="description">description: Plays an audio element that has been added to the playlist using add().</li>
+		<li class="description">params: A set of key/value pairs. "id" is required.</li>		
+
+		<li class="prop"><span class="code_param">id</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A unique identifier... typically the name of the audio file.</li>
+
+		<li class="prop"><span class="code_param">before_play</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: A function to execute before the file plays. If the file is not ready, this function will not execute.</li>
 		
-	</body>
+		<li class="prop"><span class="code_param">after_play</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: A function to execute after the file plays. If the file is not ready, this function will not execute.</li>
+						
+		<li class="method">pause(params)</li>	
+		<li class="description">description: Sets the paused attribute to true, loading the media resource if necessary.</li>
+		<li class="description">params: A set of key/value pairs. "id" is required.</li>		
+
+		<li class="prop"><span class="code_param">id</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A unique identifier... typically the name of the audio file.</li>				
+
+		<li class="prop"><span class="code_param">toggle</span> <span class="code_data_type">[ boolean ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: If set to "true", the function will alternate between pausing and unpausing.</li>
+			
+		<li class="method">isPaused(params)</li>	
+		<li class="description">description: Returns true if playback is paused; false otherwise.</li>
+		<li class="description">params: A set of key/value pairs. "id" is required.</li>		
+
+		<li class="prop"><span class="code_param">id</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A unique identifier... typically the name of the audio file.</li>
+
+		<li class="method">getPlayed(params)</li>	
+		<li class="description">description: Returns a TimeRanges object that represents the ranges of the media resource that the user agent has played.</li>
+		<li class="description">params: A set of key/value pairs. "id" is required.</li>		
+
+		<li class="prop"><span class="code_param">id</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A unique identifier... typically the name of the audio file.</li>
+		
+		<li class="method">isEnded(params)</li>	
+		<li class="description">description: Returns true if playback has reached the end of the media resource.</li>
+		<li class="description">params: A set of key/value pairs. "id" is required.</li>		
+
+		<li class="prop"><span class="code_param">id</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A unique identifier... typically the name of the audio file.</li>		
+		
+		<li class="method">getPlaybackRate(params)</li>	
+		<li class="description">description: Returns the current rate playback, where 1.0 is normal speed.</li>
+		<li class="description">params: A set of key/value pairs. "id" is required.</li>		
+
+		<li class="prop"><span class="code_param">id</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A unique identifier... typically the name of the audio file.</li>	
+		
+		<li class="method">getReadyState(params)</li>	
+		<li class="description">description: Returns a value that expresses the current state of the element with respect to rendering the current playback position, from the codes in the list below.</li>
+		<li class="description">params: A set of key/value pairs. "id" is required.</li>		
+
+		<li class="prop"><span class="code_param">id</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A unique identifier... typically the name of the audio file.</li>					
+
+		<li class="prop"><span class="code_param">debug</span> <span class="code_data_type">[ boolean ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Set to "true" to send debugging information to the browser's console.</li>		
+		
+		<li class="method">getNetworkState(params)</li>	
+		<li class="description">description: Returns the current state of network activity for the element, from the codes in the list below.</li>
+		<li class="description">params: A set of key/value pairs. "id" is required.</li>		
+
+		<li class="prop"><span class="code_param">id</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A unique identifier... typically the name of the audio file.</li>					
+
+		<li class="prop"><span class="code_param">debug</span> <span class="code_data_type">[ boolean ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Set to "true" to send debugging information to the browser's console.</li>	
+
+		<li class="method">getDuration(params)</li>	
+		<li class="description">description: Returns the length of the media resource, in seconds, assuming that the start of the media resource is at time zero. Returns NaN if the duration isn't available. Returns Infinity for unbounded streams.</li>
+		<li class="description">params: A set of key/value pairs. "id" is required.</li>		
+
+		<li class="prop"><span class="code_param">id</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A unique identifier... typically the name of the audio file.</li>		
+		
+		<li class="method">getCurrentTime(params)</li>	
+		<li class="description">description: Returns the current playback position, in seconds. Will throw an INVALID_STATE_ERR exception if there is no selected media resource.</li>
+		<li class="description">params: A set of key/value pairs. "id" is required.</li>		
+
+		<li class="prop"><span class="code_param">id</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A unique identifier... typically the name of the audio file.</li>
+		
+		<li class="method">setCurrentTime(params)</li>	
+		<li class="description">description: Sets the current playback position, in seconds. Will throw an INVALID_STATE_ERR exception if there is no selected media resource. Will throw an INDEX_SIZE_ERR exception if the given time is not within the ranges to which the user agent can seek.</li>
+		<li class="description">params: A set of key/value pairs. "id" is required.</li>		
+
+		<li class="prop"><span class="code_param">id</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A unique identifier... typically the name of the audio file.</li>								
+
+		<li class="method">getVolume(params)</li>	
+		<li class="description">description: Returns the current playback volume, as a number in the range 0.0 to 1.0, where 0.0 is the quietest and 1.0 the loudest.</li>
+		<li class="description">params: A set of key/value pairs. "id" is required.</li>		
+
+		<li class="prop"><span class="code_param">id</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A unique identifier... typically the name of the audio file.</li>
+
+		<li class="method">setVolume(params)</li>	
+		<li class="description">description: Sets the current playback volume, as a number in the range 0.0 to 1.0, where 0.0 is the quietest and 1.0 the loudest. Throws an INDEX_SIZE_ERR if the new value is not in the range 0.0 .. 1.0.</li>
+		<li class="description">params: A set of key/value pairs. "id" is required.</li>		
+
+		<li class="prop"><span class="code_param">id</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A unique identifier... typically the name of the audio file.</li>
+		
+		<li class="method">mute(params)</li>	
+		<li class="description">description: Mutes all audio elements in playlist.</li>
+		<li class="description">params: A set of key/value pairs. "id" is required.</li>		
+
+		<li class="prop"><span class="code_param">id</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A unique identifier... typically the name of the audio file.</li>		
+																		
+		<li class="method">unmute(params)</li>	
+		<li class="description">description: Unmutes all audio elements in playlist.</li>
+		<li class="description">params: A set of key/value pairs. "id" is required.</li>		
+
+		<li class="prop"><span class="code_param">id</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A unique identifier... typically the name of the audio file.</li>	
+		
+		<li class="prop"><a href="#top">back to top</a></li>		
+																				
+	</ul>
 	
-</html>			
-	</textarea>
-	
-</form>
+</div>	
 
-<p><a href="../demos/basic001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
+<div class="class">
+	<h3 class="class"><a name="BlockSmall">BlockSmall</a></h3>
 
-<p>You may also notice a &#60;meta&#62; tag with the name "viewport" and a few other parameters. This tag sets up an iOS device's viewport. In this case, the page is not scalable and rendered edge-to-edge with the device. If you are targeting a mobile device with your Big Block page, you will want to inlcude this tag.</p>
+	<ul class="class">
+		<li class="method">create(params)</li>
+		<li class="description">description: Creates a single block.</li>
+		<li class="description">params: A set of key/value pairs to configure the block. All parameters are optional.</li>	
 
-<p>If you view the example in a browser, you will see a white, 8x8 pixel. You will also see "tap" appear and will see a pixel appear and quickly fade out wherever you click. The "tap" timeout and click feedback are convenience functions for iOS devices and are enabled by default. In the next demo we will turn these off.</p>
+		<li class="prop"><span class="code_param">alias</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">default: BigBlock.getUniqueId()</li>
+		<li class="description">description: A unique identifier. Use the alias to reference the object in BigBlock.Blocks and call methods.</li>
+		<li class="description">example: BigBlock.Blocks.alias.destroy();</li>
 
-</div>
-
-<div class="example">
-<a name="Defaults"><h3 class="example">Defaults</h3></a>
-
-<p>The Timer class does the heavy lifting of setting up the viewport. You can override the defaults to change the viewport's background color, draw borders or alter the input feedback.</p>
-
-<p>Every Big Block viewport starts to play via the following method:</p>
-
-<p class="code_ex">BigBlock.Timer.play()</p>
-
-<p>Before play() actualy does anything, it loops thru and sets any passed parameters. You can find the <a href="#Timer">Timer class</a> below and a list of available parameters.</p>
-
-
-<p>Here's a full example of setting different defaults by overwriting the default BigBlock.ready function and calling BigBlock.Timer.play() directly with passed parameters:</p>
-
-<form>		
-		<textarea cols="100" rows="10">
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
+		<li class="prop"><span class="code_param">color</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">default: empty</li>
+		<li class="description">description: Sets the object's color. Can be a single color or set to cycle thru an array of values.</li>
+		<li class="description">example: BigBlock.BlockSmall.create({color: "yellow"});</li>		
+			
+		<li class="prop"><span class="code_param">x</span> <span class="code_data_type">[ number ]</span></li>
+		<li class="description">default: 0</li>
+		<li class="description">description: Horizontal location relative to the Grid location. Use with BigBlock.getTransform(vel, angle, x, y) to animate the objects in the viewport.</li>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<li class="prop"><span class="code_param">y</span> <span class="code_data_type">[ number ]</span></li>	
+		<li class="description">default: 0</li>
+		<li class="description">description: Vertical location relative to the Grid location. Use with BigBlock.getTransform(vel, angle, x, y) to animate the objects in the viewport.</li>		
+
+		<li class="prop"><span class="code_param">vel</span> <span class="code_data_type">[ number ]</span></li>	
+		<li class="description">default: 0</li>
+		<li class="description">description: Set an animation velocity. Use with BigBlock.getTransform(vel, angle, x, y) to animate the objects in the viewport.</li>
+
+		<li class="prop"><span class="code_param">angle</span> <span class="code_data_type">[ number ]</span></li>	
+		<li class="description">default: 0</li>
+		<li class="description">description: Set an animation angle. Use with BigBlock.getTransform(vel, angle, x, y) to animate the objects in the viewport.</li>
 				
-		<script type='text/javascript'>
-
-			BigBlock.SpriteSimple.create();
-			
-			BigBlock.ready = function () { // called from <body> onload()
-				BigBlock.Timer.play({
-					tap_timeout: false,
-					document_body_style : {
-						backgroundColor : '#000'
-					},
-					grid_static_styles : {
-						backgroundColor : '#333'
-					},
-					grid_active_styles : {
-						border : '1px solid #ccc'
-					},					
-					input_feedback: true,
-					input_feedback_grad: "rgb(16, 16, 16);rgb(39, 39, 39);rgb(66, 66, 66);rgb(96, 96, 96);rgb(127, 127, 127);rgb(159, 159, 159);rgb(189, 189, 189);rgb(216, 216, 216);rgb(239, 239, 239);rgb(255, 255, 255)",
-					report_fr : true
-				});
-			}
-									
-		</script>
+		<li class="prop"><span class="code_param">render</span> <span class="code_data_type">[ number ]</span></li>
+		<li class="description">default: -1</li>
+		<li class="description">description: This value always decrements. If it reaches zero, the Block is ignored. Set to positive number to eventually hide this object. Leave it set to -1 to never hide the object.</li>		
 		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
+		<li class="prop"><span class="code_param">life</span> <span class="code_data_type">[ number ]</span></li>
+		<li class="description">default: 0</li>
+		<li class="description">description: This value always decrements. If it reaches zero, the Block is destroyed. Set to positive number to eventually destroy this object. Leave it set to 0 to never destroy the object.</li>		
 		
-	</body>
-	
-</html>	
-
-
-			
-		</textarea>
-</form>
-
-<p><a href="../demos/defaults001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-
-<p>The Grid class sets up three divs in the viewport called active, static and text. These divs hold four child divs. The borders you see in the example are the active div. The static div is under the active div and has a grey background color. The document's background color has been set to black.</p>
-
-</div>
-
-
-<div class="example">
-<a name="Motion"><h3 class="example">Motion</h3></a>
-<p>Each SpriteSimple looks for an "action" to run at each screen render. By passing a function, you can animate your blocks.</p>
-
-<p>This example references the pix_dim parameter of the Grid class which sets the width and height of your blocks.</p>
-
-<form>		
-		<textarea cols="100" rows="10">
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
-		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
-		
-		<script type='text/javascript'>
-
-			BigBlock.SpriteSimple.create({
-				action : function () {						
-					if (this.x + BigBlock.Grid.pix_dim < BigBlock.Grid.width) {
-						this.x += BigBlock.Grid.pix_dim;
-					} else {
-						this.x = 1;
-						if (this.y + BigBlock.Grid.pix_dim < BigBlock.Grid.height) {
-							this.y += BigBlock.Grid.pix_dim;
-						} else {
-							this.y = 1;
-						}	
-					}
-				}
-			});
-									
-		</script>
-		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
-		
-	</body>
-	
-</html>		
-		</textarea>
-	
-</form>
-
-<p><a href="../demos/motion001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-
-</div>
-
-
-<div class="example">
-
-<a name="Events_blocks"><h3 class="example">Events: blocks</h3></a>
-
-<p>Each SpriteSimple can accept an input_action that is run on a click or touch event.</p>
-
-<form>		
-		<textarea cols="100" rows="10">
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
-		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<li class="prop"><span class="code_param">render_static</span> <span class="code_data_type">[ boolean ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Set to "true" for blocks that will never move, change color or accept events. The RenderManager will only render these blocks once. This parameter is important for rendering performance and should always be set to "true" on static blocks. However, if a block needs to accept events, it must be set to "false".</li>
 				
-		<script type='text/javascript'>
-
-			BigBlock.SpriteSimple.create({
-				input_action: function () {
-					alert("Hello, I'm the first block!");
-				}
-			});
-			
-			BigBlock.SpriteSimple.create({
-				x: 16,
-				input_action: function () {
-					alert("Hello, I'm the second block!");
-				}
-			});
-			
-			BigBlock.SpriteSimple.create({
-				x: 32,
-				input_action: function () {
-					alert("Hello, I'm the third block!");
-				}
-			});						
-			
-			BigBlock.ready = function () {
-				BigBlock.Timer.play({
-					tap_timeout: false,
-					before_play: function () {alert("Click or tap the blocks.")}
-				});
-			}
-									
-		</script>
+		<li class="prop"><span class="code_param">action_render</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: function () {}</li>
+		<li class="description">description: Pass a function to run every screen render.</li>		
 		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
-		
-	</body>
-	
-</html>	
+		<li class="prop"><span class="code_param">action_input</span> <span class="code_data_type">[ function ]</span>
+		<li class="description">default: false</li>
+		<li class="description">description: Pass a function to run when the block is clicked or touched. BlockSmall.render_static must be "false".</li>
 
-		</textarea>
-	
-</form>
-
-<p><a href="../demos/events_blocks001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-
-</div>
-
-
-<div class="example">
-
-<a name="Events_screen"><h3 class="example">Events: screen</h3></a>
-
-<p>The framework can add events to the viewport itself making it easy to trigger functions as the user clicks or taps the screen. Supported events include clicks, touches and controller input from the Wii. See the <a href="#ScreenEvent">ScreenEvent</a> class for a full list of supported events.</p>
-
-<p>Screen events are added using the following line:</p>
-
-<pre>BigBlock.ScreenEvent.create(options);</pre>
-
-<p>Supply a list of key/value pairs to configure specific events. See the examples below:</p>
-
-<p><span class="title_demo">mouseup</span> - click inside the viewport</p>
-
-<form>		
-		<textarea cols="100" rows="10">
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
-		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<li class="prop"><span class="code_param">after_destroy</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Pass a function to execute after this object is destroyed.</li>
 				
-		<script type='text/javascript'>
+		<li class="method">destroy()</li>
+		<li class="description">description: Removes the object from BigBlock.Blocks.</li>
+		<li class="description">example: BigBlock.Blocks.alias.destroy();</li>		
 
-			BigBlock.CharPresets = BigBlock.CharPresets.install();
-				
-			BigBlock.WordSimple.create({
-				x: 8,
-				y: 8,
-				value: "mouseup - click inside the viewport",
-				font: "bigblock_plain",
-				className: "grey"
-			});	
-				
-			BigBlock.ScreenEvent.create({
-			
-				mouseup : function () {
-					alert('mouse up!');
-				}
-			
-			});
-			
-			BigBlock.ready = function () {
-				BigBlock.Timer.play({
-					tap_timeout: false,
-					document_body_style : {
-						backgroundColor : '#000'
-					},
-					grid_static_styles : {
-						backgroundColor : '#333'
-					}				});
-			}			
-												
-		</script>
-		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
-		
-	</body>
-	
-</html>	
-	
-
-		</textarea>
-	
-</form>
-
-<p><a href="../demos/events_screen001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-
-<p><span class="title_demo">mousedown</span> - click inside the viewport</p>
-
-<form>		
-		<textarea cols="100" rows="10">
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
-		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
-				
-		<script type='text/javascript'>
-
-			BigBlock.CharPresets = BigBlock.CharPresets.install();
-				
-			BigBlock.WordSimple.create({
-				x: 8,
-				y: 8,
-				value: "mousedown - click inside the viewport",
-				font: "bigblock_plain",
-				className: "grey"
-			});	
-				
-			BigBlock.ScreenEvent.create({
-			
-				mouseup : function () {
-					alert('mouse down!');
-				}
-			
-			});
-			
-			BigBlock.ready = function () {
-				BigBlock.Timer.play({
-					tap_timeout: false,
-					document_body_style : {
-						backgroundColor : '#000'
-					},
-					grid_static_styles : {
-						backgroundColor : '#333'
-					}				});
-			}			
-												
-		</script>
-		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
-		
-	</body>
-	
-</html>	
-	
-
-		</textarea>
-	
-</form>
-
-<p><a href="../demos/events_screen002.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-
-<p><span class="title_demo">mousemove</span> - move mouse inside the viewport; as the event is triggered, blocks are created in random locations.</p>
-
-<form>		
-		<textarea cols="100" rows="10">
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
-		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
-				
-		<script type='text/javascript'>
-
-			BigBlock.CharPresets = BigBlock.CharPresets.install();
-				
-			BigBlock.WordSimple.create({
-				x: 8,
-				y: 8,
-				value: "mousemove - move mouse inside viewport",
-				font: "bigblock_plain",
-				className: "grey"
-			});	
-				
-			BigBlock.ScreenEvent.create({
-			
-				mousemove : function () {
-					BigBlock.SpriteSimple.create({
-						x: Math.getRamdomNumber(0, BigBlock.Grid.width),
-						y: Math.getRamdomNumber(0, BigBlock.Grid.height)
-					});
-				}
-			
-			});
-			
-			BigBlock.ready = function () {
-				BigBlock.Timer.play({
-					tap_timeout: false,
-					document_body_style : {
-						backgroundColor : '#000'
-					},
-					grid_static_styles : {
-						backgroundColor : '#333'
-					}
-				});
-			}			
-												
-		</script>
-		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
-		
-	</body>
-	
-</html>
-	
-
-		</textarea>
-	
-</form>
-
-<p><a href="../demos/events_screen003.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-
-<p><span class="title_demo">touchstart</span> - touch inside the viewport; NOTE: this demo will only trigger the event on a device with a touchscreen like an iPhone or iPad.</p>
-
-<form>		
-		<textarea cols="100" rows="10">
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
-		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
-				
-		<script type='text/javascript'>
-
-			BigBlock.CharPresets = BigBlock.CharPresets.install();
-				
-			BigBlock.WordSimple.create({
-				x: 8,
-				y: 8,
-				value: "touchstart - touch inside the viewport",
-				font: "bigblock_plain",
-				className: "grey"
-			});	
-				
-			BigBlock.ScreenEvent.create({
-			
-				touchstart : function () {
-					alert("You touched me!");
-				}
-			
-			});
-			
-			BigBlock.ready = function () {
-				BigBlock.Timer.play({
-					tap_timeout: false,
-					document_body_style : {
-						backgroundColor : '#000'
-					},
-					grid_static_styles : {
-						backgroundColor : '#333'
-					}
-				});
-			}			
-												
-		</script>
-		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
-		
-	</body>
-	
-</html>
-	
-
-		</textarea>
-	
-</form>
-
-<p><a href="../demos/events_screen004.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-
-</div>
-
-
-<div class="example">
-
-<a name="Events_frames"><h3 class="example">Events: frames</h3></a>
-
-<p>By default, the following events call a frameAdvance method and pass the event plus the x, y coordinate of the event:
-<ul>
-	<li>mouseup</li>
-	<li>touchstart</li>
-	<li>click (for Wii)</li>
-</ul>
-</p>
-
-<p>The default frameAdvance method simply increments a BigBlock.currentFrame property. However, if you pass your own frameAdvance function, you can organize your Big Block objects into frames.</p>
-
-<p>See below for an example. NOTE: The example will work for desktop, mobile and the Opera browser on the Wii.</p>
-
-<form>		
-		<textarea cols="100" rows="10">
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
-		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
-				
-		<script type='text/javascript'>
-
-			BigBlock.CharPresets = BigBlock.CharPresets.install();
-				
-			BigBlock.WordSimple.create({
-				x: 8,
-				y: 8,
-				value: "frames - click or tap to advance",
-				font: "bigblock_plain",
-				className: "grey"
-			});	
-			
-			BigBlock.current_frame = 1;
-				
-			BigBlock.ScreenEvent.create({
-								
-				frameAdvance : function (event, x, y) {
-
-					if (BigBlock.inputBlock === true) { // check to block user input
-						return false;
-					}
-					
-					if (typeof(event.touches) != 'undefined') {
-						var touch = event.touches[0];
-					}
-											
-					var x_rel = x - BigBlock.GridActive.x;
-					var y_rel = y - BigBlock.GridActive.y;
-					
-					
-					BigBlock.RenderMgr.clearScene();
-										
-					switch (BigBlock.current_frame) {
-					
-						case 1:
-													
-							BigBlock.SpriteSimple.create({
-								x: BigBlock.Grid.width/2,
-								y: BigBlock.Grid.height/2 - 32							
-							});
+		<li class="prop"><a href="#top">back to top</a></li>	
 							
-						break;
-						
-						case 2:
-													
-							BigBlock.SpriteSimple.create({
-								x: BigBlock.Grid.width/2,
-								y: BigBlock.Grid.height/2 - 32,
-								className: "red"						
-							});							
-							
-						break;
-						
-						case 3:
-													
-							BigBlock.SpriteSimple.create({
-								x: BigBlock.Grid.width/2,
-								y: BigBlock.Grid.height/2 - 32,
-								className: "green"											
-							});							
-							
-						break;
-						
-						case 4:
-													
-							BigBlock.SpriteSimple.create({
-								x: BigBlock.Grid.width/2,
-								y: BigBlock.Grid.height/2 - 32,
-								className: "blue"										
-							});							
-							
-						break;
-						
-						default:
-
-							BigBlock.SpriteSimple.create({
-								x: BigBlock.Grid.width/2,
-								y: BigBlock.Grid.height/2 - 32							
-							});
-														
-							BigBlock.current_frame = 1;
-						break;																														
-						
-					}
-
-					BigBlock.GridStatic.setStyle(
-						'backgroundColor', '#333'
-					);
-
-					BigBlock.WordSimple.create({
-						x: BigBlock.Grid.width/2 - 28,
-						y: BigBlock.Grid.height/2,
-						value: "frame " + BigBlock.current_frame,
-						font: "bigblock_bold",
-						className: "grey_light",
-						glass: true
-					});	
-												
-					BigBlock.WordSimple.create({
-						x: BigBlock.Grid.width/2 - 28,
-						y: BigBlock.Grid.height/2 + 32,
-						value: "click x: " + x_rel,
-						font: "bigblock_plain",
-						className: "grey"
-					});
-					
-					BigBlock.WordSimple.create({
-						x: BigBlock.Grid.width/2 - 28,
-						y: BigBlock.Grid.height/2 + 48,
-						value: "click y: " + y_rel,
-						font: "bigblock_plain",
-						className: "grey"
-					});
-																
-					BigBlock.current_frame++;
-					
-				}
-			
-			});
-			
-			BigBlock.ready = function () {
-				BigBlock.Timer.play({
-					tap_timeout: false,
-					document_body_style : {
-						backgroundColor : '#000'
-					},
-					grid_static_styles : {
-						backgroundColor : '#333'
-					}				});
-			}			
-												
-		</script>
-		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
-		
-	</body>
+	</ul>
 	
-</html>	
-
-	
-
-		</textarea>
-		
-	</form>
-		
-	<p><a href="../demos/events_frames001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-	<p>You notice BigBlock.RenderMgr.clearScene() is called each time the user clicks inside the viewport. This RenderMgr method clears all blocks from the viewport and destroys all the objects in BigBlock.Sprites.</p>
-
 </div>
 
 
-<div class="example">
+<div class="class">
+	<h3 class="class"><a name="BlockBig">BlockBig</a></h3>
 
-<a name="Fonts_characters"><h3 class="example">Fonts: characters</h3></a>
+	<ul class="class">
+		<li class="method">create(params)</li>
+		<li class="description">description: Creates a one color, mulit-block object based on width and height.</li>
+		<li class="description">params: A set of key/value pairs to configure the block. All parameters are optional.</li>	
 
-<p>The Big Block framework includes three text rendering classes called Char, CharPresets and Word. Char is used to render single characters defined in CharPresets. CharPresets is not automatically instantiated when Big Block loads because not all Big Block pages include text. When you want to render text, you must include the following line:</p>
+		<li class="prop"><span class="code_param">width</span> <span class="code_data_type">[ number ]</span></li>
+		<li class="description">default: Math.pow(BigBlock.Grid.blk_dim, 2) (ie. twice the Grid's block dimensions)</li>
+		<li class="description">description: The object's width in pixels.</li>
 
-<p class="code_ex">BigBlock.CharPresets = BigBlock.CharPresets.install();</p>
+		<li class="prop"><span class="code_param">height</span> <span class="code_data_type">[ number ]</span></li>
+		<li class="description">default: Math.pow(BigBlock.Grid.blk_dim, 2) (ie. twice the Grid's block dimensions)</li>
+		<li class="description">description: The object's height in pixels.</li>
 
-<form>		
-		<textarea cols="100" rows="10">
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
+		<li class="prop"><span class="code_param">alias</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">default: BigBlock.getUniqueId()</li>
+		<li class="description">description: A unique identifier. Use an object's alias to reference the object in BigBlock.Blocks and call methods. All alias's in the scene must be unique.</li>
+		<li class="description">example: BigBlock.Blocks.alias.destroy();</li>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
-		
-		<script type='text/javascript'>
-
-			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
+		<li class="prop"><span class="code_param">color</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">default: empty</li>
+		<li class="description">description: Sets the object's color. Can be a single color or set to cycle thru an array of values.</li>
+		<li class="description">example: BigBlock.BlockSmall.create({color: "yellow"});</li>
 			
-			BigBlock.CharSimple.create({
-				x: 0,
-				value: "a",
-				className: "grey_light",
-				glass: true
-			});
-			
-			BigBlock.CharSimple.create({
-				x: 8,
-				value: "b",
-				className: "grey_light",
-				glass: true
-			});	
-			
-			BigBlock.CharSimple.create({
-				x: 16,
-				value: "c",
-				className: "grey_light",
-				glass: true
-			});						
-
-			BigBlock.CharSimple.create({
-				x: 24,
-				value: "d",
-				className: "grey_light",
-				glass: true
-			});
-
-			BigBlock.CharSimple.create({
-				x: 32,
-				value: "e",
-				className: "grey_light",
-				glass: false
-			});
-
-			BigBlock.CharSimple.create({
-				x: 40,
-				value: "f",
-				className: "grey_light",
-				glass: false
-			});
-
-			BigBlock.CharSimple.create({
-				x: 48,
-				value: "g",
-				className: "grey_light",
-				glass: false
-			});
-																					
-		</script>
+		<li class="prop"><span class="code_param">x</span> <span class="code_data_type">[ number ]</span></li>
+		<li class="description">default: 0</li>
+		<li class="description">description: Horizontal location relative to the Grid location. Use with BigBlock.getTransform(vel, angle, x, y) to animate the objects in the viewport.</li>
 		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
-		
-	</body>
-	
-</html>	
-			
-		</textarea>
-	
-</form>			
+		<li class="prop"><span class="code_param">y</span> <span class="code_data_type">[ number ]</span></li>	
+		<li class="description">default: 0</li>
+		<li class="description">description: Vertical location relative to the Grid location. Use with BigBlock.getTransform(vel, angle, x, y) to animate the objects in the viewport.</li>		
 
-<p><a href="../demos/fonts_characters001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-			
-<p>The "value" parameter is the character you want to render. The "className" defines the color. "Glass" toggles a glass effect. The letters "a b c d" in the example above use the glass effect.</p>
+		<li class="prop"><span class="code_param">vel</span> <span class="code_data_type">[ number ]</span></li>	
+		<li class="description">default: 0</li>
+		<li class="description">description: Set an animation velocity. Use with BigBlock.getTransform(vel, angle, x, y) to animate the objects in the viewport.</li>
 
-</div>
-
-
-
-<div class="example">
-
-<a name="Fonts_words"><h3 class="example">Fonts: words</h3></a>
-
-<p>Use the Word class to render words. Just pass the word as the "value" parameter.</p>
-
-<p>Two fonts are provided in the CharPresets class, bigblock_bold and bigblock_plain. You can provide your own fonts by overwriting the CharPresets class.</p>
-
-<p>You can create hyperlinks by passing in a "url" parameter. See the example below:</p>
-
-<form>		
-		<textarea cols="100" rows="10">
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
-		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
-		
-		<script type='text/javascript'>
-
-			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
-			
-			BigBlock.WordSimple.create({
-				word_id: "word1",
-				x: 104,
-				y: 0,
-				value: "big block bold",
-				className: "grey_light",
-				glass: true,
-				font: "bigblock_bold"
-			});
-			
-			BigBlock.WordSimple.create({
-				word_id: "word1",
-				x: 104,
-				y: 32,
-				value: "big block plain",
-				className: "grey_light",
-				glass: true,
-				font: "bigblock_plain"
-			});
-			
-			BigBlock.WordSimple.create({
-				word_id: "word1",
-				x: 104,
-				y: 64,
-				value: "big block link: click me!",
-				className: "grey_light",
-				glass: true,
-				font: "bigblock_bold",
-				url: "http://www.ittybitty8bit.com",
-				link_color: "#666"
-			});			
-																					
-		</script>
-		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
-		
-	</body>
-	
-</html>	
-
-		</textarea>
-	
-</form>	
-
-<p><a href="../demos/fonts_words001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-
-</div>
-
-
-
-<div class="example">
-
-<a name="Particles_basic"><h3 class="example">Particles: basic</h3></a>
-
-<p>Big Block has two particle generator classes called Particle and Emitter. The easiest way to create particles is to use the following line:</p>
-
-<p class="code_ex">BigBlock.Emitter.create();</p>
-
-<form>		
-		<textarea cols="100" rows="10">
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
-		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
-		
-		<script type='text/javascript'>
-
-			BigBlock.Emitter.create();
-			
-			BigBlock.ready = function () {
-				BigBlock.Timer.play({
-					tap_timeout: false
-				});
+		<li class="prop"><span class="code_param">angle</span> <span class="code_data_type">[ number ]</span></li>	
+		<li class="description">default: 0</li>
+		<li class="description">description: Set an animation angle. Use with BigBlock.getTransform(vel, angle, x, y) to animate the objects in the viewport.</li>
 				
-			}
-									
-		</script>
+		<li class="prop"><span class="code_param">render</span> <span class="code_data_type">[ number ]</span></li>
+		<li class="description">default: -1</li>
+		<li class="description">description: This value always decrements. If it reaches zero, the Block is ignored. Set to positive number to eventually hide this object. Leave it set to -1 to never hide the object.</li>		
 		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
+		<li class="prop"><span class="code_param">life</span> <span class="code_data_type">[ number ]</span></li>
+		<li class="description">default: 0</li>
+		<li class="description">description: This value always decrements. If it reaches zero, the Block is destroyed. Set to positive number to eventually destroy this object. Leave it set to 0 to never destroy the object.</li>		
 		
-	</body>
-	
-</html>	
-
-		</textarea>
-	
-</form>	
-
-<p><a href="../demos/particles_basic.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-
-</div>
-
-
-
-<div class="example">
-	
-<a name="Particles_options"><h3 class="example">Particles: options</h3></a>
-
-<p>Particle emitters are highly configurable. You can find a full list of <a href="#Emitter">options</a> below.</p>
-
-<p>The following example combines options to create a water sprinkler effect. Play with the various options to create your own effects.</p>
-
-<form>		
-		<textarea cols="100" rows="10">
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
-		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
-		
-		<script type='text/javascript'>
-
-			BigBlock.Emitter.create({
-				p_init_pos_spread_x: 10,
-				p_life_offset_x: 1,
-				p_angle_spread: 10,
-				p_velocity: 4,
-				p_gravity: 1,
-				className: "yellow"				
-			});
-						
-			BigBlock.ready = function () {
-				BigBlock.Timer.play({
-					tap_timeout: false
-				});
-			}
-									
-		</script>
-		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
-		
-	</body>
-	
-</html>		
-
-		</textarea>
-	
-</form>	
-
-<p><a href="../demos/particles_params.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-
-</div>
-
-
-<div class="example">
-
-<a name="Particles_methods"><h3 class="example">Particles: methods</h3></a>
-
-<p>All particle emitters have start() and stop() methods. The following example create to words, "start" and "stop", and attaches functions to start and stop the emitter.</p>
-
-<form>		
-		<textarea cols="100" rows="10">
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
-		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
-		
-		<script type='text/javascript'>
-
-			BigBlock.Emitter.create({
-				alias: "sprinkler",
-				p_init_pos_spread_x: 10,
-				p_life_offset_x: 1,
-				p_angle_spread: 10,
-				p_velocity: 4,
-				p_gravity: 1,
-				className: "yellow"				
-			});
-			
-			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
-
-			BigBlock.WordSimple.create({
-				word_id: "start",
-				x: 0,
-				y: 0,
-				value: "start",
-				className: "grey_light",
-				glass: true,
-				font: "bigblock_bold",
-				url: function () {
-					BigBlock.Sprites[BigBlock.getObjIdByAlias('sprinkler')].start();
-				},
-				link_color: "#666"
-			});
+		<li class="prop"><span class="code_param">render_static</span> <span class="code_data_type">[ boolean ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Set to "true" for blocks that will never move, change color or accept events. The RenderManager will only render these blocks once. This parameter is important for rendering performance and should always be set to "true" on static blocks. However, if a block needs to accept events, it must be set to "false".</li>
 				
-			BigBlock.WordSimple.create({
-				word_id: "stop",
-				x: 0,
-				y: 32,
-				value: "stop",
-				className: "grey_light",
-				glass: true,
-				font: "bigblock_bold",
-				url: function () {
-					BigBlock.Sprites[BigBlock.getObjIdByAlias('sprinkler')].stop();
-				},
-				link_color: "#666"
-			});				
-			
-									
-		</script>
+		<li class="prop"><span class="code_param">action_render</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: function () {}</li>
+		<li class="description">description: Pass a function to run every screen render.</li>		
 		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
-		
-	</body>
+		<li class="prop"><span class="code_param">action_input</span> <span class="code_data_type">[ function ]</span>
+		<li class="description">default: false</li>
+		<li class="description">description: Pass a function to run when the block is clicked or touched. BlockSmall.render_static must be "false".</li>
+
+		<li class="prop"><span class="code_param">after_destroy</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Pass a function to execute after this object is destroyed.</li>
+				
+		<li class="method">destroy()</li>
+		<li class="description">description: Removes the object from BigBlock.Blocks.</li>
+		<li class="description">example: BigBlock.Blocks.alias.destroy();</li>		
+
+		<li class="prop"><a href="#top">back to top</a></li>	
+							
+	</ul>
 	
-</html>		
-
-		</textarea>
-	
-</form>
-
-<p><a href="../demos/particles_methods.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-
 </div>
 
 
-<div class="example">
+<div class="class">
+	<a name="BlockAnim"><h3 class="class">BlockAnim</h3></a>
 
-<a name="Particles_library"><h3 class="example">Particles: library</h3></a>
+	<ul class="class">
+		<li class="method">create(params)</li>
+		<li class="description">description: Creates an object made of multiple blocks. BlockAnim objects can be animated via their "anim" property.</li>
+		<li class="description">params: A set of key/value pairs to configure the block. All parameters are optional.</li>	
 
-<p>The framework has some prebuilt configurations for Particle emitters in the EmitterPresets class. These presets do not load automatically and must be installed with the following line:</p>
+		<li class="prop"><span class="code_param">alias</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">default: BigBlock.getUniqueId()</li>
+		<li class="description">description: A unique identifier. Use an object's alias to reference the object in BigBlock.Blocks and call methods. All alias's in the scene must be unique.</li>
+		<li class="description">example: BigBlock.Blocks.alias.destroy();</li>
 
-<p class="code_ex">BigBlock.EmitterPresets.install();</p>
-
-The following exmaple uses the 'fire' preset. You'll notice the color palette must be passed to the Color class. There's more on the Color class below.
-
-<form>		
-		<textarea cols="100" rows="10">
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
+		<li class="prop"><span class="code_param">x</span> <span class="code_data_type">[ integer ]</span></li>
+		<li class="description">default: 0</li>
+		<li class="description">description: Horizontal location relative to the Grid location.</li>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<li class="prop"><span class="code_param">y</span> <span class="code_data_type">[ integer ]</span></li>	
+		<li class="description">default: 0</li>
+		<li class="description">description: Vertical location relative to the Grid location.</li>			
+
+		<li class="prop"><span class="code_param">width</span> <span class="code_data_type">[ integer ]</span></li>
+		<li class="description">default: undefined</li>
+		<li class="description">description: The object's width in pixels. Usually set when this block carries an "action_input".</li>
 		
-		<script type='text/javascript'>
-			
-			fire = "rgb(255, 254, 250);rgb(255, 254, 250);rgb(255, 254, 250);rgb(254, 253, 249);rgb(254, 253, 248);rgb(254, 254, 246);rgb(255, 252, 245);rgb(255, 252, 243);rgb(255, 252, 243);rgb(254, 252, 239);rgb(255, 251, 239);rgb(254, 251, 236);rgb(255, 250, 234);rgb(255, 249, 233);rgb(255, 250, 230);rgb(255, 249, 231);rgb(255, 249, 227);rgb(254, 248, 226);rgb(253, 247, 221);rgb(255, 246, 219);rgb(255, 246, 217);rgb(255, 246, 215);rgb(255, 244, 214);rgb(255, 243, 209);rgb(255, 243, 209);rgb(255, 242, 207);rgb(255, 241, 202);rgb(255, 242, 200);rgb(254, 241, 196);rgb(254, 240, 193);rgb(255, 239, 195);rgb(255, 237, 187);rgb(255, 238, 186);rgb(254, 237, 185);rgb(254, 237, 181);rgb(255, 236, 177);rgb(255, 233, 173);rgb(255, 231, 169);rgb(254, 229, 165);rgb(255, 228, 161);rgb(255, 226, 158);rgb(253, 223, 153);rgb(253, 220, 149);rgb(255, 217, 146);rgb(255, 214, 140);rgb(255, 211, 136);rgb(255, 209, 132);rgb(254, 207, 129);rgb(254, 203, 124);rgb(253, 200, 120);rgb(255, 198, 117);rgb(255, 194, 113);rgb(255, 191, 109);rgb(254, 188, 104);rgb(255, 185, 100);rgb(255, 182, 95);rgb(255, 179, 93);rgb(252, 176, 88);rgb(254, 173, 84);rgb(255, 170, 80);rgb(255, 166, 76);rgb(255, 161, 73);rgb(254, 160, 70);rgb(255, 155, 67);rgb(254, 153, 63);rgb(255, 149, 63);rgb(255, 145, 56);rgb(255, 141, 53);rgb(254, 140, 51);rgb(255, 136, 50);rgb(254, 133, 44);rgb(255, 129, 44);rgb(255, 126, 42);rgb(253, 123, 37);rgb(254, 120, 35);rgb(255, 116, 33);rgb(255, 113, 31);rgb(254, 109, 28);rgb(255, 107, 27);rgb(255, 102, 24);rgb(254, 101, 23);rgb(254, 97, 20);rgb(254, 94, 18);rgb(255, 91, 19);rgb(255, 88, 17);rgb(255, 84, 14);rgb(255, 82, 13);rgb(255, 78, 11);rgb(255, 76, 10);rgb(255, 73, 8);rgb(254, 70, 8);rgb(254, 68, 7);rgb(255, 65, 7);rgb(255, 62, 5);rgb(254, 59, 5);rgb(255, 55, 3);rgb(255, 54, 2);rgb(255, 51, 1);rgb(254, 48, 0);rgb(254, 45, 4);rgb(255, 42, 0);rgb(255, 40, 1);rgb(255, 39, 0);rgb(255, 35, 0);rgb(254, 34, 0);rgb(255, 32, 0);rgb(255, 30, 0);rgb(255, 27, 0);rgb(255, 25, 1);rgb(255, 23, 0);rgb(254, 22, 0);rgb(255, 20, 1);rgb(255, 18, 0);rgb(255, 15, 0);rgb(254, 14, 1);rgb(254, 12, 0);rgb(254, 10, 0);rgb(255, 9, 0);rgb(255, 8, 1);rgb(255, 6, 0);rgb(254, 5, 0);rgb(255, 3, 0);rgb(255, 3, 0);rgb(255, 1, 1);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(254, 0, 0);rgb(253, 0, 2);rgb(253, 0, 2);rgb(250, 0, 1);rgb(248, 0, 0);rgb(248, 0, 0);rgb(244, 0, 0);rgb(244, 0, 0);rgb(242, 0, 0);rgb(240, 0, 1);rgb(238, 0, 0);rgb(238, 0, 0);rgb(234, 0, 0);rgb(234, 0, 1);rgb(232, 0, 0);rgb(229, 1, 0);rgb(226, 0, 1);rgb(225, 1, 1);rgb(224, 0, 0);rgb(220, 0, 0);rgb(218, 0, 1);rgb(216, 0, 1);rgb(214, 0, 0);rgb(212, 0, 1);rgb(208, 0, 0);rgb(206, 0, 0);rgb(204, 0, 1);rgb(203, 1, 1);rgb(198, 0, 1);rgb(196, 0, 2);rgb(194, 0, 0);rgb(192, 0, 0);rgb(188, 0, 0);rgb(186, 0, 1);rgb(183, 1, 0);rgb(183, 0, 2);rgb(176, 0, 0);rgb(176, 0, 0);rgb(172, 0, 0);rgb(170, 0, 0);rgb(166, 0, 0);rgb(164, 0, 0);rgb(160, 0, 0);rgb(159, 0, 0);rgb(154, 0, 0);rgb(153, 1, 0);rgb(149, 1, 1);rgb(146, 0, 0);rgb(143, 1, 0);rgb(140, 0, 1);rgb(136, 0, 0);rgb(134, 0, 0);rgb(131, 1, 1);rgb(130, 0, 0);rgb(126, 1, 0);rgb(124, 0, 0);rgb(120, 0, 1);rgb(116, 0, 1);rgb(114, 0, 0);rgb(112, 0, 0);rgb(109, 1, 1);rgb(106, 0, 0);rgb(103, 0, 1);rgb(100, 0, 2);rgb(96, 0, 1);rgb(92, 1, 0);rgb(90, 0, 0);rgb(88, 0, 0);rgb(84, 0, 0);rgb(81, 1, 0);rgb(80, 0, 0);rgb(78, 0, 0);rgb(72, 0, 1);rgb(72, 0, 3);rgb(70, 2, 3);rgb(68, 0, 1);rgb(64, 0, 0);rgb(61, 0, 0);rgb(60, 0, 0);rgb(56, 0, 0);rgb(54, 0, 0);rgb(50, 0, 1);rgb(50, 2, 2);rgb(46, 0, 0);rgb(44, 0, 1);rgb(40, 0, 0);rgb(40, 0, 0);rgb(38, 0, 0);rgb(35, 1, 0);rgb(32, 0, 1);rgb(30, 0, 0);rgb(28, 0, 1);rgb(26, 0, 1);rgb(24, 0, 0);rgb(24, 0, 0);rgb(20, 0, 1);rgb(18, 0, 0);rgb(16, 0, 0);rgb(14, 0, 0);rgb(14, 0, 0);rgb(10, 0, 0);rgb(10, 0, 0);rgb(9, 1, 0);rgb(6, 0, 0);rgb(5, 1, 0);rgb(4, 0, 0);rgb(1, 0, 0);rgb(2, 0, 1)";
-			
-			var my_palette = {'classes' : [				
-				{name: 'fire',val: fire.split(";")}
-			]};
-						
-			BigBlock.Color.add(my_palette);
+		<li class="prop"><span class="code_param">height</span> <span class="code_data_type">[ integer ]</span></li>	
+		<li class="description">default: undefined</li>
+		<li class="description">description: The object's height in pixels. Usually set when this block carries an "action_input".</li>	
+				
+		<li class="prop"><span class="code_param">life</span> <span class="code_data_type">[ integer ]</span></li>
+		<li class="description">default: 0</li>
+		<li class="description">description: The value decrements. Set to a positive number to eventually destroy this object.</li>		
+
+		<li class="prop"><span class="code_param">after_destroy</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Pass a function to execute after this object is destroyed.</li>		
+		
+		<li class="prop"><span class="code_param">render_static</span> <span class="code_data_type">[ boolean ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Set to "true" for blocks that will never move, change color or accept events. The RenderManager will only render these blocks once. This parameter is important for rendering performance and should always be set to "true" on static blocks. However, if a block needs to accept events, it must be set to "false".</li>
+				
+		<li class="prop"><span class="code_param">action_render</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Pass a function to run every screen render.</li>		
+		
+		<li class="prop"><span class="code_param">action_input</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Pass a function to run when the block is clicked or touched. SpriteSimple.render_static must be "false". Width and Height must also be defined and greater than 0.</li>
+
+		<li class="prop"><span class="code_param">anim</span> <span class="code_data_type">[ array ]</span></li>
+		<li class="description">default:
+		<pre>
+[
+	{'frm':
+		{
+			'duration' : 1,
+			'pix' : [
+						{'c':'white0','i':0}
+					],
+			'label' : 'myLabel'	
+		}
+	}		
+];
+		</pre></li>
+		<li class="description">description: An array that describes all the frames and blocks within those frames. Frames can also have 'labels' that can be passed to goToAndPlay(arg) and goToAndStop(arg).</li>
+
+		<li class="prop"><span class="code_param">anim_state</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">default: 'stop'</li>
+		<li class="description">possible values: 'stop', 'play'</li>
+		<li class="description">description: The animation's initial state.</li>
+		
+		<li class="prop"><span class="code_param">anim_loop</span> <span class="code_data_type">[ boolean ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Set to true to loop through the frames described in the anim property.</li>		
+
+		<li class="method">goToAndPlay(arg)</li>
+		<li class="description">description: Go to a frame in BlockAnim.anim and play the animation.</li>
+		<li class="description">possible values for arg: A frame index, a frame label, 'nextFrame', 'lastFrame'</li>
+		<li class="description">example: BigBlock.Blocks.alias.goToAndPlay();</li>
+		
+		<li class="method">goToAndStop(arg)</li>
+		<li class="description">description: Go to a frame in BlockAnim.anim and stop the animation.</li>
+		<li class="description">possible values for arg: A frame index, a frame label, 'nextFrame', 'lastFrame'</li>
+		<li class="description">example: BigBlock.Blocks.alias.goToAndStop();</li>
+		
+		<li class="method">stop()</li>
+		<li class="description">description: Stops cycling through frames in anim property. Also, stops any functions defined in BlockAnim.action_render.</li>
+		<li class="description">example: BigBlock.Blocks.alias.stop();</li>
+
+		<li class="method">play()</li>
+		<li class="description">description: Cycles through frames in anim property. Also, executes any functions defined in BlockAnim.action_render.</li>
+		<li class="description">example: BigBlock.Blocks.alias.play();</li>
+				
+		<li class="method">destroy(function)</li>
+		<li class="description">description: Removes the object from BigBlock.Blocks.</li>
+		<li class="description">function: A function to run after object is destroyed.</li>
+		<li class="description">example: BigBlock.Blocks.alias.destroy();</li>	
 					
-			//
-
-			BigBlock.EmitterPresets = BigBlock.EmitterPresets.install();
-			
-			BigBlock.Emitter.create(
-				BigBlock.EmitterPresets.getPreset('fire')
-			);			
-												
-			//
-
-		</script>
-		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
-		
-	</body>
+	</ul>
 	
-</html>	
-
-		</textarea>
-	
-</form>
-
-<p><a href="../demos/particles_library.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-
 </div>
 
 
 
-<div class="example">
+<div class="class">
+	<h3 class="class"><a name="Button">Button</a></h3>
 
-<a name="Color"><h3 class="example">Color</h3></a>
+	<ul class="class">
+		<li class="method">create(params)</li>
+		<li class="description">description: Creates a one color, mulit-block object based on width and height.</li>
+		<li class="description">params: A set of key/value pairs to configure the block.</li>	
 
-<p>The Color class loads up predefined colors during Timer.play() and can accept custom palettes via the Color.add() method. There are several predefined colors as well as predefined gradients. View the <a href="#Color">Color</a> class below for a full list.</p>
+		<li class="prop"><span class="code_param">width</span> <span class="code_data_type">[ number ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: The object's width in pixels.</li>
 
-<p>All color values are converted to CSS rules and should be organized by class name. To add custom color palettes, the parameter passed to the Color.add() method should be a JSON object containing all the palettes needed for the page:</p>
+		<li class="prop"><span class="code_param">height</span> <span class="code_data_type">[ number ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: The object's height in pixels.</li>
 
-<pre>
+		<li class="prop"><span class="code_param">alias</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">default: BigBlock.getUniqueId()</li>
+		<li class="description">description: A unique identifier. Use an object's alias to reference the object in BigBlock.Blocks and call methods. All alias's in the scene must be unique.</li>
+		<li class="description">example: BigBlock.Blocks.alias.destroy();</li>
+		
+		<li class="prop"><span class="code_param">color</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">default: empty</li>
+		<li class="description">description: Sets the object's color. Can be a single color or set to cycle thru an array of values.</li>
+		<li class="description">example: BigBlock.BlockSmall.create({color: "yellow"});</li>
+			
+		<li class="prop"><span class="code_param">x</span> <span class="code_data_type">[ number ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: Horizontal location relative to the Grid location. Use with BigBlock.getTransform(vel, angle, x, y) to animate the objects in the viewport.</li>
+		
+		<li class="prop"><span class="code_param">y</span> <span class="code_data_type">[ number ]</span></li>	
+		<li class="description">required: true</li>
+		<li class="description">description: Vertical location relative to the Grid location. Use with BigBlock.getTransform(vel, angle, x, y) to animate the objects in the viewport.</li>				
+		
+		<li class="prop"><span class="code_param">action_input</span> <span class="code_data_type">[ function ]</span>
+		<li class="description">default: false</li>
+		<li class="description">description: Pass a function to run when the block is clicked or touched. BlockSmall.render_static must be "false".</li>
+				
+		<li class="method">destroy()</li><!-- use as BigBlock.Button.destroy(alias) -->
+		<li class="description">description: Removes the object from BigBlock.Blocks.</li>
+		<li class="description">example: BigBlock.Blocks.alias.destroy();</li>		
+
+		<li class="prop"><a href="#top">back to top</a></li>	
+							
+	</ul>
+	
+</div>
+
+
+<div class="class">
+	<a name="Color"><h3 class="class">Color</h3></a>
+	<ul class="class">
+		<li class="method">add(json)</li>
+		<li class="description">description: Adds custom colors to the available color classes.</li>
+		<li class="description">json: A json object that describes all the custom classes to be converted to CSS.</li>
+		<li class="description">example: 
+		<pre>
 var my_palette = {'classes' : [				
 	{name: 'palette1',val: ["rgb(191, 192, 194);rgb(0, 0, 0);rgb(153, 153, 153)"]},
 	{name: 'palette2',val: ["rgb(238, 137, 151);rgb(102, 102, 102);rgb(255, 255, 255)"]},
@@ -1250,683 +557,382 @@ var my_palette = {'classes' : [
 ]};
 			
 BigBlock.Color.add(my_palette);
-</pre>
-
-<p>Each color palette is handled as an array of color values. Even if a palette only contains one color, it must be contained in an array in the JSON object. For example if you wanted a custom purple color, you would send the following to the Color class:</p>
-
-<pre>
-var my_palette = {'classes' : [				
-	{name: 'grape',val: ["rgb(139, 43, 163)"]}
-]};
-			
-BigBlock.Color.add(my_palette);
-</pre>
-
-<p>From the example above, if a SpriteSimple needed to use the custom purple color, its className property would be set to "grape".
-
-<p>The following example creates several SpriteSimples and uses all the predefined colors plus some custom colors:</p>
-
-<form>		
-		<textarea cols="100" rows="10">
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
+		</pre>
+		</li>
+		<li class="method">predefined colors:</li>
+		<li class="description">white, black, grey_dark, grey, grey_light, red, magenta, blue, cyan, green, yellow, orange, brown, pink</li>
 		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
+		<li class="method">predefined gradients:</li>
+		<li class="description">white_black</li>
 		
-		<script type='text/javascript'>
-
-			var my_palette = {'classes' : [				
-				{name: 'purple1',val: ["rgb(230, 128, 255)"]},
-				{name: 'purple2',val: ["rgb(193, 107, 214)"]},
-				{name: 'purple3',val: ["rgb(150, 84, 167)"]},
-				{name: 'purple4',val: ["rgb(116, 65, 129)"]},
-				{name: 'purple5',val: ["rgb(83, 46, 92)"]}
-			]};
-			
-			BigBlock.Color.add(my_palette);
-
-			//
-
-			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
-			
-			BigBlock.WordSimple.create({
-				word_id: "word1",
-				x: 0,
-				y: 0,
-				value: "predefined colors:",
-				className: "white",
-				font: "bigblock_plain"
-			});			
-			
-			BigBlock.SpriteSimple.create({
-				x:0,
-				y:16,
-				className: "white"
-			});
-			
-			BigBlock.SpriteSimple.create({
-				x:16,
-				y:16,
-				className: "grey_dark"
-			});
-			
-			BigBlock.SpriteSimple.create({
-				x:32,
-				y:16,
-				className: "grey"
-			});
-			
-			BigBlock.SpriteSimple.create({
-				x:48,
-				y:16,
-				className: "grey_light"
-			});
-			
-			BigBlock.SpriteSimple.create({
-				x:64,
-				y:16,
-				className: "red"
-			});
-			
-			BigBlock.SpriteSimple.create({
-				x:80,
-				y:16,
-				className: "magenta"
-			});
-			
-			BigBlock.SpriteSimple.create({
-				x:96,
-				y:16,
-				className: "blue"
-			});	
-			
-			BigBlock.SpriteSimple.create({
-				x:112,
-				y:16,
-				className: "cyan"
-			});						
-			
-			BigBlock.SpriteSimple.create({
-				x:128,
-				y:16,
-				className: "green"
-			});
-			
-			BigBlock.SpriteSimple.create({
-				x:144,
-				y:16,
-				className: "yellow"
-			});	
-			
-			BigBlock.SpriteSimple.create({
-				x:160,
-				y:16,
-				className: "orange"
-			});	
-			
-			BigBlock.SpriteSimple.create({
-				x:176,
-				y:16,
-				className: "brown"
-			});	
-			
-			BigBlock.SpriteSimple.create({
-				x:192,
-				y:16,
-				className: "pink"
-			});
-			
-			//
-			
-			BigBlock.WordSimple.create({
-				word_id: "word2",
-				x: 0,
-				y: 48,
-				value: "custom colors:",
-				className: "white",
-				font: "bigblock_plain"
-			});			
-			
-			BigBlock.SpriteSimple.create({
-				x:0,
-				y:64,
-				className: "purple1"
-			});	
-			
-			BigBlock.SpriteSimple.create({
-				x:16,
-				y:64,
-				className: "purple2"
-			});	
-			
-			BigBlock.SpriteSimple.create({
-				x:32,
-				y:64,
-				className: "purple3"
-			});	
-			
-			BigBlock.SpriteSimple.create({
-				x:48,
-				y:64,
-				className: "purple4"
-			});	
-			
-			BigBlock.SpriteSimple.create({
-				x:64,
-				y:64,
-				className: "purple5"
-			});																													
-																					
-									
-		</script>
-		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
-		
-	</body>
-	
-</html>		
-
-		</textarea>
-</form>
-
-<p><a href="../demos/color001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-
-</div>
+		<li class="prop"><a href="#top">back to top</a></li>			
+	</ul>
+</div>	
 
 
+<div class="class">
+	<h3 class="class"><a name="Database">Database</a></h3>
 
-<div class="example">
+	<ul class="class">
+		<li class="method">open</li>
+		<li class="description">description: Opens a local MySql Lite database.</li>
+		<li class="description">params: </li>	
 
-<a name="Grid"><h3 class="example">Grid</h3></a>
+		<li class="prop"><span class="code_param">name</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: The name of a local MySql Lite database.</li>
 
-<p>When Timer.play() is called, the method creates three objects that inherit from the Grid class, GridActive, GridStatic and GridText. Before Timer.play() is called, you can change the width, height and pixel dimensions of the parent Grid object. All subsequent child grids will inherit these properties.</p>
-	
-<p>For example, if you wanted to format the viewport for iPad, you would use the following:</p>
-
-<pre>
-	BigBlock.Grid.setProps({
-		pix_dim : 8,
-		width : 1024,
-		height : 768
-	});	
-</pre>
-
-<p>The three main divs that make up the viewport will be 1024 pixels wide and 768 pixels high.</p>
-
-<p>The following example creates an 640 pixel x 480 pixel grid with blocks rendered at 4 pixels x 4 pixels. NOTE: Decreasing the block dimensions greatly increases the setup time of the grids.</p>
-
-<form>		
-		<textarea cols="100" rows="10">
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
-		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
-		
-		<script type='text/javascript'>
-
-			BigBlock.Grid.setProps({
-				pix_dim : 4,
-				width : 480,
-				height : 640
-			});
-	
-			BigBlock.SpriteSimple.create({
-				x: 32,
-				y: 32
-			});	
-			
-			BigBlock.SpriteSimple.create({
-				x: 64,
-				y: 64
-			});	
-			
-			BigBlock.SpriteSimple.create({
-				x: 96,
-				y: 96
-			});						
-	
-			//
-			
-			BigBlock.ready = function () {
-				BigBlock.Timer.play({
-					tap_timeout: false,
-					document_body_style : {
-						backgroundColor : '#000'
-					},
-					grid_static_styles : {
-						backgroundColor : '#333'
-					}
-				});
-			}
-																					
-		</script>
-		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
-		
-	</body>
-	
-</html>	
-
-		</textarea>
-</form>
-
-	<p><a href="../demos/grid001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-	<p>View more info for the <a href="#Grid">Grid</a> class below.</p>
-	
-</div>
-
-
-<div class="example">
-
-<a name="Art_basic"><h3 class="example">Art: basic</h3></a>
-
-<p>Rendering pixel art makes use of the SpriteAdvanced class. Objects created from the SpriteSimple class have one block. SpriteAdvance objects have multiple blocks organized in sets of "frames" that can be cycled to create an animation.</p>
-
-<p>The "anim" property of a SpriteAdvanced object should be formatted as an array of JSON objects like:</p>
-
-<pre>
-my_anim = [
-	{'frm':
-		{
-			'duration' : 1,
-			'pix' : [
-						{'c':'white0','i':0}
-					]	
-		}
-	}		
-];				
-</pre>
-
-<p>Each 'frm' entry represents a frame in the animation. The 'frm.duration' describes how many screen renders the frame should persist. 'frm.pix' is an array of blocks. The objects that make up the 'frm.pix' array describe block's color, 'c', and its position relative to the x and y property of the SpriteAdvanced object.</p> 
-
-<p>Pixel art is typically created in a graphics program then run through a script to autogenerate the 'anim' array. The script I've used is not public but will soon be released.</p>
-
-<p>The example below creates one SpriteAdvanced object and uses the 'action' property to randomly switch between frames of the objects 'anim' property.</p>
-
-<form>		
-		<textarea cols="100" rows="10">
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
-        <title>Big Block Framework - Demo</title>
-		
-		<script src="../rel/bigblock-alpha-.5.5.min.js"></script>
-		
-		<script type='text/javascript'>
-
-			var vince_anim = [
-					{'frm':
-						{
-							'duration' : 1,
-							'pix' : [
-								{'c':'head_rt0','i': (40*0)+5},
-								{'c':'head_rt0','i': (40*0)+6},
-								{'c':'head_rt0','i': (40*0)+7},
-								{'c':'head_rt0','i': (40*1)+5},
-								{'c':'head_rt0','i': (40*1)+6},
-								{'c':'head_rt0','i': (40*1)+7},
-								{'c':'head_rt0','i': (40*1)+8},
-								{'c':'head_rt1','i': (40*2)+5},
-								{'c':'head_rt1','i': (40*2)+6},
-								{'c':'head_rt1','i': (40*2)+7},
-								{'c':'head_rt0','i': (40*2)+8},
-								{'c':'head_rt2','i': (40*3)+5},
-								{'c':'head_rt1','i': (40*3)+6},
-								{'c':'head_rt2','i': (40*3)+7},
-								{'c':'head_rt3','i': (40*3)+8},
-								{'c':'head_rt1','i': (40*4)+5},
-								{'c':'head_rt1','i': (40*4)+6},
-								{'c':'head_rt1','i': (40*4)+7},
-								{'c':'head_rt3','i': (40*4)+8},
-								{'c':'head_rt1','i': (40*5)+6},
-								{'c':'head_rt1','i': (40*5)+7},
-								{'c':'head_rt1','i': (40*5)+8},
-								{'c':'head_rt4','i': (40*6)+5},
-								{'c':'head_rt1','i': (40*6)+6},
-								{'c':'head_rt1','i': (40*6)+7},
-								{'c':'head_rt1','i': (40*6)+8},
-								{'c':'head_rt4','i': (40*6)+9},
-								{'c':'head_rt4','i': (40*7)+4},
-								{'c':'head_rt4','i': (40*7)+5},
-								{'c':'head_rt4','i': (40*7)+6},
-								{'c':'head_rt4','i': (40*7)+7},
-								{'c':'head_rt4','i': (40*7)+8},
-								{'c':'head_rt4','i': (40*7)+9},
-								{'c':'head_rt4','i': (40*7)+10},
-								{'c':'head_rt4','i': (40*8)+4},
-								{'c':'head_rt4','i': (40*8)+5},
-								{'c':'head_rt5','i': (40*8)+6},
-								{'c':'head_rt5','i': (40*8)+7},
-								{'c':'head_rt5','i': (40*8)+8},
-								{'c':'head_rt4','i': (40*8)+9},
-								{'c':'head_rt4','i': (40*8)+10},
-								{'c':'head_rt4','i': (40*9)+4},
-								{'c':'head_rt4','i': (40*9)+5},
-								{'c':'head_rt5','i': (40*9)+6},
-								{'c':'head_rt5','i': (40*9)+7},
-								{'c':'head_rt5','i': (40*9)+8},
-								{'c':'head_rt4','i': (40*9)+9},
-								{'c':'head_rt4','i': (40*9)+10},
-								{'c':'head_rt1','i': (40*10)+4},
-								{'c':'head_rt4','i': (40*10)+5},
-								{'c':'head_rt4','i': (40*10)+6},
-								{'c':'head_rt4','i': (40*10)+7},
-								{'c':'head_rt4','i': (40*10)+8},
-								{'c':'head_rt4','i': (40*10)+9},
-								{'c':'head_rt1','i': (40*10)+10},
-								{'c':'head_rt1','i': (40*11)+4},
-								{'c':'head_rt4','i': (40*11)+5},
-								{'c':'head_rt4','i': (40*11)+6},
-								{'c':'head_rt4','i': (40*11)+7},
-								{'c':'head_rt4','i': (40*11)+8},
-								{'c':'head_rt4','i': (40*11)+9},
-								{'c':'head_rt1','i': (40*11)+10},
-								{'c':'head_rt1','i': (40*12)+4},
-								{'c':'head_rt4','i': (40*12)+5},
-								{'c':'head_rt4','i': (40*12)+6},
-								{'c':'head_rt4','i': (40*12)+7},
-								{'c':'head_rt4','i': (40*12)+8},
-								{'c':'head_rt4','i': (40*12)+9},
-								{'c':'head_rt1','i': (40*12)+10},
-								{'c':'head_rt1','i': (40*13)+4},
-								{'c':'head_rt4','i': (40*13)+5},
-								{'c':'head_rt4','i': (40*13)+6},
-								{'c':'head_rt4','i': (40*13)+7},
-								{'c':'head_rt4','i': (40*13)+8},
-								{'c':'head_rt4','i': (40*13)+9},
-								{'c':'head_rt1','i': (40*13)+10},
-								{'c':'head_rt1','i': (40*14)+4},
-								{'c':'head_rt4','i': (40*14)+5},
-								{'c':'head_rt4','i': (40*14)+6},
-								{'c':'head_rt4','i': (40*14)+7},
-								{'c':'head_rt4','i': (40*14)+8},
-								{'c':'head_rt4','i': (40*14)+9},
-								{'c':'head_rt1','i': (40*14)+10},
-								{'c':'head_rt1','i': (40*15)+4},
-								{'c':'head_rt2','i': (40*15)+5},
-								{'c':'head_rt2','i': (40*15)+6},
-								{'c':'head_rt6','i': (40*15)+7},
-								{'c':'head_rt2','i': (40*15)+8},
-								{'c':'head_rt2','i': (40*15)+9},
-								{'c':'head_rt1','i': (40*15)+10},
-								{'c':'head_rt1','i': (40*16)+4},
-								{'c':'head_rt7','i': (40*16)+5},
-								{'c':'head_rt7','i': (40*16)+6},
-								{'c':'head_rt7','i': (40*16)+7},
-								{'c':'head_rt7','i': (40*16)+8},
-								{'c':'head_rt7','i': (40*16)+9},
-								{'c':'head_rt1','i': (40*16)+10},
-								{'c':'head_rt7','i': (40*17)+5},
-								{'c':'head_rt7','i': (40*17)+6},
-								{'c':'head_rt7','i': (40*17)+8},
-								{'c':'head_rt7','i': (40*17)+9},
-								{'c':'head_rt7','i': (40*18)+5},
-								{'c':'head_rt7','i': (40*18)+6},
-								{'c':'head_rt7','i': (40*18)+8},
-								{'c':'head_rt7','i': (40*18)+9},
-								{'c':'head_rt7','i': (40*19)+5},
-								{'c':'head_rt7','i': (40*19)+6},
-								{'c':'head_rt7','i': (40*19)+8},
-								{'c':'head_rt7','i': (40*19)+9},
-								{'c':'head_rt7','i': (40*20)+5},
-								{'c':'head_rt7','i': (40*20)+6},
-								{'c':'head_rt7','i': (40*20)+8},
-								{'c':'head_rt7','i': (40*20)+9},
-								{'c':'head_rt7','i': (40*21)+5},
-								{'c':'head_rt7','i': (40*21)+6},
-								{'c':'head_rt7','i': (40*21)+8},
-								{'c':'head_rt7','i': (40*21)+9},
-								{'c':'head_rt7','i': (40*22)+5},
-								{'c':'head_rt7','i': (40*22)+6},
-								{'c':'head_rt7','i': (40*22)+8},
-								{'c':'head_rt7','i': (40*22)+9},
-								{'c':'head_rt7','i': (40*23)+5},
-								{'c':'head_rt7','i': (40*23)+6},
-								{'c':'head_rt7','i': (40*23)+8},
-								{'c':'head_rt7','i': (40*23)+9},
-								{'c':'head_rt7','i': (40*24)+5},
-								{'c':'head_rt7','i': (40*24)+6},
-								{'c':'head_rt7','i': (40*24)+8},
-								{'c':'head_rt7','i': (40*24)+9},
-								{'c':'head_rt7','i': (40*25)+5},
-								{'c':'head_rt7','i': (40*25)+6},
-								{'c':'head_rt7','i': (40*25)+8},
-								{'c':'head_rt7','i': (40*25)+9},
-								{'c':'head_rt8','i': (40*26)+4},
-								{'c':'head_rt9','i': (40*26)+5},
-								{'c':'head_rt9','i': (40*26)+6},
-								{'c':'head_rt9','i': (40*26)+8},
-								{'c':'head_rt9','i': (40*26)+9},
-								{'c':'head_rt8','i': (40*26)+10}
-							],
-							'label' : 'head_rt'	
-						}								
-					},
-					{'frm':
-						{
-							'duration' : 1,
-							'pix' : [
-								{'c':'head_left0','i': (40*0)+7},
-								{'c':'head_left0','i': (40*0)+8},
-								{'c':'head_left0','i': (40*0)+9},
-								{'c':'head_left0','i': (40*1)+6},
-								{'c':'head_left0','i': (40*1)+7},
-								{'c':'head_left0','i': (40*1)+8},
-								{'c':'head_left0','i': (40*1)+9},
-								{'c':'head_left0','i': (40*2)+6},
-								{'c':'head_left1','i': (40*2)+7},
-								{'c':'head_left1','i': (40*2)+8},
-								{'c':'head_left1','i': (40*2)+9},
-								{'c':'head_left2','i': (40*3)+6},
-								{'c':'head_left3','i': (40*3)+7},
-								{'c':'head_left1','i': (40*3)+8},
-								{'c':'head_left3','i': (40*3)+9},
-								{'c':'head_left2','i': (40*4)+6},
-								{'c':'head_left1','i': (40*4)+7},
-								{'c':'head_left1','i': (40*4)+8},
-								{'c':'head_left1','i': (40*4)+9},
-								{'c':'head_left1','i': (40*5)+6},
-								{'c':'head_left1','i': (40*5)+7},
-								{'c':'head_left1','i': (40*5)+8},
-								{'c':'head_left4','i': (40*6)+5},
-								{'c':'head_left1','i': (40*6)+6},
-								{'c':'head_left1','i': (40*6)+7},
-								{'c':'head_left1','i': (40*6)+8},
-								{'c':'head_left4','i': (40*6)+9},
-								{'c':'head_left4','i': (40*7)+4},
-								{'c':'head_left4','i': (40*7)+5},
-								{'c':'head_left4','i': (40*7)+6},
-								{'c':'head_left4','i': (40*7)+7},
-								{'c':'head_left4','i': (40*7)+8},
-								{'c':'head_left4','i': (40*7)+9},
-								{'c':'head_left4','i': (40*7)+10},
-								{'c':'head_left4','i': (40*8)+4},
-								{'c':'head_left4','i': (40*8)+5},
-								{'c':'head_left5','i': (40*8)+6},
-								{'c':'head_left5','i': (40*8)+7},
-								{'c':'head_left5','i': (40*8)+8},
-								{'c':'head_left4','i': (40*8)+9},
-								{'c':'head_left4','i': (40*8)+10},
-								{'c':'head_left4','i': (40*9)+4},
-								{'c':'head_left4','i': (40*9)+5},
-								{'c':'head_left5','i': (40*9)+6},
-								{'c':'head_left5','i': (40*9)+7},
-								{'c':'head_left5','i': (40*9)+8},
-								{'c':'head_left4','i': (40*9)+9},
-								{'c':'head_left4','i': (40*9)+10},
-								{'c':'head_left1','i': (40*10)+4},
-								{'c':'head_left4','i': (40*10)+5},
-								{'c':'head_left4','i': (40*10)+6},
-								{'c':'head_left4','i': (40*10)+7},
-								{'c':'head_left4','i': (40*10)+8},
-								{'c':'head_left4','i': (40*10)+9},
-								{'c':'head_left1','i': (40*10)+10},
-								{'c':'head_left1','i': (40*11)+4},
-								{'c':'head_left4','i': (40*11)+5},
-								{'c':'head_left4','i': (40*11)+6},
-								{'c':'head_left4','i': (40*11)+7},
-								{'c':'head_left4','i': (40*11)+8},
-								{'c':'head_left4','i': (40*11)+9},
-								{'c':'head_left1','i': (40*11)+10},
-								{'c':'head_left1','i': (40*12)+4},
-								{'c':'head_left4','i': (40*12)+5},
-								{'c':'head_left4','i': (40*12)+6},
-								{'c':'head_left4','i': (40*12)+7},
-								{'c':'head_left4','i': (40*12)+8},
-								{'c':'head_left4','i': (40*12)+9},
-								{'c':'head_left1','i': (40*12)+10},
-								{'c':'head_left1','i': (40*13)+4},
-								{'c':'head_left4','i': (40*13)+5},
-								{'c':'head_left4','i': (40*13)+6},
-								{'c':'head_left4','i': (40*13)+7},
-								{'c':'head_left4','i': (40*13)+8},
-								{'c':'head_left4','i': (40*13)+9},
-								{'c':'head_left1','i': (40*13)+10},
-								{'c':'head_left1','i': (40*14)+4},
-								{'c':'head_left4','i': (40*14)+5},
-								{'c':'head_left4','i': (40*14)+6},
-								{'c':'head_left4','i': (40*14)+7},
-								{'c':'head_left4','i': (40*14)+8},
-								{'c':'head_left4','i': (40*14)+9},
-								{'c':'head_left1','i': (40*14)+10},
-								{'c':'head_left1','i': (40*15)+4},
-								{'c':'head_left3','i': (40*15)+5},
-								{'c':'head_left3','i': (40*15)+6},
-								{'c':'head_left6','i': (40*15)+7},
-								{'c':'head_left3','i': (40*15)+8},
-								{'c':'head_left3','i': (40*15)+9},
-								{'c':'head_left1','i': (40*15)+10},
-								{'c':'head_left1','i': (40*16)+4},
-								{'c':'head_left7','i': (40*16)+5},
-								{'c':'head_left7','i': (40*16)+6},
-								{'c':'head_left7','i': (40*16)+7},
-								{'c':'head_left7','i': (40*16)+8},
-								{'c':'head_left7','i': (40*16)+9},
-								{'c':'head_left1','i': (40*16)+10},
-								{'c':'head_left7','i': (40*17)+5},
-								{'c':'head_left7','i': (40*17)+6},
-								{'c':'head_left7','i': (40*17)+8},
-								{'c':'head_left7','i': (40*17)+9},
-								{'c':'head_left7','i': (40*18)+5},
-								{'c':'head_left7','i': (40*18)+6},
-								{'c':'head_left7','i': (40*18)+8},
-								{'c':'head_left7','i': (40*18)+9},
-								{'c':'head_left7','i': (40*19)+5},
-								{'c':'head_left7','i': (40*19)+6},
-								{'c':'head_left7','i': (40*19)+8},
-								{'c':'head_left7','i': (40*19)+9},
-								{'c':'head_left7','i': (40*20)+5},
-								{'c':'head_left7','i': (40*20)+6},
-								{'c':'head_left7','i': (40*20)+8},
-								{'c':'head_left7','i': (40*20)+9},
-								{'c':'head_left7','i': (40*21)+5},
-								{'c':'head_left7','i': (40*21)+6},
-								{'c':'head_left7','i': (40*21)+8},
-								{'c':'head_left7','i': (40*21)+9},
-								{'c':'head_left7','i': (40*22)+5},
-								{'c':'head_left7','i': (40*22)+6},
-								{'c':'head_left7','i': (40*22)+8},
-								{'c':'head_left7','i': (40*22)+9},
-								{'c':'head_left7','i': (40*23)+5},
-								{'c':'head_left7','i': (40*23)+6},
-								{'c':'head_left7','i': (40*23)+8},
-								{'c':'head_left7','i': (40*23)+9},
-								{'c':'head_left7','i': (40*24)+5},
-								{'c':'head_left7','i': (40*24)+6},
-								{'c':'head_left7','i': (40*24)+8},
-								{'c':'head_left7','i': (40*24)+9},
-								{'c':'head_left7','i': (40*25)+5},
-								{'c':'head_left7','i': (40*25)+6},
-								{'c':'head_left7','i': (40*25)+8},
-								{'c':'head_left7','i': (40*25)+9},
-								{'c':'head_left8','i': (40*26)+4},
-								{'c':'head_left9','i': (40*26)+5},
-								{'c':'head_left9','i': (40*26)+6},
-								{'c':'head_left9','i': (40*26)+8},
-								{'c':'head_left9','i': (40*26)+9},
-								{'c':'head_left8','i': (40*26)+10}
-							],
-							'label' : 'head_left'	
-						}								
-					}
-					
-				];
-							
-			// custom palette for rendering color changes
-			var head_rt = "rgb(177, 177, 177);rgb(255, 214, 148);rgb(0, 0, 0);rgb(224, 188, 130);rgb(116, 123, 89);rgb(179, 186, 153);rgb(41, 41, 41);rgb(57, 78, 125);rgb(177, 135, 75);rgb(255, 255, 255)";
-			var head_left = "rgb(177, 177, 177);rgb(255, 214, 148);rgb(224, 188, 130);rgb(0, 0, 0);rgb(116, 123, 89);rgb(179, 186, 153);rgb(41, 41, 41);rgb(57, 78, 125);rgb(177, 135, 75);rgb(255, 255, 255)";
-		
-			var my_palette = {'classes' : [				
-				{name: 'head_rt',val: head_rt.split(";")},
-				{name: 'head_left',val: head_left.split(";")}		
-			]};
-						
-			BigBlock.Color.add(my_palette);
-					
-			//
-			
-			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
-			
-			BigBlock.SpriteAdvanced.create({
-				alias : 'vince',
-				x : 104,
-				y : 104,
-				life : 0,
-				className: 'anim',
-				anim_state: 'stop',
-				anim_loop: 1,
-				idleTimeout : 0, // custom parameter to stop alternating poses
-				poses: ['head_rt', 'head_left'],
-				action: function () {
-					if (this.idleTimeout == 0) {
-						this.idleTimeout = setTimeout(function(){
-							BigBlock.Sprites[BigBlock.getObjIdByAlias('vince')].goToAndStop(BigBlock.Sprites[BigBlock.getObjIdByAlias('vince')].poses[Math.getRamdomNumber(0, 1)]);
-							BigBlock.Sprites[BigBlock.getObjIdByAlias('vince')].idleTimeout = 0;
-						}, Math.getRamdomNumber(500, 1000));
-					}
-				},											
-				anim : vince_anim
+		<li class="method">createTable</li>
+		<li class="description">description: Creates a database table.</li>
+		<li class="description">params: </li>	
 				
-			});			
+		<li class="prop"><span class="code_param">sql</span> <span class="code_data_type">[ sql ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A create table sql statement.</li>
+		<li class="description">example: "CREATE TABLE scores(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, score INTEGER NOT NULL DEFAULT '0', created DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00');"</li>
 
-			
-			//
-									
-		</script>
-		
-	</head>
-	<body onload="setTimeout('BigBlock.ready()', 0)">
-		
-	</body>
+		<li class="method">executeSql</li>
+		<li class="description">description: Executes any valid sql statement.</li>
+		<li class="description">params: </li>	
+				
+		<li class="prop"><span class="code_param">sql</span> <span class="code_data_type">[ sql ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A valid sql statement.</li>
+
+		<li class="method">executeSqlInsert</li>
+		<li class="description">description: Executes any valid sql insert statement.</li>
+		<li class="description">params: </li>	
+				
+		<li class="prop"><span class="code_param">sql</span> <span class="code_data_type">[ sql ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: A valid sql statement.</li>				
 	
-</html>	
-
-		</textarea>
-</form>
-
-	<p><a href="../demos/art001.html">View in a browser</a> | <a href="#top">Back to top</a></p>
-	<p>View more info for the <a href="#SpriteAdvanced">SpriteAdvanced</a> class below.</p>
+		<li class="prop"><a href="#top">back to top</a></li>	
+							
+	</ul>
 	
 </div>
+
+
+
+<div class="class">
+	<h3 class="class"><a name="Emitter">Emitter</a></h3>
+
+	<ul class="class">
+		<li class="method">create(params)</li>
+		<li class="description">description: Creates a single emitter.</li>
+		<li class="description">params: A set of key/value pairs to configure the emitter. All options are optional.</li>	
+
+		<li class="prop"><span class="code_param">alias</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">default: BigBlock.getUniqueId()</li>
+		<li class="description">description: A unique identifier. Use an object's alias to reference the object in BigBlock.Blocks and call methods. All alias's in the scene must be unique.</li>
+		<li class="description">example: BigBlock.Blocks.alias.destroy();</li>
+				
+		<li class="prop"><span class="code_param">x (integer)</span></li>
+		<li class="description">default: BigBlock.Grid.width/2 (centered horizontally)</li>
+		<li class="description">description: Horizontal location relative to the Grid location.</li>
+			
+		<li class="prop"><span class="code_param">x (integer)</span></li>
+		<li class="description">default: BigBlock.Grid.width/2 (centered horizontally)</li>
+		<li class="description">description: Horizontal location relative to the Grid location.</li>
+		
+		<li class="prop"><span class="code_param">y (integer)</span></li>	
+		<li class="description">default: BigBlock.Grid.height/2 + BigBlock.Grid.height/3 (lower third vertically)</li>
+		<li class="description">description: Vertical location relative to the Grid location.</li>
+		
+		<li class="prop"><span class="code_param">emission_rate (integer)</span></li>
+		<li class="description">default: 3</li>
+		<li class="description">description: The time in milliseconds between emissions. Values closer to 1 create more frequent emissions.</li>
+
+		<li class="prop"><span class="code_param">emission_rate (integer)</span></li>
+		<li class="description">default: 3</li>
+		<li class="description">description: The time in milliseconds between emissions. Values closer to 1 create more frequent emissions.</li>
+
+		<li class="prop"><span class="code_param">p_burst (integer)</span></li>
+		<li class="description">default: 3</li>
+		<li class="description">description: The total number of particles to create at each emission.</li>
+
+		<li class="prop"><span class="code_param">p_gravity</span></li>
+		<li class="description">default: 0</li>
+		<li class="description">description: Adds a downward force to particles. Higher values create greater force.</li>
+
+		<li class="prop"><span class="code_param">p_velocity (integer)</span></li>
+		<li class="description">default: 3</li>
+		<li class="description">description: Particle velocity.</li>
+
+		<li class="prop"><span class="code_param">p_velocity_spread (integer)</span></li>
+		<li class="description">default: 1</li>
+		<li class="description">description: Creates velocity variability. Values closer to zero create more variability.</li>		
+
+		<li class="prop"><span class="code_param">p_angle (integer)</span></li>
+		<li class="description">default: 270</li>
+		<li class="description">description: The angle of emission.</li>		
 	
+		<li class="prop"><span class="code_param">p_angle_spread (integer)</span></li>
+		<li class="description">default: 20</li>
+		<li class="description">description: Creates angle variability. Values closer to zero create more variability.</li>			
+
+		<li class="prop"><span class="code_param">p_life (integer)</span></li>
+		<li class="description">default: 100</li>
+		<li class="description">description: Particle life.</li>			
+			
+		<li class="prop"><span class="code_param">p_life_spread (integer)</span></li>
+		<li class="description">default: .5</li>
+		<li class="description">description: Creates life variability. Values closer to zero create more variability.</li>		
+		
+		<li class="prop"><span class="code_param">p_init_pos_spread_x</span></li>
+		<li class="description">default: 0</li>
+		<li class="description">description: The distance from emitter.x in either direction particles can initially appear.</li>		
+		
+		<li class="prop"><span class="code_param">p_init_pos_spread_y</span></li>
+		<li class="description">default: 0</li>
+		<li class="description">description: The distance from emitter.y in either direction particles can initially appear.</li>
+
+		<li class="prop"><span class="code_param">p_life_offset_x</span></li>
+		<li class="description">default: 0</li>
+		<li class="description">description: Change to 1 to give particles further away from emitter.x a shorter lifetime. Works best when p_init_pos_spread_x is > 0.</li>
+
+		<li class="prop"><span class="code_param">p_life_offset_y</span></li>
+		<li class="description">default: 0</li>
+		<li class="description">description: Change to 1 to give particles further away from emitter.y a shorter lifetime. Works best when p_init_pos_spread_y is > 0.</li>
+
+		<li class="prop"><span class="code_param">action</span></li>
+		<li class="description">default: function () {}</li>
+		<li class="description">description: Pass a function to run every screen render.</li>		
+
+		<li class="prop"><span class="code_param">className</span></li>
+		<li class="description">default: empty</li>
+		<li class="description">description: Sets the color palette for particles. Can be a single color or set to cycle thru an array of values.</li>		
+
+		<li class="method">stop()</li>
+		<li class="description">description: Stops the emitter.</li>
+		
+		<li class="method">start()</li>
+		<li class="description">description: Starts the emitter.</li>		
+
+		<li class="prop"><a href="#top">back to top</a></li>	
+							
+	</ul>
+	
+</div>
+
+
+<div class="class">
+	<h3 class="class"><a name="Grid">Grid</a></h3>
+	<ul class="class">
+		<li class="method">setProps(params)</li>
+		<li class="description">description: Alters the properties of the viewport divs.</li>
+		<li class="description">params: A set of key/value pairs to configure the grid. All options are optional.</li>
+
+		<li class="prop"><span class="code_param">blk_dim [ integer ]</span></li>
+		<li class="description">default: 8</li>
+		<li class="description">description: The dimensions in pixels of all blocks.</li>
+		
+		<li class="prop"><span class="code_param">width [ integer ]</span></li>
+		<li class="description">default: 320</li>
+		<li class="description">description: The width of the viewport grids.</li>
+		
+		<li class="prop"><span class="code_param">height [ integer ]</span></li>
+		<li class="description">default: 368</li>
+		<li class="description">description: The height of the viewport grids.</li>				
+
+		<li class="prop"><a href="#top">back to top</a></li>	
+									
+	</ul>
+</div>
+
+
+
+<div class="class">
+	<h3 class="class"><a name="LocalStorage">LocalStorage</a></h3>
+	<ul class="class">
+		<li class="method">getItem(key)</li>
+		<li class="description">description: Returns the value of the key in LocalStorage.</li>
+		<li class="description">params: </li>
+
+		<li class="prop"><span class="code_param">key</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: </li>
+		
+		<li class="method">setItem(key)</li>
+		<li class="description">description: Sets the value of the key in LocalStorage.</li>
+		<li class="description">params: </li>
+
+		<li class="prop"><span class="code_param">key</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: </li>	
+		
+		<li class="method">removeItem(key)</li>
+		<li class="description">description: Removes a key/value pair in the localStorage.</li>
+		<li class="description">params: </li>
+
+		<li class="prop"><span class="code_param">key</span> <span class="code_data_type">[ string ]</span></li>
+		<li class="description">required: true</li>
+		<li class="description">description: </li>	
+		
+		<li class="method">clear()</li>
+		<li class="description">description: Clears the entire localStorage.</li>
+		<li class="description">params: </li>						
+
+		<li class="prop"><a href="#top">back to top</a></li>	
+									
+	</ul>
+</div>
+
+<div class="class">
+	<h3 class="class"><a name="RenderManager">RenderManager</a></h3>
+	<ul class="class">
+		<li class="method">clearScene(params)</li>
+		<li class="description">description: Removes all blocks from the viewport.</li>
+		<li class="description">params: A set of key/value pairs. All parameters are optional.</li>
+		
+		<li class="prop"><span class="code_param">before</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Provide a function to execute before the scene is cleared.</li>	
+		
+		<li class="prop"><span class="code_param">after</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Provide a function to execute after the scene is cleared.</li>	
+
+		<li class="prop"><a href="#top">back to top</a></li>	
+								
+	</ul>
+</div>
+
+
+<div class="class">
+	<a name="ScreenEvent"><h3 class="class">ScreenEvent</h3></a>
+	<ul class="class">
+	<li class="description">The ScreenEvent class adds events to the viewport allowing authors to script events when users click or tap anywhere within its boundaries. Add events by adding functions to the following ScreenEvent properties.</li>
+	<li class="description">Note: By default all mouseup, touchstart and click events call ScreenEvent.frameAdvance() and trigger any Button or Block actions at the event location.</li>
+	</ul>
+	<ul class="class">
+		<li class="prop"><span class="code_param">screen_mouseup</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Adds a mouseup event to the viewport.</li>
+		<li class="description">example:
+		<pre>
+BigBlock.ScreenEvent.screen_mouseup = function (evt_x, evt_y, event) {
+	alert('mouse up!');
+};	
+		</pre></li>		
+
+		<li class="prop"><span class="code_param">screen_mousedown</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Adds a mousedown event to the viewport.</li>
+		
+		<li class="prop"><span class="code_param">screen_mousemove</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Adds a mousemove event to the viewport.</li>			
+
+		<li class="prop"><span class="code_param">screen_touchstart</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Adds a touchstart event to the viewport.</li>
+		
+		<li class="prop"><span class="code_param">screen_touchmove</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Adds a touchmove event to the viewport.</li>		
+
+		<li class="prop"><span class="code_param">screen_touchend</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Adds a touchend event to the viewport.</li>
+
+		<li class="prop"><span class="code_param">screen_click</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Adds a click event to the viewport that accepts input from a Wii controller.</li>
+
+		<li class="prop"><span class="code_param">frameAdvance</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: This function is called by the mouseup, touchstart and click events. They all pass the event object and the x, y coordinates of the event. This function is useful to set organize block objects into frames.</li>
+		<li class="description">example: 
+		<pre>
+
+BigBlock.ScreenEvent.frameAdvance = function (event, x, y) {
+							
+	switch (BigBlock.ScreenEvent.current_frame) {
+		
+		case 1:
+									
+			BigBlock.SpriteSimple.create({
+				x: BigBlock.Grid.width/2,
+				y: BigBlock.Grid.height/2 - 32							
+			});
+			
+		break;
+		
+	}
+
+}
+			
+		</pre>
+		</li>
+		
+		<li class="prop"><a href="#top">back to top</a></li>
+																			
+	</ul>
+</div>
+
+
+<div class="class">
+	<h3 class="class"><a name="Timer">Timer</a></h3>
+	<ul class="class">
+		<li class="method">play(params)</li>
+		<li class="description">description: Sets up the viewport and tells RenderManager to begin rendering.</li>
+		<li class="description">params: A set of key/value pairs to configure the Timer. All parameters are optional.</li>
+
+		<li class="prop"><span class="code_param">before_play</span> <span class="code_data_type">[ function ]</span></li>
+		<li class="description">default: false</li>
+		<li class="description">description: Called before play() and accepts one function as a parameter.</li>
+		
+		<li class="prop"><span class="code_param">document_body_style</span> <span class="code_data_type">[ object literal ]</span></li>
+		<li class="prop default">default: true</li>
+		<li class="prop description">description: Style the document body style using any valid CSS. Typically used to changed the background color.</li>
+		
+		<li class="prop"><span class="code_param">event_buffer</span> <span class="code_data_type">[ number ]</span></li>
+		<li class="prop default">default: 200 milliseconds</li>
+		<li class="prop description">description: Set the allowed time in milliseconds between processing user input events.</li>
+		
+		<li class="prop"><span class="code_param">force_max_frame_rate</span> <span class="code_data_type">[ boolean ]</span></li>
+		<li class="prop default">default: true</li>
+		<li class="prop description">description: If set to true, the browser will test how long it takes to render each frame. If the result is less than Timer.frame_rate, Timer will wait the necessary amount of milliseconds before processing the next frome. If set to false, the browser will try to render each frame as fast as possible.</li>
+
+		<li class="prop"><span class="code_param">frame_rate</span> <span class="code_data_type">[ number ]</span></li> 
+		<li class="prop default">default: 33</li>
+		<li class="prop description">description: The duration in milliseconds between screen renders. The default is 33 (1000/33 ~ 30) meaning the framework by default tries to maintain 30 frames per second. The framework however will NOT drop frames and will slow down as your screen renders become more complicated. Setting force_max_frame_rate = false will disregard Timer.frame_rate.</li>		
+	
+		<li class="prop"><span class="code_param">grid_active_styles</span> <span class="code_data_type">[ object literal ]</span></li>
+		<li class="prop default">default: true</li>
+		<li class="prop description">description: Style the active grid using any valid CSS.</li>
+		
+		<li class="prop"><span class="code_param">grid_static_styles</span> <span class="code_data_type">[ object literal ]</span></li>
+		<li class="prop default">default: true</li>
+		<li class="prop description">description: Style the static grid using any valid CSS.</li>
+		
+		<li class="prop"><span class="code_param">grid_text_styles</span> <span class="code_data_type">[ object literal ]</span></li>
+		<li class="prop default">default: true</li>
+		<li class="prop description">description: Style the text grid using any valid CSS.</li>
+													
+		<li class="prop"><span class="code_param">input_feedback</span> <span class="code_data_type">[ boolean ]</span></li>
+		<li class="prop default">default: true</li>
+		<li class="prop description">description: When set to "true", a block appears and quickly cycles thru a series of colors wherever the user clicks or touches inside the viewport. Set to "false" to not include input feedback.</li>		
+						
+		<li class="prop"><span class="code_param">is_paused</span> <span class="code_data_type">[ boolean ]</span></li>
+		<li class="prop default">default: false</li>
+		<li class="prop description">description: Pauses screen processing and rendering.</li>		
+
+		<li class="prop"><span class="code_param">debug_frame_rate</span> <span class="code_data_type">[ boolean ]</span></li>
+		<li class="prop default">default: true</li>
+		<li class="prop description">description: When set to "true", the browser console will output the average length in milliseconds to render the screen over the test interval (fr_rate_test_interval). Use to check if your average is greater than the frame rate set in BigBlock.Timer.frame_rate</li>
+				
+		<li class="prop"><span class="code_param">frame_rate_test_interval</span> <span class="code_data_type">[ number ]</span></li>
+		<li class="prop default">default: true</li>
+		<li class="prop description">description: Sets the duration of the test interval.</li>
+			
+		<li class="prop"><a href="#top">back to top</a></li>	
+		
+	</ul>
+</div>
+		
 </body>
 	
 
