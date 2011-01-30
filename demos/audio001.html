@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
+        <title>Big Block Framework - Demo</title>
+
+		<script src="../lib/core_object_init.js"></script>
+		<script src="../lib/Grid.js"></script>		
+		<script src="../lib/Timer.js"></script>
+		<script src="../lib/Loader.js"></script>
+		<script src="../lib/Color.js"></script>
+		<script src="../lib/RenderManager.js"></script>
+		<script src="../lib/ScreenEvent.js"></script>
+		<script src="../lib/Block.js"></script>
+		<script src="../lib/BlockSmall.js"></script>
+		<script src="../lib/BlockBig.js"></script>		
+		<script src="../lib/BlockAnim.js"></script>
+		<script src="../lib/Character.js"></script>
+		<script src="../lib/Emitter.js"></script>
+		<script src="../lib/Word.js"></script>
+		<script src="../lib/Header.js"></script>	
+		<script src="../lib/Footer.js"></script>			
+		<script src="../lib/library_behavior.js"></script>
+		<script src="../lib/library_emitter.js"></script>
+		<script src="../lib/library_char.js"></script>
+		<script src="../lib/utility.js"></script>			
+		
+		<script src="../lib/LocalStorage.js"></script>
+		<script src="../lib/Database.js"></script>
+		<script src="../lib/Audio.js"></script>
+		<script src="../lib/Button.js"></script>
+		
+		<!-- <script src="../rel/bigblock-alpha-.6.min.js"></script> -->
+				
+		<script type='text/javascript'>
+			
+			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
+			
+			var play_message = function (x, y) {
+				BigBlock.Word.create({
+					alias: "playing",
+					x: x,
+					y: y,
+					word: "playing...",
+					color: "white"
+				});				
+			};
+			
+			// BING
+			
+			BigBlock.Word.create({
+				x: 16,
+				y: 16,
+				word: "bing",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 8,
+				y: 8,
+				width: 48,
+				height: 24,
+				color: "magenta",
+				action_input: function () {
+					BigBlock.Audio.play("bing", function () {
+						play_message(64, 16);
+					},
+					function () {
+						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+							BigBlock.Blocks.playing.destroy();
+						}
+					}); // sound
+				}
+			});	
+						
+			// BONK
+			
+			BigBlock.Word.create({
+				x: 16,
+				y: 48,
+				word: "bonk",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 8,
+				y: 40,
+				width: 48,
+				height: 24,
+				color: "red",
+				action_input: function () {
+					BigBlock.Audio.play("bonk", function () {
+						play_message(64, 48);
+					},
+					function () {
+						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+							BigBlock.Blocks.playing.destroy();
+						}
+					}); // sound
+				}
+			});	
+			
+			// BLIP
+			
+			BigBlock.Word.create({
+				x: 16,
+				y: 80,
+				word: "blip",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 8,
+				y: 72,
+				width: 48,
+				height: 24,
+				color: "blue",
+				action_input: function () {
+					BigBlock.Audio.play("blip", function () {
+						play_message(64, 80);
+					},
+					function () {
+						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+							BigBlock.Blocks.playing.destroy();
+						}
+					}); // sound
+				}
+			});				
+
+			// EEOO
+			
+			BigBlock.Word.create({
+				x: 16,
+				y: 112,
+				word: "eeoo",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 8,
+				y: 104,
+				width: 48,
+				height: 24,
+				color: "cyan",
+				action_input: function () {
+					BigBlock.Audio.play("eeoo", function () {
+						play_message(64, 112);
+					},
+					function () {
+						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+							BigBlock.Blocks.playing.destroy();
+						}
+					}); // sound
+				}
+			});
+			
+			// BOOM
+			
+			BigBlock.Word.create({
+				x: 16,
+				y: 144,
+				word: "boom",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 8,
+				y: 136,
+				width: 48,
+				height: 24,
+				color: "green",
+				action_input: function () {
+					BigBlock.Audio.play("boom", function () {
+						play_message(64, 144);
+					},
+					function () {
+						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+							BigBlock.Blocks.playing.destroy();
+						}
+					}); // sound
+				}
+			});
+
+			// COIN
+			
+			BigBlock.Word.create({
+				x: 16,
+				y: 176,
+				word: "coin",
+				color: "grey"
+			});
+						
+			BigBlock.Button.create({
+				x: 8,
+				y: 168,
+				width: 48,
+				height: 24,
+				color: "yellow",
+				action_input: function () {
+					BigBlock.Audio.play("coin", function () {
+						play_message(64, 176);
+					},
+					function () {
+						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+							BigBlock.Blocks.playing.destroy();
+						}
+					}); // sound
+				}
+			});
+			
+			// JUMP
+			
+			BigBlock.Word.create({
+				x: 16,
+				y: 208,
+				word: "jump",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 8,
+				y: 200,
+				width: 48,
+				height: 24,
+				color: "orange",
+				action_input: function () {
+					BigBlock.Audio.play("jump", function () {
+						play_message(64, 208);
+					},
+					function () {
+						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+							BigBlock.Blocks.playing.destroy();
+						}
+					}); // sound
+				}
+			});			
+						
+			// AUDIO
+			
+			BigBlock.Audio.debug = true;
+			BigBlock.Audio.format = ["wav", "mp3", "ogg"]; // pass the supplied media formats
+			var path = "audio/";
+			
+			BigBlock.Audio.add("bing", path, false);
+			BigBlock.Audio.add("bonk", path, false);
+			BigBlock.Audio.add("blip", path, false);
+			BigBlock.Audio.add("eeoo", path, false);
+			BigBlock.Audio.add("boom", path, false);
+			BigBlock.Audio.add("coin", path, false);
+			BigBlock.Audio.add("jump", path, false);
+											
+		</script>
+		
+	</head>
+	<body onload="setTimeout('BigBlock.ready()', 0)">
+		
+	</body>
+	
+</html>

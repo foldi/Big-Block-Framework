@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
+        <title>Big Block Framework - Demo</title>
+
+		<script src="../lib/core_object_init.js"></script>
+		<script src="../lib/Grid.js"></script>		
+		<script src="../lib/Timer.js"></script>
+		<script src="../lib/Loader.js"></script>
+		<script src="../lib/Color.js"></script>
+		<script src="../lib/RenderManager.js"></script>
+		<script src="../lib/ScreenEvent.js"></script>
+		<script src="../lib/Block.js"></script>
+		<script src="../lib/BlockSmall.js"></script>
+		<script src="../lib/BlockBig.js"></script>		
+		<script src="../lib/BlockAnim.js"></script>
+		<script src="../lib/Character.js"></script>
+		<script src="../lib/Emitter.js"></script>
+		<script src="../lib/Word.js"></script>
+		<script src="../lib/Header.js"></script>	
+		<script src="../lib/Footer.js"></script>			
+		<script src="../lib/library_behavior.js"></script>
+		<script src="../lib/library_emitter.js"></script>
+		<script src="../lib/library_char.js"></script>
+		<script src="../lib/utility.js"></script>			
+		
+		<script src="../lib/LocalStorage.js"></script>
+		<script src="../lib/Database.js"></script>
+		<script src="../lib/Audio.js"></script>
+		<script src="../lib/Button.js"></script>
+		
+		<!-- <script src="../rel/bigblock-alpha-.6.min.js"></script> -->
+				
+		<script type='text/javascript'>
+			
+			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
+			
+			var play_message = function (x, y) {
+				BigBlock.Word.create({
+					alias: "playing",
+					x: x,
+					y: y,
+					word: "playing...",
+					color: "white"
+				});				
+			};
+			
+			var pause_message = function (x, y) {
+				BigBlock.Word.create({
+					alias: "paused",
+					x: x,
+					y: y,
+					word: "paused...",
+					color: "white"
+				});				
+			};
+			
+			var mute_message = function (x, y) {
+				BigBlock.Word.create({
+					alias: "muted",
+					x: x,
+					y: y,
+					word: "muted...",
+					color: "white"
+				});				
+			};
+			
+			var unmute_message = function (x, y) {
+				BigBlock.Word.create({
+					alias: "unmuted",
+					x: x,
+					y: y,
+					word: "unmuted...",
+					color: "white"
+				});				
+			};										
+
+			BigBlock.Word.create({
+				alias: "click_to",
+				x: 88,
+				y: 160,
+				word: "click play to begin",
+				color: "white"
+			});
+						
+			// back button
+			
+			BigBlock.Word.create({
+				x: 48,
+				y: 208,
+				word: "back",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 40,
+				y: 200,
+				width: 48,
+				height: 24,
+				color: "red",
+				action_input: function () {
+					BigBlock.Audio.setCurrentTime("song", 0);
+				}
+			});
+			
+			//
+			
+			// play button
+			BigBlock.Word.create({
+				alias: "play",
+				x: 112,
+				y: 208,
+				word: "play",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				alias: "btn_play",
+				x: 104,
+				y: 200,
+				width: 48,
+				height: 24,
+				color: "grey",
+				action_input: function () {
+					BigBlock.Audio.play("song");
+					if (typeof(BigBlock.Blocks.click_to) !== "undefined") {
+						BigBlock.Blocks.click_to.destroy();
+					}
+					if (typeof(BigBlock.Blocks.paused) !== "undefined") {
+						BigBlock.Blocks.paused.destroy();
+					}
+					if (typeof(BigBlock.Blocks.muted) !== "undefined") {
+						BigBlock.Blocks.muted.destroy();
+					}	
+					if (typeof(BigBlock.Blocks.unmuted) !== "undefined") {
+						BigBlock.Blocks.unmuted.destroy();
+					}					
+					play_message(88, 160);
+				}
+			});			
+			
+			// pause button
+			
+			BigBlock.Word.create({
+				x: 176,
+				y: 208,
+				word: "pause",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				x: 168,
+				y: 200,
+				width: 56,
+				height: 24,
+				color: "red",
+				action_input: function () {
+					BigBlock.Audio.pause("song", true);
+					if (typeof(BigBlock.Blocks.click_to) !== "undefined") {
+						BigBlock.Blocks.click_to.destroy();
+					}					
+					if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+						BigBlock.Blocks.playing.destroy();
+					}
+					if (typeof(BigBlock.Blocks.muted) !== "undefined") {
+						BigBlock.Blocks.muted.destroy();
+					}	
+					if (typeof(BigBlock.Blocks.unmuted) !== "undefined") {
+						BigBlock.Blocks.unmuted.destroy();
+					}											
+					pause_message(88, 160);
+				}
+			});
+			
+			//			
+						
+			// mute button
+			
+			BigBlock.Word.create({
+				x: 248,
+				y: 208,
+				word: "mute",
+				color: "white"
+			});
+						
+			BigBlock.Button.create({
+				alias: "btn_mute",
+				x: 240,
+				y: 200,
+				width: 48,
+				height: 24,
+				color: "red",
+				action_input: function () {
+					if (BigBlock.Audio.muted) {
+						BigBlock.Audio.unmute("song", true);						
+						if (typeof(BigBlock.Blocks.muted) !== "undefined") {
+							BigBlock.Blocks.muted.destroy();
+						}						
+						unmute_message(88, 160);	
+					} else {
+						BigBlock.Audio.mute("song", true);
+						if (typeof(BigBlock.Blocks.unmuted) !== "undefined") {
+							BigBlock.Blocks.unmuted.destroy();
+						}																	
+						mute_message(88, 160);						
+					}
+					if (typeof(BigBlock.Blocks.click_to) !== "undefined") {
+						BigBlock.Blocks.click_to.destroy();
+					}					
+					if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+						BigBlock.Blocks.playing.destroy();
+					}
+					if (typeof(BigBlock.Blocks.paused) !== "undefined") {
+						BigBlock.Blocks.paused.destroy();
+					}					
+				}
+			});
+						
+
+			
+			BigBlock.ready = function () { // called from <body> onload()
+				BigBlock.Timer.play({
+					before_play : function () {
+						
+						// AUDIO
+						
+						BigBlock.Audio.debug = true;
+						BigBlock.Audio.format = ["wav", "mp3", "ogg"]; // pass the supplied media formats
+						var path = "audio/";
+						
+						BigBlock.Audio.add("song", path, true, function () {
+							BigBlock.Blocks.play.destroy();
+							BigBlock.Word.create({
+								alias: "play",
+								x: 112,
+								y: 208,
+								word: "play",
+								color: "white"
+							});
+										
+							BigBlock.Button.create({
+								x: 104,
+								y: 200,
+								width: 48,
+								height: 24,
+								color: "red",
+								action_input: function () {
+									BigBlock.Audio.play("song");
+								}
+							});
+						});
+					}
+				});
+			};
+											
+		</script>
+		
+	</head>
+	<body onload="setTimeout('BigBlock.ready()', 0)">
+		
+	</body>
+	
+</html>
