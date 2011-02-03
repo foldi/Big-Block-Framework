@@ -35,18 +35,8 @@
 				y: 8,
 				width: 48,
 				height: 24,
-				color: "magenta",
-				action_input: function () {
-					BigBlock.Audio.play("bing", function () {
-						play_message(64, 16);
-					},
-					function () {
-						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
-							BigBlock.Blocks.playing.destroy();
-						}
-					}); // sound
-				}
-			});	
+				color: "grey"
+			});
 						
 			// BONK
 			
@@ -62,18 +52,8 @@
 				y: 40,
 				width: 48,
 				height: 24,
-				color: "red",
-				action_input: function () {
-					BigBlock.Audio.play("bonk", function () {
-						play_message(64, 48);
-					},
-					function () {
-						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
-							BigBlock.Blocks.playing.destroy();
-						}
-					}); // sound
-				}
-			});	
+				color: "grey"
+			});
 			
 			// BLIP
 			
@@ -89,17 +69,7 @@
 				y: 72,
 				width: 48,
 				height: 24,
-				color: "blue",
-				action_input: function () {
-					BigBlock.Audio.play("blip", function () {
-						play_message(64, 80);
-					},
-					function () {
-						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
-							BigBlock.Blocks.playing.destroy();
-						}
-					}); // sound
-				}
+				color: "grey"
 			});				
 
 			// EEOO
@@ -116,17 +86,7 @@
 				y: 104,
 				width: 48,
 				height: 24,
-				color: "cyan",
-				action_input: function () {
-					BigBlock.Audio.play("eeoo", function () {
-						play_message(64, 112);
-					},
-					function () {
-						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
-							BigBlock.Blocks.playing.destroy();
-						}
-					}); // sound
-				}
+				color: "grey"
 			});
 			
 			// BOOM
@@ -143,17 +103,7 @@
 				y: 136,
 				width: 48,
 				height: 24,
-				color: "green",
-				action_input: function () {
-					BigBlock.Audio.play("boom", function () {
-						play_message(64, 144);
-					},
-					function () {
-						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
-							BigBlock.Blocks.playing.destroy();
-						}
-					}); // sound
-				}
+				color: "grey"
 			});
 
 			// COIN
@@ -162,7 +112,7 @@
 				x: 16,
 				y: 176,
 				word: "coin",
-				color: "grey"
+				color: "grey_dark"
 			});
 						
 			BigBlock.Button.create({
@@ -170,17 +120,7 @@
 				y: 168,
 				width: 48,
 				height: 24,
-				color: "yellow",
-				action_input: function () {
-					BigBlock.Audio.play("coin", function () {
-						play_message(64, 176);
-					},
-					function () {
-						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
-							BigBlock.Blocks.playing.destroy();
-						}
-					}); // sound
-				}
+				color: "grey"
 			});
 			
 			// JUMP
@@ -197,18 +137,14 @@
 				y: 200,
 				width: 48,
 				height: 24,
-				color: "orange",
-				action_input: function () {
-					BigBlock.Audio.play("jump", function () {
-						play_message(64, 208);
-					},
-					function () {
-						if (typeof(BigBlock.Blocks.playing) !== "undefined") {
-							BigBlock.Blocks.playing.destroy();
-						}
-					}); // sound
-				}
+				color: "orange"
 			});			
+			
+			BigBlock.Word.create({
+				x: 8,
+				y: 340,
+				word: "When color appears, click for sound."
+			});
 						
 			// AUDIO
 			
@@ -216,13 +152,139 @@
 			BigBlock.Audio.format = ["wav", "mp3", "ogg"]; // pass the supplied media formats
 			var path = "audio/";
 			
-			BigBlock.Audio.add("bing", path, false);
-			BigBlock.Audio.add("bonk", path, false);
-			BigBlock.Audio.add("blip", path, false);
-			BigBlock.Audio.add("eeoo", path, false);
-			BigBlock.Audio.add("boom", path, false);
-			BigBlock.Audio.add("coin", path, false);
-			BigBlock.Audio.add("jump", path, false);
+			BigBlock.Audio.add("bing", path, false, function () {
+				BigBlock.Button.create({
+					x: 8,
+					y: 8,
+					width: 48,
+					height: 24,
+					color: "magenta",
+					action_input: function () {
+						BigBlock.Audio.play("bing", function () {
+							play_message(64, 16);
+						},
+						function () {
+							if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+								BigBlock.Blocks.playing.destroy();
+							}
+						}); // sound
+					}
+				});
+			});
+			BigBlock.Audio.add("bonk", path, false, function () {
+				BigBlock.Button.create({
+					x: 8,
+					y: 40,
+					width: 48,
+					height: 24,
+					color: "red",
+					action_input: function () {
+						BigBlock.Audio.play("bonk", function () {
+							play_message(64, 48);
+						},
+						function () {
+							if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+								BigBlock.Blocks.playing.destroy();
+							}
+						}); // sound
+					}
+				});				
+			});
+			BigBlock.Audio.add("blip", path, false, function () {
+				BigBlock.Button.create({
+					x: 8,
+					y: 72,
+					width: 48,
+					height: 24,
+					color: "blue",
+					action_input: function () {
+						BigBlock.Audio.play("blip", function () {
+							play_message(64, 80);
+						},
+						function () {
+							if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+								BigBlock.Blocks.playing.destroy();
+							}
+						}); // sound
+					}
+				});				
+			});
+			BigBlock.Audio.add("eeoo", path, false, function () {
+				BigBlock.Button.create({
+					x: 8,
+					y: 104,
+					width: 48,
+					height: 24,
+					color: "cyan",
+					action_input: function () {
+						BigBlock.Audio.play("eeoo", function () {
+							play_message(64, 112);
+						},
+						function () {
+							if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+								BigBlock.Blocks.playing.destroy();
+							}
+						}); // sound
+					}
+				});				
+			});
+			BigBlock.Audio.add("boom", path, false, function () {
+				BigBlock.Button.create({
+					x: 8,
+					y: 136,
+					width: 48,
+					height: 24,
+					color: "green",
+					action_input: function () {
+						BigBlock.Audio.play("boom", function () {
+							play_message(64, 144);
+						},
+						function () {
+							if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+								BigBlock.Blocks.playing.destroy();
+							}
+						}); // sound
+					}
+				});				
+			});
+			BigBlock.Audio.add("coin", path, false, function () {
+				BigBlock.Button.create({
+					x: 8,
+					y: 168,
+					width: 48,
+					height: 24,
+					color: "yellow",
+					action_input: function () {
+						BigBlock.Audio.play("coin", function () {
+							play_message(64, 176);
+						},
+						function () {
+							if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+								BigBlock.Blocks.playing.destroy();
+							}
+						}); // sound
+					}
+				});				
+			});
+			BigBlock.Audio.add("jump", path, false, function () {
+				BigBlock.Button.create({
+					x: 8,
+					y: 200,
+					width: 48,
+					height: 24,
+					color: "orange",
+					action_input: function () {
+						BigBlock.Audio.play("jump", function () {
+							play_message(64, 208);
+						},
+						function () {
+							if (typeof(BigBlock.Blocks.playing) !== "undefined") {
+								BigBlock.Blocks.playing.destroy();
+							}
+						}); // sound
+					}
+				});				
+			});
 											
 		</script>
 		
