@@ -5600,9 +5600,9 @@ BigBlock.Timer = (function () {
 							
 			// GRIDS
 			grid_top_offset = 0;
-			if (!window.navigator.standalone) { // iPhones remove 18 pixels for the status bar when NOT running in full-screen app mode
-				grid_top_offset = 18;
-			}
+			//if (!window.navigator.standalone) { // iPhones remove 18 pixels for the status bar when NOT running in full-screen app mode
+				//grid_top_offset = 18;
+			//}
 			
 			/**
 			 * Create GridInit
@@ -6082,7 +6082,6 @@ BigBlock.Timer = (function () {
 	};
 	
 })();
-
 
 /**
  * Simple Word object
