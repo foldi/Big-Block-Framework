@@ -628,79 +628,71 @@ BigBlock.Color.add(my_palette);
 		<li class="description">description: A unique identifier. Use an object's alias to reference the object in BigBlock.Blocks and call methods. All alias's in the scene must be unique.</li>
 		<li class="description">example: BigBlock.Blocks.alias.destroy();</li>
 				
-		<li class="prop"><span class="code_param">x (integer)</span></li>
-		<li class="description">default: BigBlock.Grid.width/2 (centered horizontally)</li>
-		<li class="description">description: Horizontal location relative to the Grid location.</li>
-			
-		<li class="prop"><span class="code_param">x (integer)</span></li>
+		<li class="prop"><span class="code_param">x</span> <span class="code_data_type">[ number ]</span></li>
 		<li class="description">default: BigBlock.Grid.width/2 (centered horizontally)</li>
 		<li class="description">description: Horizontal location relative to the Grid location.</li>
 		
-		<li class="prop"><span class="code_param">y (integer)</span></li>	
+		<li class="prop"><span class="code_param">y</span> <span class="code_data_type">[ number ]</span></li>	
 		<li class="description">default: BigBlock.Grid.height/2 + BigBlock.Grid.height/3 (lower third vertically)</li>
 		<li class="description">description: Vertical location relative to the Grid location.</li>
 		
-		<li class="prop"><span class="code_param">emission_rate (integer)</span></li>
+		<li class="prop"><span class="code_param">emission_rate</span> <span class="code_data_type">[ number ]</span></li>
 		<li class="description">default: 3</li>
 		<li class="description">description: The time in milliseconds between emissions. Values closer to 1 create more frequent emissions.</li>
 
-		<li class="prop"><span class="code_param">emission_rate (integer)</span></li>
-		<li class="description">default: 3</li>
-		<li class="description">description: The time in milliseconds between emissions. Values closer to 1 create more frequent emissions.</li>
-
-		<li class="prop"><span class="code_param">p_burst (integer)</span></li>
+		<li class="prop"><span class="code_param">p_burst</span> <span class="code_data_type">[ number ]</span></li>
 		<li class="description">default: 3</li>
 		<li class="description">description: The total number of particles to create at each emission.</li>
 
-		<li class="prop"><span class="code_param">p_gravity</span></li>
+		<li class="prop"><span class="code_param">p_gravity</span> <span class="code_data_type">[ number ]</span></li>
 		<li class="description">default: 0</li>
 		<li class="description">description: Adds a downward force to particles. Higher values create greater force.</li>
 
-		<li class="prop"><span class="code_param">p_velocity (integer)</span></li>
+		<li class="prop"><span class="code_param">p_velocity</span> <span class="code_data_type">[ number ]</span></li>
 		<li class="description">default: 3</li>
 		<li class="description">description: Particle velocity.</li>
 
-		<li class="prop"><span class="code_param">p_velocity_spread (integer)</span></li>
+		<li class="prop"><span class="code_param">p_velocity_spread</span> <span class="code_data_type">[ number ]</span></li>
 		<li class="description">default: 1</li>
 		<li class="description">description: Creates velocity variability. Values closer to zero create more variability.</li>		
 
-		<li class="prop"><span class="code_param">p_angle (integer)</span></li>
+		<li class="prop"><span class="code_param">p_angle</span> <span class="code_data_type">[ number ]</span></li>
 		<li class="description">default: 270</li>
 		<li class="description">description: The angle of emission.</li>		
 	
-		<li class="prop"><span class="code_param">p_angle_spread (integer)</span></li>
+		<li class="prop"><span class="code_param">p_angle_spread</span> <span class="code_data_type">[ number ]</span></li>
 		<li class="description">default: 20</li>
 		<li class="description">description: Creates angle variability. Values closer to zero create more variability.</li>			
 
-		<li class="prop"><span class="code_param">p_life (integer)</span></li>
+		<li class="prop"><span class="code_param">p_life</span> <span class="code_data_type">[ number ]</span></li>
 		<li class="description">default: 100</li>
 		<li class="description">description: Particle life.</li>			
 			
-		<li class="prop"><span class="code_param">p_life_spread (integer)</span></li>
+		<li class="prop"><span class="code_param">p_life_spread</span> <span class="code_data_type">[ number ]</span></li>
 		<li class="description">default: .5</li>
 		<li class="description">description: Creates life variability. Values closer to zero create more variability.</li>		
 		
-		<li class="prop"><span class="code_param">p_init_pos_spread_x</span></li>
+		<li class="prop"><span class="code_param">p_init_pos_spread_x</span> <span class="code_data_type">[ number ]</span></li>
 		<li class="description">default: 0</li>
 		<li class="description">description: The distance from emitter.x in either direction particles can initially appear.</li>		
 		
-		<li class="prop"><span class="code_param">p_init_pos_spread_y</span></li>
+		<li class="prop"><span class="code_param">p_init_pos_spread_y</span> <span class="code_data_type">[ number ]</span></li>
 		<li class="description">default: 0</li>
 		<li class="description">description: The distance from emitter.y in either direction particles can initially appear.</li>
 
-		<li class="prop"><span class="code_param">p_life_offset_x</span></li>
+		<li class="prop"><span class="code_param">p_life_offset_x</span> <span class="code_data_type">[ number ]</span></li>
 		<li class="description">default: 0</li>
 		<li class="description">description: Change to 1 to give particles further away from emitter.x a shorter lifetime. Works best when p_init_pos_spread_x is > 0.</li>
 
-		<li class="prop"><span class="code_param">p_life_offset_y</span></li>
+		<li class="prop"><span class="code_param">p_life_offset_y</span><span class="code_data_type">[ number ]</span></li>
 		<li class="description">default: 0</li>
 		<li class="description">description: Change to 1 to give particles further away from emitter.y a shorter lifetime. Works best when p_init_pos_spread_y is > 0.</li>
 
-		<li class="prop"><span class="code_param">action</span></li>
+		<li class="prop"><span class="code_param">action_render</span> <span class="code_data_type">[ function ]</span></li>
 		<li class="description">default: function () {}</li>
 		<li class="description">description: Pass a function to run every screen render.</li>		
 
-		<li class="prop"><span class="code_param">className</span></li>
+		<li class="prop"><span class="code_param">color</span> <span class="code_data_type">[ string ]</span></li>
 		<li class="description">default: empty</li>
 		<li class="description">description: Sets the color palette for particles. Can be a single color or set to cycle thru an array of values.</li>		
 
@@ -724,15 +716,15 @@ BigBlock.Color.add(my_palette);
 		<li class="description">description: Alters the properties of the viewport divs.</li>
 		<li class="description">params: A set of key/value pairs to configure the grid. All options are optional.</li>
 
-		<li class="prop"><span class="code_param">blk_dim [ integer ]</span></li>
+		<li class="prop"><span class="code_param">blk_dim</span> <span class="code_data_type">[ number ]</span></li>
 		<li class="description">default: 8</li>
 		<li class="description">description: The dimensions in pixels of all blocks.</li>
 		
-		<li class="prop"><span class="code_param">width [ integer ]</span></li>
+		<li class="prop"><span class="code_param">width</span> <span class="code_data_type">[ number ]</span></li>
 		<li class="description">default: 320</li>
 		<li class="description">description: The width of the viewport grids.</li>
 		
-		<li class="prop"><span class="code_param">height [ integer ]</span></li>
+		<li class="prop"><span class="code_param">height</span> <span class="code_data_type">[ number ]</span></li>
 		<li class="description">default: 368</li>
 		<li class="description">description: The height of the viewport grids.</li>				
 
