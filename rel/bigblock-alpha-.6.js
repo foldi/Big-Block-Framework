@@ -298,7 +298,7 @@ BigBlock.ptInsideRect = function (pt_x, pt_y, rect_x1, rect_x2, rect_y1, rect_y2
  */
 BigBlock.getBigBlockCSS = function (id) {
 	
-	var c, rules, x;
+	var i, c, rules, x;
 		
 	c = document.styleSheets;
 	
@@ -2185,10 +2185,21 @@ BigBlock.Character = (function () {
  * 
  */
 
+/**
+ * Color
+ * Defines the color palette available to pixels.
+ * 
+ * @author Vince Allen 12-05-2009
+ * 
+ * Big Block Framework
+ * Copyright (C) 2011 Foldi, LLC
+ * 
+ */
+
 BigBlock.Color = (function () {
-	
+
 	var palette, color, colors, s, i;
-	
+
 	palette = {'classes' : [ // default colors
 		{name : 'white',val: ['rgb(255,255,255)']},
 		{name : 'black',val: ['rgb(0,0,0)']},
@@ -2209,7 +2220,7 @@ BigBlock.Color = (function () {
 		{name: 'brown',val: ['rgb(160,82,45)']},	
 		{name: 'pink',val: ['rgb(238,130,238)']}									
 	]};
-	
+
 	// default gradients
 	color = 'white_black';
 	palette.classes[palette.classes.length] = {'name' : {},'val' : []};
@@ -2222,16 +2233,16 @@ BigBlock.Color = (function () {
 		}
 	}
 	colors = s.split(";");				
-	
+
 	palette.classes[palette.classes.length-1].name = color;
 	palette.classes[palette.classes.length-1].val = [];
-	
+
 	for (i in colors) { // insert a css rule for every color
 		if (colors.hasOwnProperty(i)) {
 			palette.classes[palette.classes.length - 1].val[i] = colors[i];
 		}
 	}
-		
+
 	function getPalette () {
 		return palette;
 	}
@@ -2240,23 +2251,23 @@ BigBlock.Color = (function () {
 		total = 0;
 		for (i = 0; i < palette.classes.length; i++) {
 			total += palette.classes[i].val.length;
-			
+
 		}
 		return total;
 	}				
 	function addToPalette (class_name) {
 		palette.classes[palette.classes.length] = class_name;
 	}				
-	
+
 	return {
 		current_class : 0,
-		
+
 		build : function () {
-			
+
 			var p, s, i, total_rules;
-			
+
 			p = getPalette();
-			s = BigBlock.getBigBlockCSS(BigBlock.CSSid_color);
+			s = document.styleSheets[document.styleSheets.length - 1];
 
 			for (i in p.classes[this.current_class].val) {
 				if (p.classes[this.current_class].val.hasOwnProperty(i)) {
@@ -2277,9 +2288,9 @@ BigBlock.Color = (function () {
 					}
 				}		
 			}
-					
+
 			this.current_class++;
-			
+
 			try {
 				if (s.cssRules) { // Mozilla
 					BigBlock.Loader.update({
@@ -2297,7 +2308,7 @@ BigBlock.Color = (function () {
 			} catch(e) {
 				BigBlock.Log.display(e.name + ': ' + e.message);
 			}
-							
+
 			if (total_rules < getTotalColors()) { // if all styles are not complete, send false back to Timer; Timer will call build again
 				return false;
 			} else {
@@ -2311,7 +2322,7 @@ BigBlock.Color = (function () {
 			var i;
 			try {
 				if (typeof(params) === "undefined") {
-					throw new Error(console.log("BigBlock.Color.add(): params are required."));
+					throw new Error("BigBlock.Color.add(): params are required.");
 				}
 			} catch(e) {
 				BigBlock.Log.display(e.name + ': ' + e.message);
@@ -2323,11 +2334,10 @@ BigBlock.Color = (function () {
 		getPalette: function () {
 			return getPalette();
 		}
-		
-	};
-	
-})();
 
+	};
+
+})();
 
 /**
  * Database object
@@ -2837,33 +2847,73 @@ BigBlock.Footer = (function () {
  * 
  */
 
+/**
+ * Grid
+ * A generic object that carries core grid properties. All grids appearing in a scene should inherit from the Grid object.
+ * 
+ * Default iPhone viewport 320px X 356px
+ * Status bar (cannot hide) 20px
+ * Url bar 60px
+ * Button bar 44px
+ * 
+ * iPhone viewport running in full screen mode (installation on home screen) 320px X 480px
+ * 
+ * Full Grid running in iPhone mode 320px X 368px (40 cols X 46 cols)
+ * 
+ * @author Vince Allen 7-15-2010
+ * 
+ * Big Block Framework
+ * Copyright (C) 2011 Foldi, LLC
+ * 
+ */
+
+/**
+ * Grid
+ * A generic object that carries core grid properties. All grids appearing in a scene should inherit from the Grid object.
+ * 
+ * Default iPhone viewport 320px X 356px
+ * Status bar (cannot hide) 20px
+ * Url bar 60px
+ * Button bar 44px
+ * 
+ * iPhone viewport running in full screen mode (installation on home screen) 320px X 480px
+ * 
+ * Full Grid running in iPhone mode 320px X 368px (40 cols X 46 cols)
+ * 
+ * @author Vince Allen 7-15-2010
+ * 
+ * Big Block Framework
+ * Copyright (C) 2011 Foldi, LLC
+ * 
+ */
+
 BigBlock.Grid = (function () {
 
-				
+
 	return {
-		
+
 		alias : 'Grid',
-		
+
 		blk_dim : 8, // the pixel dimensions; width & height; pixels are square
 		width : 320, // global grid width
 		height : 368, // global grid height
-		
+
 		x : 0, // will be set when grid divs are added to the dom
 		y : 0,
-		
+
 		//cols : Math.round(320/8), // number of GLOBAL grid columns // replaced w Math.round(BigBlock.Grid.width/BigBlock.Grid.blk_dim)
 		//rows : Math.round(368/8), // number of GLOBAL grid rows // replaced w Math.round(BigBlock.Grid.height/BigBlock.Grid.blk_dim)
-		
+
 		//quad_width : 160, // replaced w BigBlock.Grid.width/2
 		//quad_height : 184, // replaced w BigBlock.Grid.height/2
 		//quad_cols : Math.round(160/8), // number of QUAD grid columns // replaced w Math.round((BigBlock.Grid.width/2)/BigBlock.Grid.blk_dim)
 		//quad_rows : Math.round(184/8), // number of QUAD grid rows // replaced w Math.round((BigBlock.Grid.height/2)/BigBlock.Grid.blk_dim)		
-		
+
 		total_global_cols : false, // set in Timer
 		total_quad_cols : false, // set in Timer
-		
+
 		//
-				
+
 		build_start_time : new Date().getTime(),
 		build_end_time : new Date().getTime(),
 		build_offset : 0,
@@ -2873,7 +2923,7 @@ BigBlock.Grid = (function () {
 		char_width : 8,
 		char_height : 8,
 		styles : {},
-		
+
 		configure : function (params) {
 			var key;
 			if (typeof(params) !== "undefined") {
@@ -2916,16 +2966,16 @@ BigBlock.Grid = (function () {
 				document.getElementById(this.quads[i].id).style[key] = value;
 			}
 			this.styles[key] = value; // save new value						
-					
+
 		},
 		add: function(){
-			
+
 			var win_dim, s, i, grid_quad, key;
-			
+
 			this.build_start_time = new Date().getTime();
-			
+
 			win_dim = BigBlock.getWindowDim();
-			
+
 			try {	
 				if (win_dim.width === false || win_dim.height === false) {
 					win_dim.width = 800;
@@ -2935,9 +2985,9 @@ BigBlock.Grid = (function () {
 			} catch(e) {
 				BigBlock.Log.display(e.name + ': ' + e.message);
 			}
-		
-			s = BigBlock.getBigBlockCSS(BigBlock.CSSid_grid_pos);
-						
+
+			 s = document.styleSheets[document.styleSheets.length - 1];
+
 			for (i = 0; i < 4; i++) {
 				try {
 					if (s.insertRule) { // Mozilla
@@ -2951,10 +3001,10 @@ BigBlock.Grid = (function () {
 					BigBlock.Log.display(e.name + ': ' + e.message);
 				}			
 			}
-						
+
 			this.x = ((win_dim.width / 2) - (this.quads[0].left)); // set the Grid x, y to the first quad's x, y
 			this.y = ((win_dim.height / 2) - (this.quads[0].top));
-			
+
 			// grid_quad
 			for (i = 0; i < this.quads.length; i++) {
 
@@ -2966,11 +3016,11 @@ BigBlock.Grid = (function () {
 						grid_quad.style[key] = this.styles[key];
 					}
 				}
-			
+
 				document.body.appendChild(grid_quad);																			
 			}
-			
-		
+
+
 		},
 		/**
 		 * Creates a css rule for every position in the grid
@@ -2979,23 +3029,23 @@ BigBlock.Grid = (function () {
 		 * 
 		 */		
 		build : function () {
-			
+
 			var colNum, quad_width, quad_height, build_section_total, s, i, total_rules;
-			
+
 			colNum = 0;
 			quad_width = BigBlock.Grid.width/2;
 			quad_height = BigBlock.Grid.height/2;
 			build_section_total = Math.round((quad_height/BigBlock.Grid.blk_dim))/2;
 
-			s = BigBlock.getBigBlockCSS(BigBlock.CSSid_grid_pos);	
-			
+			s = document.styleSheets[document.styleSheets.length - 1];	
+
 			for (i = 0; i < ((Math.round(quad_width/BigBlock.Grid.blk_dim) * Math.round(quad_height/BigBlock.Grid.blk_dim)) / build_section_total); i++) {
 				if (colNum < Math.round(quad_width/BigBlock.Grid.blk_dim)) {
 					colNum++;
 				} else {
 					colNum = 1;
 				}
-				
+
 				if (i % Math.round(quad_width/BigBlock.Grid.blk_dim) === 0) {
 					this.build_rowNum++;
 				}
@@ -3011,25 +3061,25 @@ BigBlock.Grid = (function () {
 
 			// total_rules;
 			try {
-				
+
 				if (s.cssRules) { // Mozilla
-					total_rules = s.cssRules.length-1; // must subtract 1 rule for the id selectorText added in the Timer	
+					total_rules = s.cssRules.length;
 				} else if (s.rules) { // IE
-					total_rules = s.rules.length-1;				
+					total_rules = s.rules.length;				
 				} else {
 					throw new Error("BigBlock.Grid.build(): document.styleSheets rule count failed. Browser does not support cssRules.length() or rules.length().");
 				}
-									
+
 			} catch(e) {
 				BigBlock.Log.display(e.name + ": " + e.message);
 			}
-						
+
 			this.build_offset = total_rules;
-			
+
 			BigBlock.Loader.update({
 				"total" : Math.round((total_rules / (Math.round(quad_width/BigBlock.Grid.blk_dim) * Math.round(quad_height/BigBlock.Grid.blk_dim))) * 100)
 			});
-					
+
 			if (total_rules < (Math.round(quad_width/BigBlock.Grid.blk_dim) * Math.round(quad_height/BigBlock.Grid.blk_dim))) { // if all styles are not complete, send false back to Timer; Timer will call build again
 				return false;
 			} else {
@@ -3037,10 +3087,10 @@ BigBlock.Grid = (function () {
 			}
 		},
 		buildCharStyles : function () {
-			
+
 			var s, i, col_count;
-			
-			s = BigBlock.getBigBlockCSS(BigBlock.CSSid_char_pos);
+
+			s = document.styleSheets[document.styleSheets.length - 1];
 
 			if (s.insertRule) { // Mozilla
 				s.insertRule("."+BigBlock.CSSid_text_bg+"{background-color: transparent;}", 0);
@@ -3049,29 +3099,29 @@ BigBlock.Grid = (function () {
 				s.addRule("."+BigBlock.CSSid_text_bg, "background-color: transparent");
 				s.addRule("."+BigBlock.CSSid_char, "width : 1px;height : 1px;position: absolute;float: left;line-height:0px;font-size:1%;");
 			} 
-						
+
 			col_count = 1;
 			for (i = 0; i < (this.char_width * this.char_height); i++) {
-			
+
 				if (s.insertRule) { // Mozilla
 					s.insertRule("." + BigBlock.CSSid_char_pos + (i + 1) + "{left:" + col_count + "px;top:" + (Math.floor((i/8))+1) + "px;}", 0);
 				} else if (s.addRule) { // IE
 					s.addRule("." + BigBlock.CSSid_char_pos + (i + 1), "left:" + col_count + "px;top:" + (Math.floor((i/8))+1) + "px;");
 				}
-								
+
 				if (col_count + 1 <= this.char_width) {
 					col_count++;
 				} else {
 					col_count = 1;
 				}
 			}				
-		
+
 			return true;
 		}						
-				
+
 
 	};
-	
+
 })();
 
 
@@ -4477,6 +4527,7 @@ BigBlock.Loader = (function () {
 			left: '2px',
 			backgroundColor: '#999',
 			color: '#999',
+			width: '0px',
 			height: '10px',
 			cssFloat: 'left'
 		},
@@ -4552,8 +4603,12 @@ BigBlock.Loader = (function () {
 					this.total = params.total;
 				}
 			}
-			var width = (this.total/100) * 100;
-			document.getElementById(this.id+'_bar').style.width = width + 'px';
+			if (this.total) {
+				var width = (this.total/100) * 100;
+				if (document.getElementById(this.id+'_bar').style.width) {
+					document.getElementById(this.id+'_bar').style.width = width + 'px';
+				}
+			}
 		}
 	};
 	
@@ -5565,12 +5620,6 @@ BigBlock.Timer = (function () {
 			i.appendChild(s);
 				
 			s = document.styleSheets[document.styleSheets.length - 1];
-
-			if (s.insertRule) { // Mozilla
-				s.insertRule(BigBlock.CSSid_core+"{}", 0);			
-			} else if (s.addRule) { // IE
-				s.addRule(BigBlock.CSSid_core, "display : block;");
-			}
 									
 			css = {
 				'body' : 'margin: 0;padding: 0;background-color:#ccc;',
@@ -5706,16 +5755,8 @@ BigBlock.Timer = (function () {
 			s.setAttribute('type', 'text/css');
 			
 			i = document.getElementsByTagName('head').item(0);
-			i.appendChild(s); 
-
-			i = document.styleSheets[document.styleSheets.length - 1];
-
-			if (i.insertRule) { // Mozilla
-				i.insertRule(BigBlock.CSSid_char_pos+"{}", 0);			
-			} else if (s.addRule) { // IE
-				i.addRule(BigBlock.CSSid_char_pos, "display : block;");
-			}
-						
+			i.appendChild(s);
+									
 			this.build_char();
 
 		},
@@ -5742,15 +5783,7 @@ BigBlock.Timer = (function () {
 			s.setAttribute('type', 'text/css');
 			
 			i = document.getElementsByTagName('head').item(0);
-			i.appendChild(s); 
-
-			i = document.styleSheets[document.styleSheets.length - 1];
-
-			if (i.insertRule) { // Mozilla
-				i.insertRule(BigBlock.CSSid_color+"{}", 0);			
-			} else if (s.addRule) { // IE
-				i.addRule(BigBlock.CSSid_color, "display : block;");
-			}
+			i.appendChild(s);
 						
 			this.build_color();
 	
@@ -5778,15 +5811,7 @@ BigBlock.Timer = (function () {
 			s.setAttribute('type', 'text/css');
 			
 			i = document.getElementsByTagName('head').item(0);
-			i.appendChild(s);			
-
-			i = document.styleSheets[document.styleSheets.length - 1];
-
-			if (i.insertRule) { // Mozilla
-				i.insertRule(BigBlock.CSSid_grid_pos+"{}", 0);			
-			} else if (s.addRule) { // IE
-				i.addRule(BigBlock.CSSid_grid_pos, "display : block;");
-			}
+			i.appendChild(s);
 			
 			BigBlock.Timer.build_grid();
 									
@@ -6082,6 +6107,7 @@ BigBlock.Timer = (function () {
 	};
 	
 })();
+
 
 /**
  * Simple Word object
