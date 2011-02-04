@@ -33,3 +33,5 @@ anim = [
 ];
 
 3. Add Interface to test for required properties.
+
+4. Add particle_max property to Emitter; should stop emitting after particle count > particle max.
