@@ -3,12 +3,21 @@ Copyright (C) 2011 Foldi, LLC
 
 Big Block Framework is a standards-compliant JavaScript framework for rendering pixel art, pixel fonts and particles in a web browser.
 
-The current release is bigblock-alpha-.6.js.
+The current release is bigblock-alpha-.6.1.js.
 
 See documentation in /docs/index.html and demos in /demos/index.html
 
 ////
 
+Updates in 6.1:
+
+1. In Timer.run(), removed a condition around BigBlock.RenderMgr.renderCleanUp() so the function is always called.
+
+2. Fixed an error in BigBlock.ptInsideRect() that caused rendering errors near the bottom and right edges of the viewport.
+
+3. Updated checkButtonAction() in ScreenEvent to send the object in Button.map to the action_input of the button that was clicked/touched.
+
+4. Updated check for Timer.is_paused in ScreenEvent; now occurs after ScreenEvent checks.
 
 
 Planned updates for .7 release:
