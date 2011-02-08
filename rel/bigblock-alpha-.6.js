@@ -286,7 +286,7 @@ BigBlock.getUniqueId = function () {
  * @param {Number} rect_y2
  */
 BigBlock.ptInsideRect = function (pt_x, pt_y, rect_x1, rect_x2, rect_y1, rect_y2) {
-	if (pt_x >= rect_x1 && pt_x <= rect_x2 && pt_y >= rect_y1 && pt_y <= rect_y2) {
+	if (pt_x >= rect_x1 && pt_x < rect_x2 && pt_y >= rect_y1 && pt_y < rect_y2) {
 		return true;
 	}
 	return false;
