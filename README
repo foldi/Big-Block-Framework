@@ -9,6 +9,11 @@ See documentation in /docs/index.html and demos in /demos/index.html
 
 ////
 
+Updates in 6.2:
+1. added BigBlock.standalone property in core_object_init.js
+
+2. added loading_list and loading_complete properties to track loading audio files; if BigBlock.Audio.loading_complete = true, all files have loaded.
+
 Updates in 6.1:
 
 1. In Timer.run(), removed a condition around BigBlock.RenderMgr.renderCleanUp() so the function is always called.
