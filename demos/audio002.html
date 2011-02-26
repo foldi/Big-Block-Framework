@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
+        <title>Big Block Framework - Demo</title>
+		
+		<script src="../lib/core_object_init.js"></script>
+		<script src="../lib/utility.js"></script>
+		<script src="../lib/Audio.js"></script>
+		<script src="../lib/Block.js"></script>
+		<script src="../lib/BlockAnim.js"></script>
+		<script src="../lib/BlockBig.js"></script>
+		<script src="../lib/BlockSmall.js"></script>
+		<script src="../lib/Button.js"></script>
+		<script src="../lib/Character.js"></script>
+		<script src="../lib/Color.js"></script>
+		<script src="../lib/Database.js"></script>
+		<script src="../lib/Emitter.js"></script>
+		<script src="../lib/Footer.js"></script>
+		<script src="../lib/Grid.js"></script>
+		<script src="../lib/Header.js"></script>
+		<script src="../lib/library_behavior.js"></script>
+		<script src="../lib/library_char.js"></script>
+		<script src="../lib/library_emitter.js"></script>
+		<script src="../lib/Loader.js"></script>
+		<script src="../lib/LocalStorage.js"></script>
+		<script src="../lib/RenderManager.js"></script>
+		<script src="../lib/ScreenEvent.js"></script>
+		<script src="../lib/Timer.js"></script>
+		<script src="../lib/Word.js"></script>
+				
+		<script type='text/javascript'>
+			
+			BigBlock.CharPresets = BigBlock.CharPresets.install(); // needed for characters
+			
+			BigBlock.ready = function () { // called from <body> onload()
+				BigBlock.Timer.play({
+					before_play : function () {
+									
+						// AUDIO
+			
+						BigBlock.Audio.debug = true;
+						BigBlock.Audio.format = ["wav", "mp3", "ogg"]; // pass the supplied media formats
+						var path = "audio/";
+						
+						BigBlock.Audio.add("track001", path, false, function () {
+							console.log('loaded track001');
+						});
+						BigBlock.Audio.add("track002", path, false, function () {
+							console.log('loaded track002');
+						});
+						BigBlock.Audio.add("track003", path, false, function () {
+							console.log('loaded track003');
+						});
+						BigBlock.BlockSmall.create({
+							action_render: function () {
+								if (BigBlock.Audio.loading_complete) {
+									BigBlock.Button.create({
+										x: 8,
+										y: 8,
+										width: 48,
+										height: 24,
+										color: "magenta",
+										action_input: function () {
+											BigBlock.Audio.play("track001"); // sound
+										}
+									});
+									BigBlock.Button.create({
+										x: 8,
+										y: 40,
+										width: 48,
+										height: 24,
+										color: "magenta",
+										action_input: function () {
+											BigBlock.Audio.play("track002"); // sound
+										}
+									});
+									BigBlock.Button.create({
+										x: 8,
+										y: 72,
+										width: 48,
+										height: 24,
+										color: "magenta",
+										action_input: function () {
+											BigBlock.Audio.play("track003"); // sound
+										}
+									});
+									this.destroy();																
+								} else if (!BigBlock.Audio.supported) {
+									this.destroy();	
+								}
+							}
+						});						
+					}
+				});
+			};
+											
+		</script>
+		
+	</head>
+	<body onload="setTimeout('BigBlock.ready()', 0)">
+		
+	</body>
+	
+</html>

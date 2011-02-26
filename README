@@ -3,16 +3,17 @@ Copyright (C) 2011 Foldi, LLC
 
 Big Block Framework is a standards-compliant JavaScript framework for rendering pixel art, pixel fonts and particles in a web browser.
 
-The current release is bigblock-alpha-.6.1.js.
+The current release is bigblock-alpha-.6.2.js.
 
 See documentation in /docs/index.html and demos in /demos/index.html
 
 ////
 
 Updates in 6.2:
-1. added BigBlock.standalone property in core_object_init.js
+1. added BigBlock.standalone property in core_object_init.js. Set to true if app is running as a full screen iPhone web app launched from the home screen.
 
 2. added loading_list and loading_complete properties to track loading audio files; if BigBlock.Audio.loading_complete = true, all files have loaded.
+
 
 Updates in 6.1:
 
@@ -29,7 +30,7 @@ Planned updates for .7 release:
 
 1. Add water and snow emitter configurations to library_emitter.js.
 
-2. Organize the anim property like below to remove the 'c' key. Just use the name of the color palette:
+2. Organize the anim property like below to remove the 'c' key. Use the name of the color palette:
 
 anim = [
 
@@ -49,3 +50,7 @@ anim = [
 3. Add Interface to test for required properties.
 
 4. Add particle_max property to Emitter; should stop emitting after particle count > particle max.
+
+5. Add old game platform color palettes like Atari, Commodore 64, etc.
+
+6. Remove Header and Footer classes.
