@@ -54,3 +54,5 @@ anim = [
 5. Add old game platform color palettes like Atari, Commodore 64, etc.
 
 6. Remove Header and Footer classes.
+
+7. Add JSDoc tags.
