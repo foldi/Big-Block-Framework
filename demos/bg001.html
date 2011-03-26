@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
+        <title>Big Block Framework - Demo</title>
+		
+		<script src="../lib/core_object_init.js"></script>
+		<script src="../lib/Audio.js"></script>
+		<script src="../lib/Block.js"></script>
+		<script src="../lib/BlockAnim.js"></script>
+		<script src="../lib/BlockBig.js"></script>
+		<script src="../lib/BlockSmall.js"></script>
+		<script src="../lib/Button.js"></script>
+		<script src="../lib/Character.js"></script>
+		<script src="../lib/Color.js"></script>
+		<script src="../lib/Database.js"></script>
+		<script src="../lib/Emitter.js"></script>
+		<script src="../lib/Grid.js"></script>
+		<script src="../lib/Loader.js"></script>
+		<script src="../lib/LocalStorage.js"></script>
+		<script src="../lib/RenderManager.js"></script>
+		<script src="../lib/ScreenEvent.js"></script>
+		<script src="../lib/Timer.js"></script>
+		<script src="../lib/utility.js"></script>
+		<script src="../lib/Word.js"></script>
+		
+		<script type='text/javascript'>
+			
+			BigBlock.Grid.setProps({
+				width: 320,
+				height: 480
+			});
+			
+			BigBlock.BlockSmall.create({
+				action_input: function () {
+					console.log('setting style');
+					BigBlock.GridStatic.setStyle("backgroundColor", "transparent");
+					BigBlock.GridBG.setStyle("backgroundImage", "url(screen001.png)");
+					
+				}
+			});
+									
+		</script>
+		
+	</head>
+	<body onload="setTimeout('BigBlock.ready()', 0)">
+		
+	</body>
+	
+</html>	
