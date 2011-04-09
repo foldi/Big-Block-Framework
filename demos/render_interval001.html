@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
+        <title>Big Block Framework - Demo</title>
+		
+		<script src="../rel/bigblock-alpha-.6.4.min.js"></script>
+		
+		<script type='text/javascript'>
+			/*global BigBlock*/
+			
+			var i,
+				max_blocks = 1,
+				x = 8,
+				y = 8,
+				new_x,
+				target_x,
+				target_y,
+				d,
+				trans,
+				obj,
+				target_test,
+				vy;
+			
+			BigBlock.Grid.setProps({
+				width: 320,
+				height: 480
+			});
+			
+			setInterval(function () {
+
+				for (i = 0; i < max_blocks; i += 1) {
+				
+					target_x = Math.getRandomNumber(1, BigBlock.Grid.width);
+					target_y = Math.getRandomNumber(1, BigBlock.Grid.height); // target_ceiling is the lower number				
+
+					BigBlock.BlockSmall.create({
+						alias: "bee"+BigBlock.getUniqueId(),
+						x: x,
+						y: y,
+						my_state: "fly",
+						target_x: target_x,
+						target_y: target_y,
+						target_min_dist: BigBlock.Grid.width/2, // target must be a min dist from current x, y
+						target_ceiling: 0,
+						target_floor: 480, 
+						escape_y: BigBlock.Grid.blk_dim*-6,
+						vel : BigBlock.Grid.blk_dim,
+						angle_fly: BigBlock.getAngle(y, target_y, x, target_x),
+						hover_timeout: null,
+						color: "white",
+						my_score_val : BigBlock.BEE_SCORE_VAL,
+						fly_ceiling: BigBlock.Grid.height - (BigBlock.Grid.blk_dim * 2),
+						move_delay: Math.max(1000, 250), // move delay decreases by level; never goes below 50 milliseconds			
+						move_delay_spread: Math.max(1000, 250),								
+						action_render: function () {
+
+							switch (this.my_state) {
+
+								case "fly":
+
+									d = Math.getDistanceBwTwoPts(this.x, this.y, this.target_x, this.target_y);
+
+									trans = BigBlock.getTransform(d/BigBlock.Grid.blk_dim, this.angle_fly+180, this.x, this.y);
+
+									if (Math.abs(trans.x - this.target_x) > this.vel || Math.abs(trans.y - this.target_y) > this.vel) {
+										this.x = trans.x;
+										this.y = trans.y;
+									} else {
+
+										var my_alias = this.alias;
+										this.hover_timeout = setTimeout(function () {
+
+											if (typeof(BigBlock.Blocks[my_alias]) !== "undefined") {
+
+												obj = BigBlock.Blocks[my_alias]; 
+
+												// when generating new target, make it a minimum distance
+												target_test = false;
+
+												// get new flight target
+												while (target_test === false && typeof(obj) !== "undefined") {
+													new_x = Math.floor(Math.getRandomNumber(0,BigBlock.Grid.width)/BigBlock.Grid.blk_dim);
+													target_x = new_x * BigBlock.Grid.blk_dim;
+													target_y = Math.getRandomNumber(BigBlock.Blocks[my_alias].target_ceiling,BigBlock.Blocks[my_alias].target_floor); // use a passed ceiling and floor here
+
+													if (Math.getDistanceBwTwoPts(obj.x, obj.y, target_x, target_y) > obj.target_min_dist) {
+														target_test = true;
+													}
+												}									
+											
+												obj.target_x = target_x;
+												obj.target_y = target_y;
+												obj.angle_fly = BigBlock.getAngle(BigBlock.Blocks[my_alias].y, target_y, BigBlock.Blocks[my_alias].x, target_x);
+												obj.my_state = "fly";
+
+											}
+
+										},Math.getRandomNumber(this.move_delay, this.move_delay_spread));
+
+										this.color = "white";				
+										this.my_state = "hover";
+
+									}
+
+									break;
+
+								case "hover":
+
+									vy = (BigBlock.Grid.blk_dim) * Math.sin(this.clock); // create wave motion
+									this.y = this.y + vy;	
+
+									break;
+							}
+						}
+					});
+				}
+			
+			},1000);
+			
+			BigBlock.ready = function () { // called from <body> onload()
+				BigBlock.Timer.play({
+					debug_frame_rate: true,
+					force_max_frame_rate: false,
+					frame_rate : 30								
+				});
+			};			
+									
+		</script>
+		
+	</head>
+	<body onload="setTimeout('BigBlock.ready()', 0)">
+		
+	</body>
+	
+</html>	
