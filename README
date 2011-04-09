@@ -3,11 +3,16 @@ Copyright (C) 2011 Foldi, LLC
 
 Big Block Framework is a standards-compliant JavaScript framework for rendering pixel art, pixel fonts and particles in a web browser.
 
-The current release is bigblock-alpha-.6.2.js.
+The current release is bigblock-alpha-.6.4.js.
 
 See documentation in /docs/index.html and demos in /demos/index.html
 
 ////
+Updates in 6.4:
+1. Several performance enhancements including using only one div per viewport layer rather than four. A layer with four divs loaded faster. However, using one div doubled the frame rate because less dom operation were required to render the frame.
+
+2. Added a BG viewport layer that can accept image files for use and background images. Example: BigBlock.GridBG.setStyle("backgroundImage", "url(screen001.png)");
+
 
 Updates in 6.2:
 1. added BigBlock.standalone property in core_object_init.js. Set to true if app is running as a full screen iPhone web app launched from the home screen.
