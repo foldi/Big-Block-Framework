@@ -9,7 +9,7 @@ See documentation in /docs/index.html and demos in /demos/index.html
 
 ////
 Updates in 6.4:
-1. Several performance enhancements including using only one div per viewport layer rather than four. A layer with four divs loaded faster. However, using one div doubled the frame rate because less dom operation were required to render the frame.
+1. Several performance enhancements including using only one div per viewport layer rather than four. A layer with four divs loaded faster. However, using one div doubled the frame rate because less dom operations were required to render the frame.
 
 2. Added a BG viewport layer that can accept image files for use and background images. Example: BigBlock.GridBG.setStyle("backgroundImage", "url(screen001.png)");
 
