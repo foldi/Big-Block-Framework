@@ -3,9 +3,20 @@ Copyright (C) 2011 Foldi, LLC
 
 Big Block Framework is a standards-compliant JavaScript framework for rendering pixel art, pixel fonts and particles in a web browser.
 
-The current release is bigblock-alpha-.6.4.js.
+The current release is bigblock-alpha-.6.5.js.
 
 See documentation in /docs/index.html and demos in /demos/index.html
+
+////
+Updates in 6.5:
+1. Updated Log object to include methods in the Firebug API like timer, count and table.
+
+2. To output average framerate, set BigBlock.Log.timer_enabled = true in the console or in BigBlock.ready
+
+3. Added Interface to check for required params.
+
+4. Added ImagePreloader to preload images. 
+
 
 ////
 Updates in 6.4:
