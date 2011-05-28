@@ -15,7 +15,15 @@ Updates in 6.5:
 
 3. Added Interface to check for required params.
 
-4. Added ImagePreloader to preload images. 
+4. Added ImagePreloader to preload images. Use fetch(params) and pass an array of objects that describes the images to preload:
+
+BigBlock.ImagePreloader.fetch([		
+	{
+		path : "/images/", 
+		name : "screen001",
+		extension: ".png"
+	}	
+]);
 
 
 ////
