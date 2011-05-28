@@ -5,12 +5,34 @@
 		<meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale = 1.0">
         <title>Big Block Framework - Demo</title>
 		
-		<script src="../rel/bigblock-alpha-.6.4.min.js"></script>
+		<script src="../lib/core_object_init.js"></script>
+		<script src="../lib/utility.js"></script>
+		<script src="../lib/Audio.js"></script>
+		<script src="../lib/Block.js"></script>
+		<script src="../lib/BlockAnim.js"></script>
+		<script src="../lib/BlockBig.js"></script>
+		<script src="../lib/BlockSmall.js"></script>
+		<script src="../lib/Button.js"></script>
+		<script src="../lib/Character.js"></script>
+		<script src="../lib/Color.js"></script>
+		<script src="../lib/Database.js"></script>
+		<script src="../lib/Emitter.js"></script>
+		<script src="../lib/Grid.js"></script>
+		<script src="../lib/library_behavior.js"></script>
+		<script src="../lib/library_char.js"></script>
+		<script src="../lib/library_emitter.js"></script>
+		<script src="../lib/Loader.js"></script>
+		<script src="../lib/LocalStorage.js"></script>
+		<script src="../lib/Log.js"></script>
+		<script src="../lib/RenderManager.js"></script>
+		<script src="../lib/ScreenEvent.js"></script>
+		<script src="../lib/Timer.js"></script>
+		<script src="../lib/Word.js"></script>
 	
 		<script type='text/javascript'>
 			
 			var i,
-				max_blocks = 800,
+				max_blocks = 100,
 				x = 8,
 				y = 8;
 			
@@ -25,7 +47,7 @@
 				var target_y = Math.getRandomNumber(1, BigBlock.Grid.height); // target_ceiling is the lower number				
 
 				BigBlock.BlockSmall.create({
-					alias: "bee"+BigBlock.getUniqueId(),
+					alias: "bee" + BigBlock.Utils.getUniqueId(),
 					x: x,
 					y: y,
 					my_state: "fly",
@@ -36,7 +58,7 @@
 					target_floor: 480, 
 					escape_y: BigBlock.Grid.blk_dim*-6,
 					vel : BigBlock.Grid.blk_dim,
-					angle_fly: BigBlock.getAngle(y, target_y, x, target_x),
+					angle_fly: BigBlock.Utils.getAngle(y, target_y, x, target_x),
 					hover_timeout: null,
 					color: "white",
 					my_score_val : BigBlock.BEE_SCORE_VAL,
@@ -51,7 +73,7 @@
 
 								var d = Math.getDistanceBwTwoPts(this.x, this.y, this.target_x, this.target_y);
 
-								var trans = BigBlock.getTransform(d/BigBlock.Grid.blk_dim, this.angle_fly+180, this.x, this.y);
+								var trans = BigBlock.Utils.getTransform(d/BigBlock.Grid.blk_dim, this.angle_fly+180, this.x, this.y);
 
 								if (Math.abs(trans.x - this.target_x) > this.vel || Math.abs(trans.y - this.target_y) > this.vel) {
 									this.x = trans.x;
@@ -81,7 +103,7 @@
 											
 											obj.target_x = target_x;
 											obj.target_y = target_y;
-											obj.angle_fly = BigBlock.getAngle(BigBlock.Blocks[my_alias].y, target_y, BigBlock.Blocks[my_alias].x, target_x);
+											obj.angle_fly = BigBlock.Utils.getAngle(BigBlock.Blocks[my_alias].y, target_y, BigBlock.Blocks[my_alias].x, target_x);
 											obj.my_state = "fly";
 
 										}
@@ -107,6 +129,7 @@
 			}
 			
 			BigBlock.ready = function () { // called from <body> onload()
+				BigBlock.Log.timer_enabled = true;
 				BigBlock.Timer.play({
 					debug_frame_rate: true,
 					force_max_frame_rate: false,
