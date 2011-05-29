@@ -8,7 +8,7 @@ The current release is bigblock-alpha-.6.5.js.
 See documentation in /docs/index.html and demos in /demos/index.html
 
 ////
-Updates in 6.5:
+Updates in .6.5:
 1. Updated Log object to include methods in the Firebug API like timer, count and table.
 
 2. To output average framerate, set BigBlock.Log.timer_enabled = true in the console or in BigBlock.ready
@@ -27,19 +27,19 @@ BigBlock.ImagePreloader.fetch([
 
 
 ////
-Updates in 6.4:
+Updates in .6.4:
 1. Several performance enhancements including using only one div per viewport layer rather than four. A layer with four divs loaded faster. However, using one div doubled the frame rate because less dom operations were required to render the frame.
 
 2. Added a BG viewport layer that can accept image files for use and background images. Example: BigBlock.GridBG.setStyle("backgroundImage", "url(screen001.png)");
 
 
-Updates in 6.2:
+Updates in .6.2:
 1. added BigBlock.standalone property in core_object_init.js. Set to true if app is running as a full screen iPhone web app launched from the home screen.
 
 2. added loading_list and loading_complete properties to track loading audio files; if BigBlock.Audio.loading_complete = true, all files have loaded.
 
 
-Updates in 6.1:
+Updates in .6.1:
 
 1. In Timer.run(), removed a condition around BigBlock.RenderMgr.renderCleanUp() so the function is always called.
 
@@ -71,12 +71,8 @@ anim = [
 
 ];
 
-3. Add Interface to test for required properties.
+3. Add particle_max property to Emitter; should stop emitting after particle count > particle max.
 
-4. Add particle_max property to Emitter; should stop emitting after particle count > particle max.
+4. Add old game platform color palettes like Atari, Commodore 64, etc.
 
-5. Add old game platform color palettes like Atari, Commodore 64, etc.
-
-6. Remove Header and Footer classes.
-
-7. Add JSDoc tags.
+5. Add JSDoc tags.
